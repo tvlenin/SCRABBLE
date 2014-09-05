@@ -7,4 +7,5 @@ package scrabble.LOGIC;
  */
 public class Ficha {
    String valor; 
+   int puntaje;
 }
