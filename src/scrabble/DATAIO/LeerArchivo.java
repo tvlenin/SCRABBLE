@@ -5,7 +5,7 @@ import java.lang.String;
 
 
 
-class LeerArchivo  {
+class  LeerArchivo   {
      
     
     public static void main(String args[]) {
