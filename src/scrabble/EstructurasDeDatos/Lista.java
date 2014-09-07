@@ -1,5 +1,7 @@
 package scrabble.EstructurasDeDatos;
 
+import java.util.Iterator;
+
 public class Lista<E> {
 
     protected Nodo<E> primero; 
@@ -11,14 +13,14 @@ public class Lista<E> {
     }
     
     public void insertar(E x) {
-        Nodo<E> nuevo = new Nodo<E>(x);
+        Nodo<E> nuevo = new Nodo<>(x);
         nuevo.siguiente = primero;
         primero = nuevo; 
         this.talla++;
     }
     
     public void insertarFinal(E x) {
-        Nodo<E> nuevo = new Nodo<E>(x);
+        Nodo<E> nuevo = new Nodo<>(x);
         this.talla++;
         Nodo<E> tmp = primero;
         if (tmp == null){
@@ -33,6 +35,7 @@ public class Lista<E> {
         }
     }
     
+    @Override
     public String toString() {
         String res = "";
         for(Nodo<E> tmp = primero; tmp != null; tmp = tmp.siguiente) {
@@ -40,6 +43,8 @@ public class Lista<E> {
         }
         return res;
     }
+    
+    
     
     public boolean eliminar(E x) {
         Nodo<E> tmp = primero, anterior = null;
@@ -61,14 +66,19 @@ public class Lista<E> {
         return res;
     }
     
+   
+    
     public boolean buscar(E x){
         boolean resp = false;
-        for (Nodo<E> tmp = primero; tmp!=null;tmp=tmp.siguiente) {
+        for (Nodo<E> tmp = primero; tmp != null; tmp = tmp.siguiente) {
             if (x.equals(tmp.dato)) {
             resp = true;
             }
         }    
         return resp;
     }
+    
+
+    
     
 }
