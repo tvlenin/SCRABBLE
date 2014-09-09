@@ -1,6 +1,7 @@
 package scrabble.DATAIO;
 import java.io.*;
 import scrabble.EstructurasDeDatos.Lista;
+
 import scrabble.LOGIC.Ficha;
 import scrabble.LOGIC.Subject;
 
@@ -41,7 +42,8 @@ public class LeerTexto extends Subject {
         addObserver(f);
         notifyObserver();
         
-        System.out.println(cont);
+
+
     }
     
 }
