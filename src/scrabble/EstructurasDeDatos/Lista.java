@@ -1,5 +1,8 @@
 package scrabble.EstructurasDeDatos;
 
+import java.util.Iterator;
+import scrabble.LOGIC.Observer;
+
 public class Lista<E> {
 
     protected Nodo<E> primero; 
@@ -94,3 +97,8 @@ public class Lista<E> {
     
     
 }
+    
+
+    
+    
+
