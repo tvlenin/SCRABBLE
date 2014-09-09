@@ -36,17 +36,7 @@ public class Lista<E> {
         }
     }
     
-    @Override
-    public String toString() {
-        String res = "";
-        for(Nodo<E> tmp = primero; tmp != null; tmp = tmp.siguiente) {
-            res += tmp.dato.toString()+"\n";
-        }
-        return res;
-    }
-    
-    
-    
+      
     public boolean eliminar(E x) {
         Nodo<E> tmp = primero, anterior = null;
         boolean res = false;
