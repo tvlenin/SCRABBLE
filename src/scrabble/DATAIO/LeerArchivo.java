@@ -1,14 +1,16 @@
 package scrabble.DATAIO;
 import java.io.*;
-import scrabble.EstructurasDeDatos.Lista;
 import java.lang.String;
+import scrabble.EstructurasDeDatos.Lista;
+
 
 
 
 class  LeerArchivo   {
      
     
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
+        
         Lista <String> palabras = new Lista();
         int cont = 0;
         try{
@@ -23,7 +25,7 @@ class  LeerArchivo   {
             while ((strLinea = buffer.readLine()) != null)   {
                 cont++;
                 // Imprimimos la línea por pantalla
-                palabras.insertar(strLinea);
+                palabras.insertarInicio(strLinea);
                 
               
                 //System.out.println (palabras.toString());
@@ -37,5 +39,5 @@ class  LeerArchivo   {
         System.out.println(palabras.buscar("qwert"));
         System.out.println(cont);
         
-    }
+    }*/
 }

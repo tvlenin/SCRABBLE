@@ -10,7 +10,8 @@ public class Lista<E> {
         talla = 0;
     }
     
-    public void insertar(E x) {
+   
+    public void insertarInicio(E x) {
         Nodo<E> nuevo = new Nodo<E>(x);
         nuevo.siguiente = primero;
         primero = nuevo; 
@@ -60,6 +61,12 @@ public class Lista<E> {
         }
         return res;
     }
+    
+    /* public E buscarEnPosicion(int Ppos){
+        if (talla==0)
+            return null;
+        
+    }*/
     
     public boolean buscar(E x){
         boolean resp = false;
