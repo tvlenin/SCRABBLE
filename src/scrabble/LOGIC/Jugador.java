@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package scrabble.LOGIC;
 
 /**
@@ -11,5 +5,15 @@ package scrabble.LOGIC;
  * @author Abrahamon
  */
 public class Jugador {
+    
+    //Es una lista donde se encontraran los valores correspondientes a cada ficha
+    public void fichasJugador(){        
+    }
+    
+    public void numeroJugador(){
+    }
+    
+    public void puntajeJugador(){
+    }
     
 }
