@@ -36,12 +36,16 @@ public class LeerTexto extends Subject {
             System.err.println("Ocurrio un error: " + e.getMessage());
         
         }
+        System.out.println(palabras.getTalla());
+        palabras.eliminar("dog");
         System.out.println(palabras.buscar("dog"));
         Ficha f = new Ficha();
         addObserver(f);
         notifyObserver();
         
-        System.out.println(cont);
+        
+        System.out.println(palabras.getTalla());
+        
     }
     
 }

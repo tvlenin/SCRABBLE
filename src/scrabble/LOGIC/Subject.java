@@ -2,6 +2,7 @@
 package scrabble.LOGIC;
 
 import static java.lang.Math.E;
+import java.util.Iterator;
 import scrabble.EstructurasDeDatos.Lista;
 
 /**
@@ -12,6 +13,7 @@ public abstract class Subject {
     Observer observador;
     //public Subject(){
         Lista <Observer> _observadores = new Lista <> ();
+       
     //}
     
     /**
@@ -27,9 +29,9 @@ public abstract class Subject {
     }
     
     public void notifyObserver() {
-        /* for (Observador o:_observadores) {
-        o.actualizar();
-        }*/
+        {
+            
+        }
         
     }
     
