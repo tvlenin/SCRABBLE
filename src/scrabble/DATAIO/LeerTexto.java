@@ -1,6 +1,7 @@
 package scrabble.DATAIO;
 import java.io.*;
 import scrabble.EstructurasDeDatos.Lista;
+
 import scrabble.LOGIC.Ficha;
 import scrabble.LOGIC.Subject;
 
@@ -36,16 +37,13 @@ public class LeerTexto extends Subject {
             System.err.println("Ocurrio un error: " + e.getMessage());
         
         }
-        System.out.println(palabras.getTalla());
-        palabras.eliminar("dog");
         System.out.println(palabras.buscar("dog"));
         Ficha f = new Ficha();
         addObserver(f);
         notifyObserver();
         
-        
-        System.out.println(palabras.getTalla());
-        
+
+
     }
     
 }
