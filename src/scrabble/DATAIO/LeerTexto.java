@@ -1,18 +1,21 @@
 package scrabble.DATAIO;
+import Patrones.Container;
+import Patrones.Iterator;
 import java.io.*;
+
 import scrabble.EstructurasDeDatos.Lista;
 
 import scrabble.LOGIC.Ficha;
-import scrabble.LOGIC.Subject;
+//import scrabble.LOGIC.Subject;
 
 /**
  *
  * @author fabricio
  */
-public class LeerTexto extends Subject {
-    
+public class LeerTexto implements Container {
+    Lista <String> palabras = new Lista <>();
     public void leer(){
-        Lista <String> palabras = new Lista <>();
+        
         int cont = 0;
         try{
             // Abrimos el archivo
@@ -38,12 +41,35 @@ public class LeerTexto extends Subject {
         
         }
         System.out.println(palabras.buscar("dog"));
-        Ficha f = new Ficha();
-        addObserver(f);
-        notifyObserver();
+       
         
 
 
     }
+     @Override
+    public Iterator getIterator() {
+        return new Iterador();
+    }
+    
+     private class Iterador implements Iterator {
+
+      int index;
+
+      @Override
+      public boolean hasNext() {
+         if(index < palabras.getTalla()){
+            return true;
+         }
+         return false;
+      }
+
+      @Override
+      public Object next() {
+         if(this.hasNext()){
+            //return palabras.;
+         }
+         return null;
+      }		
+   }
     
 }

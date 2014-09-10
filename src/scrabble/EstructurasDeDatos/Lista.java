@@ -1,7 +1,9 @@
 package scrabble.EstructurasDeDatos;
 
-import java.util.Iterator;
-import scrabble.LOGIC.Observer;
+
+
+
+
 
 public class Lista<E> {
 
@@ -70,9 +72,6 @@ public class Lista<E> {
         
     }*/
 
-   
-
-    
     public boolean buscar(E x){
         boolean resp = false;
         for (Nodo<E> tmp = primero; tmp != null; tmp = tmp.siguiente) {
@@ -83,12 +82,18 @@ public class Lista<E> {
         return resp;
     }
     
+    
+    public int getTalla(){
+        return talla;
+    }
+
+   
 
     
+    
+        
+        
     
 }
+      
     
-
-    
-    
-
