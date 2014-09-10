@@ -5,34 +5,29 @@ import scrabble.LOGIC.Observer;
 
 public class Lista<E> {
 
-    protected Nodo<E> primero; 
+    protected Nodo<E> cabeza;
+    protected Nodo<E> cola;
     protected int talla;
         
     public Lista(){
-        primero = null;
+        cabeza = null;
+        cola = null;
         talla = 0;
     }
-    
-
-   
-    public void insertarInicio(E x) {
-        Nodo<E> nuevo = new Nodo<E>(x);
-    }
-    
+     
     public void insertar(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
-
-        nuevo.siguiente = primero;
-        primero = nuevo; 
+        nuevo.siguiente = cabeza;
+        cabeza = nuevo; 
         this.talla++;
     }
     
     public void insertarFinal(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
         this.talla++;
-        Nodo<E> tmp = primero;
+        Nodo<E> tmp = cabeza;
         if (tmp == null){
-            primero = nuevo;
+            cabeza = nuevo;
         }
         else {
             
@@ -45,7 +40,7 @@ public class Lista<E> {
     
       
     public boolean eliminar(E x) {
-        Nodo<E> tmp = primero, anterior = null;
+        Nodo<E> tmp = cabeza, anterior = null;
         boolean res = false;
         while ( tmp != null && !tmp.dato.equals( x )) {
             anterior = tmp;
@@ -55,7 +50,7 @@ public class Lista<E> {
             res= true;
             this.talla--;
             if(anterior==null) {
-                primero = tmp.siguiente;
+                this.cabeza = tmp.siguiente;
             }
             else{
                 anterior.siguiente=tmp.siguiente;
@@ -64,24 +59,23 @@ public class Lista<E> {
         return res;
     }
     
-    /* public E buscarEnPosicion(int Ppos){
-        if (talla==0)
-            return null;
-        
-    }*/
-
-   
-
-    
+    public Nodo<E> getHead(){
+        return cabeza;
+    }
     public boolean buscar(E x){
         boolean resp = false;
-        for (Nodo<E> tmp = primero; tmp != null; tmp = tmp.siguiente) {
+        for (Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente) {
             if (x.equals(tmp.dato)) {
             resp = true;
+            
             }
         }    
         return resp;
     }
+    
+    public int getTalla(){
+        return this.talla;
+    } 
     
 
     

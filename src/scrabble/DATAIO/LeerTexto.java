@@ -11,12 +11,14 @@ import scrabble.LOGIC.Subject;
  */
 public class LeerTexto extends Subject {
     
-    public void leer(){
+    public Lista<String> leer(String PtxtData){
+        
         Lista <String> palabras = new Lista <>();
         int cont = 0;
+        
         try{
             // Abrimos el archivo
-            FileInputStream fstream = new FileInputStream("src/scrabble/diccionarios/CROSSWD.TXT");
+            FileInputStream fstream = new FileInputStream("src/scrabble/Ficheros/"+PtxtData);
             // Creamos el Buffer de Lectura
             try ( // Creamos el objeto de entrada
                     DataInputStream entrada = new DataInputStream(fstream)) {
@@ -27,20 +29,20 @@ public class LeerTexto extends Subject {
                 while ((strLinea = buffer.readLine()) != null)   {
                     cont++;
                     // Imprimimos la línea por pantalla
-                    palabras.insertar(strLinea);
-                    
-                    
-                    //System.out.println (palabras.toString());
+                    palabras.insertarFinal(strLinea);
+                    //System.out.println(palabras.toString());
+
                 }
             }
         }catch (IOException e){ //Catch de excepciones
             System.err.println("Ocurrio un error: " + e.getMessage());
         
         }
-        System.out.println(palabras.buscar("dog"));
-        Ficha f = new Ficha();
-        addObserver(f);
+        //System.out.println(palabras.buscar("1_e"));
+        
         notifyObserver();
+        
+        return palabras;
         
 
 
