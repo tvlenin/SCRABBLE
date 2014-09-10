@@ -1,8 +1,38 @@
+
 package scrabble.LOGIC;
 
-public interface Subject {
+import static java.lang.Math.E;
+import scrabble.EstructurasDeDatos.Lista;
 
-    public void attach(Observer observador);
-    public void dettach(Observer observador);
-    public void notifyObservers();
+/**
+ *
+ * @author tvlenin
+ */
+public abstract class Subject {
+    Observer observador;
+    //public Subject(){
+        Lista <Observer> _observadores = new Lista <> ();
+    //}
+    
+    /**
+     *
+     * @param observador
+     */
+    public void addObserver(Observer observador){
+        _observadores.insertar(observador);
+    }
+    
+    public void deleteObserver(Observer observador){
+        _observadores.insertar(observador);
+    }
+    
+    public void notifyObserver() {
+        /* for (Observador o:_observadores) {
+        o.actualizar();
+        }*/
+        
+    }
+    
+    //private Lista <Observer> _observadores;
+    
 }
