@@ -3,7 +3,7 @@ package scrabble;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.LOGIC.Bolsa;
 
-public class main {
+public class main  {
     
 public static void main(String[] args) {
         

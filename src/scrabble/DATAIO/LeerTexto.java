@@ -17,9 +17,10 @@ public class LeerTexto implements Container {
     public void leer(){
         
         int cont = 0;
+        
         try{
             // Abrimos el archivo
-            FileInputStream fstream = new FileInputStream("src/scrabble/diccionarios/CROSSWD.TXT");
+            FileInputStream fstream = new FileInputStream("src/scrabble/Ficheros/"+PtxtData);
             // Creamos el Buffer de Lectura
             try ( // Creamos el objeto de entrada
                     DataInputStream entrada = new DataInputStream(fstream)) {
@@ -30,10 +31,9 @@ public class LeerTexto implements Container {
                 while ((strLinea = buffer.readLine()) != null)   {
                     cont++;
                     // Imprimimos la línea por pantalla
-                    palabras.insertar(strLinea);
-                    
-                    
-                    //System.out.println (palabras.toString());
+                    palabras.insertarFinal(strLinea);
+                    //System.out.println(palabras.toString());
+
                 }
             }
         }catch (IOException e){ //Catch de excepciones
@@ -42,6 +42,8 @@ public class LeerTexto implements Container {
         }
         System.out.println(palabras.buscar("dog"));
        
+        
+        return palabras;
         
 
 
