@@ -1,6 +1,4 @@
 package scrabble.DATAIO;
-import Patrones.Container;
-import Patrones.Iterator;
 import java.io.*;
 
 import scrabble.EstructurasDeDatos.Lista;
@@ -12,11 +10,12 @@ import scrabble.LOGIC.Ficha;
  *
  * @author fabricio
  */
-public class LeerTexto implements Container {
+public class LeerTexto {
     Lista <String> palabras = new Lista <>();
-    public void leer(){
+    public Lista<String> leer(String PtxtData){
         
         int cont = 0;
+        
         
         try{
             // Abrimos el archivo
@@ -48,30 +47,6 @@ public class LeerTexto implements Container {
 
 
     }
-     @Override
-    public Iterator getIterator() {
-        return new Iterador();
-    }
-    
-     private class Iterador implements Iterator {
-
-      int index;
-
-      @Override
-      public boolean hasNext() {
-         if(index < palabras.getTalla()){
-            return true;
-         }
-         return false;
-      }
-
-      @Override
-      public Object next() {
-         if(this.hasNext()){
-            //return palabras.;
-         }
-         return null;
-      }		
-   }
+   
     
 }

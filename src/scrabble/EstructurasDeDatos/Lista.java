@@ -10,11 +10,13 @@ public class Lista<E> {
     protected Nodo<E> cabeza;
     protected Nodo<E> cola;
     protected int talla;
+    private int contador;
         
     public Lista(){
         cabeza = null;
         cola = null;
         talla = 0;
+        contador = 0;
     }
      
     public void insertar(E x) {
@@ -63,6 +65,15 @@ public class Lista<E> {
     
     public Nodo<E> getHead(){
         return cabeza;
+    }
+    
+    public Nodo<E> getDato(){
+        Nodo<E> tmp = null;
+        if (contador == 1){
+            tmp = cabeza;
+        }else
+            tmp = tmp.siguiente;
+        return tmp;
     }
     public boolean buscar(E x){
         boolean resp = false;
