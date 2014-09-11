@@ -17,23 +17,25 @@ public class Bolsa extends LeerTexto {
     
     
     public Bolsa(){
-        Lista tmplistaFichas = fichas.leer("FICHAS.TXT");
-        Nodo tmp = tmplistaFichas.getHead();
+        Lista listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
+        Nodo tmpDataLista = listaLecturaDeFichasTxt.getHead();
         
         Lista <Ficha> listaFichas= new Lista <>();
+        System.out.println(tmpDataLista.getDato().toString().charAt(0));
+        Ficha ficha = new Ficha(tmpDataLista.getDato().toString().charAt(2) , tmpDataLista.getDato().toString().charAt(0));
+        ficha.getData();
+
         
-        System.out.println("este es el valor de tmp en la cabeza; "+tmp.getDato().toString().charAt(2));
-        
-        while(tmp != null){
-            Ficha ficha = new Ficha(tmp.getDato().toString().charAt(2), tmp.getDato().toString().charAt(0) );
+        /*
+        while(tmpDataLista.getSiguiente() != null){
+            //Ficha ficha1 = new Ficha(tmpDataLista.getDato().toString().charAt(2), tmpDataLista.getDato().toString().charAt(0) );
             
-            ficha.getData();
-            listaFichas.insertar(ficha);
+            //listaFichas.insertar(ficha);
             
             //ficha.getData();
             
-            tmp=tmp.getSiguiente();
-        }
+            tmpDataLista=tmpDataLista.getSiguiente();
+        }*/
     }
     
     public void mezclar(){}
