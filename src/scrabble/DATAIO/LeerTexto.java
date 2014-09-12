@@ -35,11 +35,7 @@ public class LeerTexto {
             }
         }catch (IOException e){ //Catch de excepciones
             System.err.println("Ocurrio un error: " + e.getMessage());
-        
-        }
-        System.out.println(palabras.buscar("dog"));
-       
-        
+        }        
         return palabras;
         
 

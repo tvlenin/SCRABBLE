@@ -9,10 +9,10 @@ public class Ficha{
    String valor; 
    int puntaje;
 
-   public Ficha(char pValor, char pPuntaje){
+   public Ficha(){
        
-       this.puntaje=puntaje;
-       this.valor=valor; 
+       //this.puntaje=puntaje;
+       //this.valor=valor; 
    }
    
    public void getData(){
