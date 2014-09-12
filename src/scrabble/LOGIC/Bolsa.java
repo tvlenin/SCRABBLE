@@ -1,15 +1,51 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package scrabble.LOGIC;
 
+import Patrones.Observador;
+import scrabble.DATAIO.LeerTexto;
+import scrabble.EstructurasDeDatos.Lista;
+import scrabble.EstructurasDeDatos.Nodo;
 /**
  *
  * @author Abrahamon
  */
-public class Bolsa {
+public class Bolsa extends LeerTexto implements Observador {
+    
+    LeerTexto fichas = new LeerTexto();
+    
+    
+    public Bolsa(){
+        Lista <String >listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
+        Nodo tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        
+        Lista <Ficha> listaFichas= new Lista <>();
+        System.out.println(tmpDataLista.getDato().toString().charAt(0));
+        
+        while(tmpDataLista != null){
+            
+            Ficha ficha = new Ficha();
+            
+            listaFichas.insertar(ficha);
+            
+            tmpDataLista=tmpDataLista.getSiguiente();
+        
+        }
+        System.out.println("sirvio");
+        /*
+        while(tmpDataLista.getSiguiente() != null){
+            //Ficha ficha1 = new Ficha(tmpDataLista.getDato().toString().charAt(2), tmpDataLista.getDato().toString().charAt(0) );
+            
+            //listaFichas.insertar(ficha);
+            
+            //ficha.getData();
+            
+            tmpDataLista=tmpDataLista.getSiguiente();
+        }*/
+    }
+    
+    
+    @Override
+    public void actualizar() {
+        System.out.println("Te observo");
+    }
     
 }

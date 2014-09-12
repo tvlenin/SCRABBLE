@@ -1,19 +1,32 @@
 package scrabble.EstructurasDeDatos;
 
-class Nodo<E>{
+public class Nodo<E>{
     E dato;
     Nodo<E> siguiente;
+    Nodo<E> previo;
 
-    Nodo(E dato){
-        this(dato,null);
-    }
-    Nodo(E dato, Nodo<E> siguiente){
-        this.dato=dato;
-        this.siguiente=siguiente;
+    public Nodo(E dato){
+        this(dato,null,null);
     }
     
+    public Nodo(E pDato, Nodo<E> pSiguiente, Nodo<E> pPrevio){
+        this.dato=pDato;
+        this.siguiente=pSiguiente;
+        this.previo= pPrevio;
+    }
+    
+    public void setData(E pData){
+        this.dato = pData;
+    }
     public E getDato() {
         return dato;
+    }
+    
+    public Nodo<E> getSiguiente(){
+        return siguiente;
+    }
+    public Nodo<E> getPrevio(){
+        return previo;
     }
 }
 
