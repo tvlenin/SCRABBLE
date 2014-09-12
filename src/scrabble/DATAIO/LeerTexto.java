@@ -28,10 +28,8 @@ public class LeerTexto {
                 String strLinea;
                 // Leer el archivo linea por linea
                 while ((strLinea = buffer.readLine()) != null)   {
-                    cont++;
-                    // Imprimimos la línea por pantalla
-                    palabras.insertarFinal(strLinea);
-                    //System.out.println(palabras.toString());
+                    palabras.insertar(strLinea);
+                    //System.out.println(strLinea.toString());
 
                 }
             }

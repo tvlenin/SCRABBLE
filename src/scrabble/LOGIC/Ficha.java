@@ -10,6 +10,7 @@ public class Ficha{
    int puntaje;
 
    public Ficha(char pValor, char pPuntaje){
+       
        this.puntaje=puntaje;
        this.valor=valor; 
    }

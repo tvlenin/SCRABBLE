@@ -75,6 +75,10 @@ public class Lista<E> {
             tmp = tmp.siguiente;
         return tmp;
     }
+    
+    public void intercambiar(E pElementoA, E pElementoB) {
+        
+    }
     public boolean buscar(E x){
         boolean resp = false;
         for (Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente) {
