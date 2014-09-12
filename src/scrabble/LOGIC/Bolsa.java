@@ -1,53 +1,39 @@
-
 package scrabble.LOGIC;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import Patrones.Observador;
+import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
-
+import scrabble.EstructurasDeDatos.Nodo;
 /**
  *
  * @author Abrahamon
  */
-public class Bolsa {
+public class Bolsa extends LeerTexto implements Observador {
     
-    Lista listaDeFichas;
+    LeerTexto fichas = new LeerTexto();
+    
     
     public Bolsa(){
-        listaDeFichas= new Lista();
-        //--------------------------------------------------------------------------------------------------
-        //                      Crear una lista con las fichas
-        Lista <String> listaDeFichas = new Lista();
-        int cont = 0;
-        try{
-            FileInputStream fstream = new FileInputStream("src\\scrabble\\diccionarios\\FICHAS.txt");
-            DataInputStream entrada = new DataInputStream(fstream);
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(entrada));
-            String strLinea;
-            while ((strLinea = buffer.readLine()) != null)   {
-                cont++;
-                listaDeFichas.insertarInicio(strLinea);
-                
-              
-                //System.out.println (palabras.toString());
-            }
-            // Cerramos el archivo
-            entrada.close();
-        }catch (Exception e){ //Catch de excepciones
-            System.err.println("Ocurrio un error: " + e.getMessage());
+        Lista <String >listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
+        Nodo tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        
+        Lista <Ficha> listaFichas= new Lista <>();
+        System.out.println(tmpDataLista.getDato().toString().charAt(0));
+        
+        while(tmpDataLista != null){
+            
+            Ficha ficha = new Ficha();
+            
+            listaFichas.insertarFinal(ficha);
+            
+            tmpDataLista=tmpDataLista.getSiguiente();
         
         }
-        System.out.println(listaDeFichas.buscar("A"));
-        System.out.println(cont);        
-        //----------------------------------------------------------------------------------------------------
+        System.out.println("sirvio");
     }
-    
-    public void mezclar(){}
-    public void darFichaAzar(){} //asignar tipo de retorno correcto
-    public void cambiarFichaAzar(){}
-    public void mostrarFichaAzar(){}
-    public void getCantidadFichas(){}
+    @Override
+    public void actualizar() {
+        System.out.println("Te observo");
+    }
     
 }

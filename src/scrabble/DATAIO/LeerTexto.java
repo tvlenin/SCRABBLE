@@ -1,22 +1,26 @@
 package scrabble.DATAIO;
+import Patrones.Observable;
 import java.io.*;
+
 import scrabble.EstructurasDeDatos.Lista;
 
 import scrabble.LOGIC.Ficha;
-import scrabble.LOGIC.Subject;
+//import scrabble.LOGIC.Subject;
 
 /**
  *
  * @author fabricio
  */
-public class LeerTexto extends Subject {
-    
-    public void leer(){
-        Lista <String> palabras = new Lista <>();
+public class LeerTexto extends Observable {
+    Lista <String> palabras = new Lista <>();
+    public Lista<String> leer(String PtxtData){
+        
         int cont = 0;
+        
+        
         try{
             // Abrimos el archivo
-            FileInputStream fstream = new FileInputStream("src/scrabble/diccionarios/CROSSWD.TXT");
+            FileInputStream fstream = new FileInputStream("src/scrabble/Ficheros/"+PtxtData);
             // Creamos el Buffer de Lectura
             try ( // Creamos el objeto de entrada
                     DataInputStream entrada = new DataInputStream(fstream)) {
@@ -25,25 +29,24 @@ public class LeerTexto extends Subject {
                 String strLinea;
                 // Leer el archivo linea por linea
                 while ((strLinea = buffer.readLine()) != null)   {
-                    cont++;
-                    // Imprimimos la línea por pantalla
                     palabras.insertar(strLinea);
-                    
-                    
-                    //System.out.println (palabras.toString());
+                    //System.out.println(strLinea.toString());
+
                 }
             }
         }catch (IOException e){ //Catch de excepciones
             System.err.println("Ocurrio un error: " + e.getMessage());
         
         }
-        System.out.println(palabras.buscar("dog"));
-        Ficha f = new Ficha();
-        addObserver(f);
-        notifyObserver();
+        //System.out.println(palabras.buscar("dog"));
+       
+        super.notificarObservadores();
+        return palabras;
+        
         
 
 
     }
+   
     
 }
