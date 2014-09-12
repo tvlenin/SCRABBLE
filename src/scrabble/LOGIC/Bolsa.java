@@ -22,10 +22,17 @@ public class Bolsa extends LeerTexto {
         
         Lista <Ficha> listaFichas= new Lista <>();
         System.out.println(tmpDataLista.getDato().toString().charAt(0));
-        Ficha ficha = new Ficha(tmpDataLista.getDato().toString().charAt(2) , tmpDataLista.getDato().toString().charAt(0));
-        ficha.getData();
-
         
+        while(tmpDataLista != null){
+            
+            Ficha ficha = new Ficha();
+            
+            listaFichas.insertarFinal(ficha);
+            
+            tmpDataLista=tmpDataLista.getSiguiente();
+        
+        }
+        System.out.println("sirvio");
         /*
         while(tmpDataLista.getSiguiente() != null){
             //Ficha ficha1 = new Ficha(tmpDataLista.getDato().toString().charAt(2), tmpDataLista.getDato().toString().charAt(0) );
