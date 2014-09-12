@@ -1,6 +1,8 @@
 package scrabble.EstructurasDeDatos;
 
-public class Nodo<E>{
+
+
+public class Nodo<E> {
     E dato;
     Nodo<E> siguiente;
 
@@ -23,5 +25,6 @@ public class Nodo<E>{
     public Nodo<E> getSiguiente(){
         return siguiente;
     }
+
 }
 

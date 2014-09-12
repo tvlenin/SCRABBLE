@@ -1,9 +1,5 @@
 package scrabble.LOGIC;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
@@ -17,7 +13,7 @@ public class Bolsa extends LeerTexto {
     
     
     public Bolsa(){
-        Lista listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
+        Lista <String >listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
         Nodo tmpDataLista = listaLecturaDeFichasTxt.getHead();
         
         Lista <Ficha> listaFichas= new Lista <>();
