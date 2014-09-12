@@ -14,6 +14,9 @@ public static void main(String[] args) {
     
     
     LeerTexto leer = new LeerTexto();
+    Bolsa bolso = new Bolsa();
+    
+    leer.agregarObservador(bolso);
     leer.leer("CROSSWD.TXT");
     }
 }
