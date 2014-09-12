@@ -30,24 +30,7 @@ public class Bolsa extends LeerTexto implements Observador {
         
         }
         System.out.println("sirvio");
-        /*
-        while(tmpDataLista.getSiguiente() != null){
-            //Ficha ficha1 = new Ficha(tmpDataLista.getDato().toString().charAt(2), tmpDataLista.getDato().toString().charAt(0) );
-            
-            //listaFichas.insertar(ficha);
-            
-            //ficha.getData();
-            
-            tmpDataLista=tmpDataLista.getSiguiente();
-        }*/
     }
-    
-    public void mezclar(){}
-    public void darFichaAzar(){} //asignar tipo de retorno correcto
-    public void cambiarFichaAzar(){}
-    public void mostrarFichaAzar(){}
-    public void getCantidadFichas(){}
-
     @Override
     public void actualizar() {
         System.out.println("Te observo");
