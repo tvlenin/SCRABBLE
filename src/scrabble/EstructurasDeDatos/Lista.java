@@ -22,11 +22,12 @@ public class Lista<E> {
     public void insertar(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
         nuevo.siguiente = cabeza;
+        nuevo.previo= null;
         cabeza = nuevo; 
         this.talla++;
     }
     
-    public void insertarFinal(E x) {
+    /*public void insertarFinal(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
         this.talla++;
         Nodo<E> tmpNodo = cabeza;
@@ -40,7 +41,7 @@ public class Lista<E> {
             }
             tmpNodo.siguiente = nuevo;
         }
-    }
+    }*/
     
       
     public boolean eliminar(E x) {
@@ -65,6 +66,25 @@ public class Lista<E> {
     
     public Nodo<E> getHead(){
         return cabeza;
+    }
+    
+    public Nodo<E> sacarElemento(Nodo<E> objetoParaBorrar){
+        
+        Nodo<E> nodoTmp = cabeza;
+        int contadorPos = 0;
+        
+        while (contadorPos <= talla){
+            
+            if(nodoTmp == objetoParaBorrar){
+                nodoTmp.previo.siguiente = nodoTmp.siguiente;
+                nodoTmp.siguiente.previo = nodoTmp.previo;
+                return nodoTmp;
+            }
+            
+            nodoTmp=nodoTmp.getSiguiente();
+            contadorPos++;
+        }
+        return null;
     }
     
     public Nodo<E> getDato(){
@@ -100,8 +120,15 @@ public class Lista<E> {
             contadorPos++;
         }
         return datoEscogido;
-    }
+    }    
+    
+    public void mezclarTodosLosNodos(){
+        Nodo<E> tmpNodo;
         
+        for (int i = 0; i <= talla; i=i=2) {
+                
+            }
+    }
     public int getTalla(){
         return this.talla;
     }

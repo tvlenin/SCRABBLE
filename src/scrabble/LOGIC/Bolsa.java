@@ -24,7 +24,7 @@ public class Bolsa extends LeerTexto implements Observador {
             
             Ficha ficha = new Ficha();
             
-            listaFichas.insertarFinal(ficha);
+            listaFichas.insertar(ficha);
             
             tmpDataLista=tmpDataLista.getSiguiente();
         
@@ -42,12 +42,7 @@ public class Bolsa extends LeerTexto implements Observador {
         }*/
     }
     
-    public void mezclar(){}
-    public void darFichaAzar(){} //asignar tipo de retorno correcto
-    public void cambiarFichaAzar(){}
-    public void mostrarFichaAzar(){}
-    public void getCantidadFichas(){}
-
+    
     @Override
     public void actualizar() {
         System.out.println("Te observo");
