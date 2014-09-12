@@ -1,10 +1,5 @@
 package scrabble.EstructurasDeDatos;
 
-
-
-
-
-
 public class Lista<E> {
 
     protected Nodo<E> cabeza;
@@ -107,27 +102,41 @@ public class Lista<E> {
             
             }
         }    
+        System.out.println(resp);
         return resp;
     }
     
     public Nodo darElementoAzar(){
     
         int posicionAzar = (int )(Math.random() * talla);
-        int contadorPos=0;
         Nodo datoEscogido = cabeza;
-        if ( posicionAzar == contadorPos ) {
-            datoEscogido.getSiguiente();
-            contadorPos++;
+        while ( posicionAzar > 0) {
+            datoEscogido = datoEscogido.siguiente;
+            posicionAzar--;
         }
         return datoEscogido;
-    }    
-    
+    }
+        
     public void mezclarTodosLosNodos(){
+        Nodo<E> cambiandoNodoA = cabeza;
+        Nodo<E> cambiandoNodoB = cabeza;
         Nodo<E> tmpNodo;
         
         for (int i = 0; i <= talla; i=i=2) {
-                
+            int posicionAzar = (int )(Math.random() * talla);
+            
+            while(posicionAzar >= 1){
+                cambiandoNodoB = cambiandoNodoB.siguiente;
+                posicionAzar--;
             }
+            tmpNodo = cambiandoNodoA;
+            cambiandoNodoA = cambiandoNodoB;
+            cambiandoNodoB = tmpNodo;
+            
+            cambiandoNodoA= cambiandoNodoA.siguiente;
+        }
+        
+        
     }
     public int getTalla(){
         return this.talla;
