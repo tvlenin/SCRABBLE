@@ -32,7 +32,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblTablero = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         lblCarcaj = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,16 +72,16 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(240, 490, 32, 32);
 
-        lblTablero.setBackground(new java.awt.Color(254, 127, 1));
-        lblTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/tablero.gif"))); // NOI18N
-        lblTablero.setText("jLabel1");
-        lblTablero.setBorder(null);
-        lblTablero.setMaximumSize(new java.awt.Dimension(460, 460));
-        lblTablero.setMinimumSize(new java.awt.Dimension(460, 460));
-        lblTablero.setPreferredSize(new java.awt.Dimension(460, 460));
-        getContentPane().add(lblTablero);
-        lblTablero.setBounds(30, 30, 460, 460);
-        lblTablero.getAccessibleContext().setAccessibleName("lblTablero");
+        jLabel1.setBackground(new java.awt.Color(254, 127, 1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/tablero.gif"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(null);
+        jLabel1.setMaximumSize(new java.awt.Dimension(460, 460));
+        jLabel1.setMinimumSize(new java.awt.Dimension(460, 460));
+        jLabel1.setPreferredSize(new java.awt.Dimension(460, 460));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(30, 30, 460, 460);
+        jLabel1.getAccessibleContext().setAccessibleName("lblTablero");
 
         lblCarcaj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/carcaj.png"))); // NOI18N
         lblCarcaj.setText("jLabel6");
@@ -132,11 +132,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblCarcaj;
-    private javax.swing.JLabel lblTablero;
     // End of variables declaration//GEN-END:variables
 }
