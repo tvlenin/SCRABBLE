@@ -1,20 +1,21 @@
 package scrabble.DATAIO;
 import java.io.*;
+
 import scrabble.EstructurasDeDatos.Lista;
 
 import scrabble.LOGIC.Ficha;
-import scrabble.LOGIC.Subject;
+//import scrabble.LOGIC.Subject;
 
 /**
  *
  * @author fabricio
  */
-public class LeerTexto extends Subject {
-    
+public class LeerTexto {
+    Lista <String> palabras = new Lista <>();
     public Lista<String> leer(String PtxtData){
         
-        Lista <String> palabras = new Lista <>();
         int cont = 0;
+        
         
         try{
             // Abrimos el archivo
@@ -38,14 +39,14 @@ public class LeerTexto extends Subject {
             System.err.println("Ocurrio un error: " + e.getMessage());
         
         }
-        //System.out.println(palabras.buscar("1_e"));
-        
-        notifyObserver();
+        System.out.println(palabras.buscar("dog"));
+       
         
         return palabras;
         
 
 
     }
+   
     
 }

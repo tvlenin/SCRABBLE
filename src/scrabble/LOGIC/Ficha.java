@@ -6,12 +6,12 @@ package scrabble.LOGIC;
  * @author Abrahamon
  */
 public class Ficha{
-   char valor; 
+   String valor; 
    int puntaje;
 
-   public Ficha(){
-       //this.puntaje=pPuntaje;
-       //this.valor=pValor; 
+   public Ficha(char pValor, char pPuntaje){
+       this.puntaje=puntaje;
+       this.valor=valor; 
    }
    
    public void getData(){
