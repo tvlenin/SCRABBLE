@@ -1,5 +1,6 @@
 package scrabble.LOGIC;
 
+import Patrones.Observador;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
@@ -7,7 +8,7 @@ import scrabble.EstructurasDeDatos.Nodo;
  *
  * @author Abrahamon
  */
-public class Bolsa extends LeerTexto {
+public class Bolsa extends LeerTexto implements Observador {
     
     LeerTexto fichas = new LeerTexto();
     
@@ -46,5 +47,10 @@ public class Bolsa extends LeerTexto {
     public void cambiarFichaAzar(){}
     public void mostrarFichaAzar(){}
     public void getCantidadFichas(){}
+
+    @Override
+    public void actualizar() {
+        System.out.println("Te observo");
+    }
     
 }

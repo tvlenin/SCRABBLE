@@ -1,4 +1,5 @@
 package scrabble.DATAIO;
+import Patrones.Observable;
 import java.io.*;
 
 import scrabble.EstructurasDeDatos.Lista;
@@ -9,7 +10,7 @@ import scrabble.EstructurasDeDatos.Lista;
  *
  * @author fabricio
  */
-public class LeerTexto  {
+public class LeerTexto extends Observable {
     Lista <String> palabras = new Lista <>();
     public Lista<String> leer(String PtxtData){
           
@@ -35,8 +36,9 @@ public class LeerTexto  {
         }
         //System.out.println(palabras.buscar("dog"));
        
-        
+        super.notificarObservadores();
         return palabras;
+        
         
 
 
