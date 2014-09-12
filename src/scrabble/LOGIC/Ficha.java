@@ -5,7 +5,7 @@ package scrabble.LOGIC;
  *
  * @author Abrahamon
  */
-public class Ficha{
+public class Ficha extends Bolsa{
    String valor; 
    int puntaje;
 
@@ -20,6 +20,11 @@ public class Ficha{
    }
     public void update() {
         System.out.println("SIRVE");
+    }
+
+    @Override
+    public void darFicha() {
+        System.out.println(super.fichis());
     }
 
   

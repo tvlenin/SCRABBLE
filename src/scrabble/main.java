@@ -3,21 +3,22 @@ package scrabble;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.LOGIC.Bolsa;
+import scrabble.LOGIC.Ficha;
 
 public class main  {
     
 public static void main(String[] args) {
         
     
-    Bolsa bolsa=new Bolsa();
+    
     
     
     
     LeerTexto leer = new LeerTexto();
-    Bolsa bolso = new Bolsa();
-    
-    leer.agregarObservador(bolso);
+    Ficha ficha = new Ficha();
     leer.leer("CROSSWD.TXT");
+    //ficha.darFicha();
+    
     }
 }
 
