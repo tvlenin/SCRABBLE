@@ -11,9 +11,5 @@ package Patrones;
  * @author tvlenin
  */
 public interface Observador {
-
-    /**
-     *
-     */
     public void actualizar();
 }

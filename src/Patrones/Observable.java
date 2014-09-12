@@ -7,8 +7,6 @@
 package Patrones;
 
 import scrabble.EstructurasDeDatos.Lista;
-import scrabble.EstructurasDeDatos.Nodo;
-import scrabble.LOGIC.Ficha;
 
 /**
  *
@@ -18,7 +16,7 @@ public abstract class Observable {
  
     //El constructor crea el vector con la asociacion Observable-Observador
     //public Observable() {
-    Lista <Observador> _observadores = new Lista<>();
+        Lista <Observador> _observadores = new Lista<>();
     //}
  
     //Agregar y eliminar sencillamente operan sobre vector _observadores...
@@ -32,13 +30,6 @@ public abstract class Observable {
  
     //Notificacion: Para cada observador se invoca el método actualizar().
     public void notificarObservadores() {
-        Nodo <Observador> nodoObserver = _observadores.getHead();
-        while(nodoObserver != null){
-            nodoObserver.getDato().actualizar();
-            nodoObserver = nodoObserver.getSiguiente();
-                   
-            
-        }
         
         
     }

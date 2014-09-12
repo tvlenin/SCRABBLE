@@ -29,16 +29,16 @@ public class Lista<E> {
     public void insertarFinal(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
         this.talla++;
-        Nodo<E> tmp = cabeza;
-        if (tmp == null){
+        Nodo<E> tmpNodo = cabeza;
+        if (tmpNodo == null){
             cabeza = nuevo;
         }
         else {
             
-            while ( tmp.siguiente != null ) {
-            tmp = tmp.siguiente;
+            while ( tmpNodo.siguiente != null ) {
+            tmpNodo = tmpNodo.siguiente;
             }
-            tmp.siguiente = nuevo;
+            tmpNodo.siguiente = nuevo;
         }
     }
     
@@ -68,12 +68,16 @@ public class Lista<E> {
     }
     
     public Nodo<E> getDato(){
-        Nodo<E> tmp = null;
+        Nodo<E> nodoResp = null;
         if (contador == 1){
-            tmp = cabeza;
+            nodoResp = cabeza;
         }else
-            tmp = tmp.siguiente;
-        return tmp;
+            nodoResp = nodoResp.siguiente;
+        return nodoResp;
+    }
+    
+    public void intercambiar(E pElementoA, E pElementoB) {
+        
     }
     public boolean buscar(E x){
         boolean resp = false;
@@ -86,16 +90,21 @@ public class Lista<E> {
         return resp;
     }
     
+    public Nodo darElementoAzar(){
+    
+        int posicionAzar = (int )(Math.random() * talla);
+        int contadorPos=0;
+        Nodo datoEscogido = cabeza;
+        if ( posicionAzar == contadorPos ) {
+            datoEscogido.getSiguiente();
+            contadorPos++;
+        }
+        return datoEscogido;
+    }
+        
     public int getTalla(){
         return this.talla;
-    } 
-    
-
-    
-    
-        
-        
-    
+    }
 }
       
     
