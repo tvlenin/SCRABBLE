@@ -10,8 +10,8 @@ import scrabble.EstructurasDeDatos.Nodo;
  */
 public abstract class Bolsa extends LeerTexto implements Observador {
     
-    LeerTexto fichas = new LeerTexto();
-    Lista <Ficha> listaFichas= new Lista <>();
+    private LeerTexto fichas = new LeerTexto();
+    private Lista <Ficha> listaFichas = new Lista <>();
     
     public Bolsa(){
         Lista <String >listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
