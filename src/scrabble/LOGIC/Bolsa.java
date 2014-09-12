@@ -1,9 +1,5 @@
 package scrabble.LOGIC;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
@@ -33,16 +29,6 @@ public class Bolsa extends LeerTexto {
         
         }
         System.out.println("sirvio");
-        /*
-        while(tmpDataLista.getSiguiente() != null){
-            //Ficha ficha1 = new Ficha(tmpDataLista.getDato().toString().charAt(2), tmpDataLista.getDato().toString().charAt(0) );
-            
-            //listaFichas.insertar(ficha);
-            
-            //ficha.getData();
-            
-            tmpDataLista=tmpDataLista.getSiguiente();
-        }*/
     }
     
     public void mezclar(){}
