@@ -13,7 +13,7 @@ import scrabble.LOGIC.Ficha;
  */
 public class LeerTexto extends Observable {
     Lista <String> palabras = new Lista <>();
-    public Lista<String> leer(String PtxtData){
+    public Lista <String> leer(String PtxtData){
         
         int cont = 0;
         
@@ -29,7 +29,7 @@ public class LeerTexto extends Observable {
                 String strLinea;
                 // Leer el archivo linea por linea
                 while ((strLinea = buffer.readLine()) != null)   {
-                    palabras.insertar(strLinea);
+                    palabras.insertarFinal(strLinea);
                     //System.out.println(strLinea.toString());
 
                 }

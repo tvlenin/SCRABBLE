@@ -14,32 +14,26 @@ public class Bolsa extends LeerTexto implements Observador {
     
     
     public Bolsa(){
-        Lista <String >listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
-        Nodo tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        Lista <String> listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
         
-        Lista <Ficha> listaFichas= new Lista <>();
-        System.out.println(tmpDataLista.getDato().toString().charAt(0));
+        Nodo <String> tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        //System.out.println(tmpDataLista.getDato());
+        Lista <Ficha> listaFichas = new Lista <>();
+        
+        
         
         while(tmpDataLista != null){
+            String [] letra = tmpDataLista.getDato().split("_");
+            Ficha ficha = new Ficha(Integer.parseInt(letra[0]),letra[1]);
             
-            Ficha ficha = new Ficha();
             
             listaFichas.insertar(ficha);
-            
-            tmpDataLista=tmpDataLista.getSiguiente();
-        
+            System.out.println(ficha.getData());
+            tmpDataLista = tmpDataLista.getSiguiente();
+                    
         }
-        System.out.println("sirvio");
-        /*
-        while(tmpDataLista.getSiguiente() != null){
-            //Ficha ficha1 = new Ficha(tmpDataLista.getDato().toString().charAt(2), tmpDataLista.getDato().toString().charAt(0) );
-            
-            //listaFichas.insertar(ficha);
-            
-            //ficha.getData();
-            
-            tmpDataLista=tmpDataLista.getSiguiente();
-        }*/
+        
+         
     }
     
     

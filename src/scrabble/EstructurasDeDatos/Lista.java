@@ -27,21 +27,21 @@ public class Lista<E> {
         this.talla++;
     }
     
-    /*public void insertarFinal(E x) {
+    public void insertarFinal(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
         this.talla++;
         Nodo<E> tmpNodo = cabeza;
         if (tmpNodo == null){
             cabeza = nuevo;
+            cola = nuevo;
+            nuevo.siguiente = nuevo;
         }
         else {
-            
-            while ( tmpNodo.siguiente != null ) {
-            tmpNodo = tmpNodo.siguiente;
-            }
-            tmpNodo.siguiente = nuevo;
+            nuevo.siguiente = null;
+            cola.siguiente = nuevo;
+            cola = nuevo;
         }
-    }*/
+    }
     
       
     public boolean eliminar(E x) {
