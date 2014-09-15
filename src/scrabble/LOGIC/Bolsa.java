@@ -28,7 +28,6 @@ public abstract class Bolsa extends LeerTexto implements Observador {
             
             
             listaFichas.insertar(ficha);
-            
             tmpDataLista = tmpDataLista.getSiguiente();
                     
         }

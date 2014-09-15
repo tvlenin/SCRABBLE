@@ -110,7 +110,7 @@ public class Lista<E> {
         return resp;
     }
     
-    public Nodo darElementoAzar(){
+    public Nodo<E> darElementoAzar(){
     
         int posicionAzar = (int )(Math.random() * talla);
         
@@ -119,7 +119,22 @@ public class Lista<E> {
             datoEscogido = datoEscogido.siguiente;
         }
         return datoEscogido;
-    }    
+    }  
+    //metodo para obtener elemento al azar y eliminarlo 
+    public Nodo<E> sacarElementoAzar(){
+    
+        int posicionAzar = (int )(Math.random() * talla);
+        
+        Nodo datoEscogido = cabeza;
+        Nodo<E> tmp = null;
+        for (int cont = 0; cont < posicionAzar; cont++) {
+            datoEscogido = datoEscogido.siguiente;
+        }
+         tmp = datoEscogido.getPrevio();
+         tmp.siguiente = datoEscogido.getSiguiente();
+        
+        return datoEscogido;
+    } 
     
     public void mezclarTodosLosNodos(){
         Nodo<E> tmpNodo;
@@ -131,6 +146,9 @@ public class Lista<E> {
     public int getTalla(){
         return this.talla;
     }
+    
+    
+
 }
       
     

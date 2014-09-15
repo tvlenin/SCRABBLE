@@ -16,6 +16,7 @@ public class Jugador extends Bolsa {
             _fichas.insertarFinal(fichasJugador.getDato());
             System.out.println(fichasJugador.getDato().getData());
         }
+        System.out.println(super.listaFichas.toString());
         
     }
     
