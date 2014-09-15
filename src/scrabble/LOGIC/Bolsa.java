@@ -8,17 +8,17 @@ import scrabble.EstructurasDeDatos.Nodo;
  *
  * @author Abrahamon
  */
-public class Bolsa extends LeerTexto implements Observador {
+public abstract class Bolsa extends LeerTexto implements Observador {
     
     LeerTexto fichas = new LeerTexto();
     
-    
+    Lista <Ficha> listaFichas = new Lista <>();
     public Bolsa(){
         Lista <String> listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
         
         Nodo <String> tmpDataLista = listaLecturaDeFichasTxt.getHead();
         //System.out.println(tmpDataLista.getDato());
-        Lista <Ficha> listaFichas = new Lista <>();
+        
         
         
         
@@ -28,7 +28,7 @@ public class Bolsa extends LeerTexto implements Observador {
             
             
             listaFichas.insertar(ficha);
-            System.out.println(ficha.getData());
+            
             tmpDataLista = tmpDataLista.getSiguiente();
                     
         }

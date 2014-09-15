@@ -113,11 +113,10 @@ public class Lista<E> {
     public Nodo darElementoAzar(){
     
         int posicionAzar = (int )(Math.random() * talla);
-        int contadorPos=0;
+        
         Nodo datoEscogido = cabeza;
-        if ( posicionAzar == contadorPos ) {
-            datoEscogido.getSiguiente();
-            contadorPos++;
+        for (int cont = 0; cont < posicionAzar; cont++) {
+            datoEscogido = datoEscogido.siguiente;
         }
         return datoEscogido;
     }    
