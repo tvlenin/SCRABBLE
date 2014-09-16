@@ -1,10 +1,5 @@
 package scrabble.EstructurasDeDatos;
 
-
-
-
-
-
 public class Lista<E> {
 
     protected Nodo<E> cabeza;
@@ -44,38 +39,47 @@ public class Lista<E> {
     }
     
       
-    public boolean eliminar(E x) {
+    public boolean eliminar(E x) 
+    {
         Nodo<E> tmp = cabeza, anterior = null;
         boolean res = false;
-        while ( tmp != null && !tmp.dato.equals( x )) {
+        while ( tmp != null && !tmp.dato.equals( x )) 
+        {
             anterior = tmp;
             tmp=tmp.siguiente;
         }
-        if (tmp!=null) {
+        if (tmp!=null) 
+        {
             res= true;
             this.talla--;
-            if(anterior==null) {
+            if(anterior==null) 
+            {
                 this.cabeza = tmp.siguiente;
             }
-            else{
+            else
+            {
                 anterior.siguiente=tmp.siguiente;
             }                 
         }
         return res;
     }
     
-    public Nodo<E> getHead(){
+    public Nodo<E> getHead()
+    {
         return cabeza;
     }
     
-    public Nodo<E> sacarElemento(Nodo<E> objetoParaBorrar){
+    public Nodo<E> sacarElemento(Nodo<E> objetoParaBorrar)
+    {
         
         Nodo<E> nodoTmp = cabeza;
         int contadorPos = 0;
         
-        while (contadorPos <= talla){
+        while (contadorPos <= talla)
+        {
             
-            if(nodoTmp == objetoParaBorrar){
+            if(nodoTmp == objetoParaBorrar)
+            {
                 nodoTmp.previo.siguiente = nodoTmp.siguiente;
                 nodoTmp.siguiente.previo = nodoTmp.previo;
                 return nodoTmp;
@@ -87,26 +91,29 @@ public class Lista<E> {
         return null;
     }
     
-    public Nodo<E> getDato(){
+    public Nodo<E> getDato()
+    {
         Nodo<E> nodoResp = null;
-        if (contador == 1){
+        if (contador == 1)
+        {
             nodoResp = cabeza;
         }else
             nodoResp = nodoResp.siguiente;
         return nodoResp;
     }
     
-    public void intercambiar(E pElementoA, E pElementoB) {
-        
-    }
-    public boolean buscar(E x){
+    public boolean buscar(E x)
+    {
         boolean resp = false;
-        for (Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente) {
-            if (x.equals(tmp.dato)) {
+        for (Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.getSiguiente()) 
+        {
+            if (x.equals(tmp.getDato())) 
+            {
             resp = true;
             
             }
         }    
+        System.out.println(resp);
         return resp;
     }
     
@@ -143,7 +150,37 @@ public class Lista<E> {
                 
             }
     }
-    public int getTalla(){
+     
+    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB) 
+    {
+        Nodo <E> tmpNodo=new Nodo(pElementoA.getDato());
+        pElementoA.setData(pElementoB.getDato());
+        pElementoB.setData(tmpNodo.getDato());
+    }
+        
+    public void mezclarTodosLosNodos()
+    {
+        Nodo<E> cambiandoNodoA = cabeza;
+        Nodo<E> cambiandoNodoB;
+        
+        for (int i = 0; i < talla; i++) 
+        {
+            int posicionAzar = (int )(1+(Math.random() * (talla-1))); //numeros [1 , talla-1]
+            cambiandoNodoB = cabeza;
+            
+            while(posicionAzar >= 1)
+            {
+                cambiandoNodoB = cambiandoNodoB.getSiguiente();
+                posicionAzar--;
+            }
+            this.intercambiarData(cambiandoNodoA, cambiandoNodoB);
+            
+            cambiandoNodoA = cambiandoNodoA.getSiguiente();
+        }
+    }
+    
+    public int getTalla()
+    {
         return this.talla;
     }
     
