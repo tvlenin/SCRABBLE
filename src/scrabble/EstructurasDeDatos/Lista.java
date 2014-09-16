@@ -133,24 +133,17 @@ public class Lista<E> {
         int posicionAzar = (int )(Math.random() * talla);
         
         Nodo datoEscogido = cabeza;
-        Nodo<E> tmp = null;
+        
         for (int cont = 0; cont < posicionAzar; cont++) {
             datoEscogido = datoEscogido.siguiente;
         }
-         tmp = datoEscogido.getPrevio();
-         tmp.siguiente = datoEscogido.getSiguiente();
+        Nodo <E> tmp2 = datoEscogido;
         
-        return datoEscogido;
+       
+        return tmp2;
     } 
     
-    public void mezclarTodosLosNodos(){
-        Nodo<E> tmpNodo;
-        
-        for (int i = 0; i <= talla; i=i=2) {
-                
-            }
-    }
-     
+         
     public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB) 
     {
         Nodo <E> tmpNodo=new Nodo(pElementoA.getDato());
@@ -158,8 +151,10 @@ public class Lista<E> {
         pElementoB.setData(tmpNodo.getDato());
     }
         
-    public void mezclarTodosLosNodos()
-    {
+    /**
+     *
+     */
+    public void mezclarTodosLosNodos(){
         Nodo<E> cambiandoNodoA = cabeza;
         Nodo<E> cambiandoNodoB;
         

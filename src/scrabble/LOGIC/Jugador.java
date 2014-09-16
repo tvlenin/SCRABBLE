@@ -12,11 +12,11 @@ public class Jugador extends Bolsa {
         Lista<Ficha> _fichas = new Lista<> ();
         
         for (int i = 0; i < 7; i++){
-            Nodo<Ficha> fichasJugador = super.listaFichas.darElementoAzar();
+            Nodo<Ficha> fichasJugador = super.listaFichas.sacarElementoAzar();
             _fichas.insertarFinal(fichasJugador.getDato());
             System.out.println(fichasJugador.getDato().getData());
         }
-        System.out.println(super.listaFichas.toString());
+        
         
     }
     
