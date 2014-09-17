@@ -3,6 +3,8 @@ import scrabble.DATAIO.*;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Bolsa;
 import scrabble.LOGIC.TurnoSalida;
+import scrabble.DATAIO.IOArduino;
+import scrabble.LOGIC.Tablero;
 
 public class Scrabble {
     
@@ -10,14 +12,14 @@ public class Scrabble {
         
         
         LeerTexto leer = new LeerTexto();
-        leer.leer("CROSSWD.TXT");
         
         //hacer un jugador por cada boton presionado (lectura del arduino)
         // rifa para ver quien comienza
-        
+       
         Jugador jug = new Jugador();
+        Tablero tablero = new Tablero();
         
-        TurnoSalida turnoSalida = new TurnoSalida();
+        //TurnoSalida turnoSalida = new TurnoSalida();
         
     }
 

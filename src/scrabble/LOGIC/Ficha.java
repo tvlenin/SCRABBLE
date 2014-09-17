@@ -1,26 +1,22 @@
-
 package scrabble.LOGIC;
 
-/**
- *
- * @author Abrahamon
- */
 public class Ficha{
-    private String valor; 
-    private int puntaje;
+   private String valor; 
+   private int puntaje;
 
-    public Ficha(int puntaje, String valor){
+   public Ficha(int puntaje, String valor){
        
-       this.puntaje = puntaje;
-       this.valor = valor; 
-    }
+       this.puntaje=puntaje;
+       this.valor=valor; 
+   }
    
-    public String getData(){
-        return "Letra: " + valor + "; Puntaje: " + puntaje;
-    }
+   public String getData(){
+       return"Letra: "+valor+"; Puntaje: "+puntaje ;
+   }
     public void update() {
-         System.out.println("SIRVE");
+        System.out.println("SIRVE");
     }
+
     
 
   

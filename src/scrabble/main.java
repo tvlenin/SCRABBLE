@@ -1,5 +1,6 @@
 package scrabble;
 
+import GUI.PantallaPrincipal;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.LOGIC.Bolsa;
@@ -13,5 +14,3 @@ public static void main(String[] args) {
     
     }
 }
-
-
