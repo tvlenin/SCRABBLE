@@ -9,17 +9,17 @@ public class main  {
     
 public static void main(String[] args) {
         
-//    PantallaPrincipal pPantalla = new PantallaPrincipal();
-//    pPantalla.setVisible(true);
-//    
-//    Bolsa bolsa=new Bolsa();
-//    
+    PantallaPrincipal pPantalla = new PantallaPrincipal();
+    pPantalla.setVisible(true);
+    
+    //Bolsa bolsa=new Bolsa();
+    
     
     
     LeerTexto leer = new LeerTexto();
-//    Bolsa bolso = new Bolsa();
-//    
-//    leer.agregarObservador(bolso);
+    Bolsa bolso = new Bolsa();
+    
+    leer.agregarObservador(bolso);
     leer.leer("CROSSWD.TXT");
     }
 }
