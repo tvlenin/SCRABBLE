@@ -1,7 +1,6 @@
 package scrabble.LOGIC;
 
 import scrabble.EstructurasDeDatos.Lista;
-import scrabble.EstructurasDeDatos.Nodo;
 
 public class Jugador extends Bolsa {
     public Jugador(){

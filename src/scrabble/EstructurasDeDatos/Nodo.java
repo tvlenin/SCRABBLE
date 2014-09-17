@@ -1,9 +1,8 @@
 package scrabble.EstructurasDeDatos;
 
 public class Nodo<E>{
-    protected E dato;
-    protected Nodo<E> siguiente;
-    protected Nodo<E> previo;
+    E dato;
+    Nodo<E> siguiente;
 
     public Nodo(E dato){
         this(dato,null,null);

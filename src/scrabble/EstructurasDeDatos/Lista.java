@@ -1,5 +1,10 @@
 package scrabble.EstructurasDeDatos;
 
+
+
+
+
+
 public class Lista<E> {
 
     protected Nodo<E> cabeza;
@@ -31,13 +36,13 @@ public class Lista<E> {
         Nodo<E> tmpNodo = cabeza;
         if (tmpNodo == null){
             cabeza = nuevo;
-            cola = nuevo;
-            nuevo.siguiente = nuevo;
         }
         else {
-            nuevo.siguiente = null;
-            cola.siguiente = nuevo;
-            cola = nuevo;
+            
+            while ( tmpNodo.siguiente != null ) {
+            tmpNodo = tmpNodo.siguiente;
+            }
+            tmpNodo.siguiente = nuevo;
         }
     }
     
@@ -70,15 +75,12 @@ public class Lista<E> {
     
     public boolean buscar(E x){
         boolean resp = false;
-        for (Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.getSiguiente()) 
-        {
-            if (x.equals(tmp.getDato())) 
-            {
+        for (Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente) {
+            if (x.equals(tmp.dato)) {
             resp = true;
             
             }
         }    
-        System.out.println(resp);
         return resp;
     }
     
