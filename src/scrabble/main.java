@@ -1,6 +1,7 @@
 package scrabble;
 
 import scrabble.DATAIO.LeerTexto;
+import scrabble.EstructurasDeDatos.Lista;
 import scrabble.LOGIC.Jugador;
 
 public class main  {
