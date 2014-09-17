@@ -7,37 +7,35 @@ import scrabble.EstructurasDeDatos.Nodo;
 
 public abstract class Bolsa extends LeerTexto implements Observador {
     
-    private LeerTexto fichas = new LeerTexto();
-    private Lista <Ficha> listaFichas = new Lista <>();
+    LeerTexto fichas = new LeerTexto();
     
+    Lista <Ficha> listaFichas = new Lista <>();
     public Bolsa(){
-        Lista <String >listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
-        Nodo tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        Lista <String> listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
+        
+        Nodo <String> tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        //System.out.println(tmpDataLista.getDato());
         
         
-        //System.out.println(tmpDataLista.getDato().toString().charAt(0));
+        
         
         while(tmpDataLista != null){
+            String [] letra = tmpDataLista.getDato().split("_");
+            Ficha ficha = new Ficha(Integer.parseInt(letra[0]),letra[1]);
             
-            Ficha ficha = new Ficha();
             
-            listaFichas.insertarFinal(ficha);
-            
-            tmpDataLista=tmpDataLista.getSiguiente();
-           System.out.println(tmpDataLista.getDato().toString().charAt(0));
+            listaFichas.insertar(ficha);
+            tmpDataLista = tmpDataLista.getSiguiente();
+                    
         }
-        System.out.println("sirvio");
+        
+         
     }
+    
+    
     @Override
     public void actualizar() {
         System.out.println("Te observo");
     }
-    public Ficha fichis(){
-        
-        return listaFichas.getHead().getDato();
-    
-    }
-    
-    public abstract void darFicha();
     
 }

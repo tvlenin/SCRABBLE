@@ -3,7 +3,9 @@ package scrabble.EstructurasDeDatos;
 public class Nodo<E>{
     E dato;
     Nodo<E> siguiente;
-
+    Nodo<E> previo;
+    
+    
     public Nodo(E dato){
         this(dato,null,null);
     }

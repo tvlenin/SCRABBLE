@@ -1,10 +1,5 @@
 package scrabble.EstructurasDeDatos;
 
-
-
-
-
-
 public class Lista<E> {
 
     protected Nodo<E> cabeza;
