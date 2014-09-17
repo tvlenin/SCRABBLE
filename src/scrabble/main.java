@@ -1,9 +1,7 @@
 package scrabble;
 
 import scrabble.DATAIO.LeerTexto;
-import scrabble.EstructurasDeDatos.Lista;
-import scrabble.EstructurasDeDatos.Nodo;
-import scrabble.LOGIC.Bolsa;
+import scrabble.LOGIC.Jugador;
 
 public class main  {
     
@@ -22,13 +20,13 @@ public static void main(String[] args) {
     
     System.out.println(lista.getHead().getDato());
     
-    /*
-    LeerTexto leer = new LeerTexto();
-    Bolsa bolso = new Bolsa();
     
-    leer.agregarObservador(bolso);
+    LeerTexto leer = new LeerTexto();
+    Jugador jug = new Jugador();
+    
+    //leer.agregarObservador(bolso);
     leer.leer("CROSSWD.TXT");
-     */
+    
     }
 }
 

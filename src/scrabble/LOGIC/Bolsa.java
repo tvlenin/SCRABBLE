@@ -4,35 +4,35 @@ import Patrones.Observador;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
- 
-
-
-
-public class Bolsa extends LeerTexto implements Observador {
+/**
+ *
+ * @author Abrahamon
+ */
+public abstract class Bolsa extends LeerTexto implements Observador {
     
     LeerTexto fichas = new LeerTexto();
     
-    
+    Lista <Ficha> listaFichas = new Lista <>();
     public Bolsa(){
-        Lista <String >listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
-        Nodo tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        Lista <String> listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
         
-        Lista <Ficha> listaFichas= new Lista <>();
-        //System.out.println(tmpDataLista.getDato().toString().charAt(2)+",  "+tmpDataLista.getDato().toString().charAt(0));
+        Nodo <String> tmpDataLista = listaLecturaDeFichasTxt.getHead();
+        //System.out.println(tmpDataLista.getDato());
         
         
-        Ficha ficha;
+        
         
         while(tmpDataLista != null){
+            String [] letra = tmpDataLista.getDato().split("_");
+            Ficha ficha = new Ficha(Integer.parseInt(letra[0]),letra[1]);
             
-            ficha = new Ficha();
             
             listaFichas.insertar(ficha);
-            
-            tmpDataLista=tmpDataLista.getSiguiente();
-        
+            tmpDataLista = tmpDataLista.getSiguiente();
+                    
         }
-
+        
+         
     }
     
     

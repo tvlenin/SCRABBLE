@@ -27,21 +27,21 @@ public class Lista<E> {
         this.talla++;
     }
     
-    /*public void insertarFinal(E x) {
+    public void insertarFinal(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
         this.talla++;
         Nodo<E> tmpNodo = cabeza;
         if (tmpNodo == null){
             cabeza = nuevo;
+            cola = nuevo;
+            nuevo.siguiente = nuevo;
         }
         else {
-            
-            while ( tmpNodo.siguiente != null ) {
-            tmpNodo = tmpNodo.siguiente;
-            }
-            tmpNodo.siguiente = nuevo;
+            nuevo.siguiente = null;
+            cola.siguiente = nuevo;
+            cola = nuevo;
         }
-    }*/
+    }
     
       
     public boolean eliminar(E x){
@@ -113,20 +113,40 @@ public class Lista<E> {
     public Nodo<E> darElementoAzar(){
     
         int posicionAzar = (int )(Math.random() * talla);
+        
         Nodo datoEscogido = cabeza;
-        while ( posicionAzar > 0){
-            datoEscogido = datoEscogido.getSiguiente();
-            posicionAzar--;
+        for (int cont = 0; cont < posicionAzar; cont++) {
+            datoEscogido = datoEscogido.siguiente;
         }
         return datoEscogido;
-    }
-     
-    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){
+    }  
+    //metodo para obtener elemento al azar y eliminarlo 
+    public Nodo<E> sacarElementoAzar(){
+    
+        int posicionAzar = (int )(Math.random() * talla);
+        
+        Nodo datoEscogido = cabeza;
+        
+        for (int cont = 0; cont < posicionAzar; cont++) {
+            datoEscogido = datoEscogido.siguiente;
+        }
+        Nodo <E> tmp2 = datoEscogido;
+        
+       
+        return tmp2;
+    } 
+    
+         
+    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB) 
+    {
         Nodo <E> tmpNodo=new Nodo(pElementoA.getDato());
         pElementoA.setData(pElementoB.getDato());
         pElementoB.setData(tmpNodo.getDato());
     }
         
+    /**
+     *
+     */
     public void mezclarTodosLosNodos(){
         Nodo<E> cambiandoNodoA = cabeza;
         Nodo<E> cambiandoNodoB;
@@ -148,6 +168,9 @@ public class Lista<E> {
     public int getTalla(){
         return this.talla;
     }
+    
+    
+
 }
       
     

@@ -6,21 +6,22 @@ package scrabble.LOGIC;
  * @author Abrahamon
  */
 public class Ficha{
-   String valor; 
-   int puntaje;
+    private String valor; 
+    private int puntaje;
 
-   public Ficha(){
+    public Ficha(int puntaje, String valor){
        
-       //this.puntaje=puntaje;
-       //this.valor=valor; 
-   }
-   
-   public void getData(){
-       System.out.println("Letra: "+valor+"; Puntaje: "+puntaje);
-   }
-    public void update() {
-        System.out.println("SIRVE");
+       this.puntaje = puntaje;
+       this.valor = valor; 
     }
+   
+    public String getData(){
+        return "Letra: " + valor + "; Puntaje: " + puntaje;
+    }
+    public void update() {
+         System.out.println("SIRVE");
+    }
+    
 
   
 }
