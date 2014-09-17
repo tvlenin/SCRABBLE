@@ -4,10 +4,7 @@ import Patrones.Observador;
 import scrabble.DATAIO.LeerTexto;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
-/**
- *
- * @author Abrahamon
- */
+
 public abstract class Bolsa extends LeerTexto implements Observador {
     
     LeerTexto fichas = new LeerTexto();
