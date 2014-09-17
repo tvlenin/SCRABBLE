@@ -20,6 +20,7 @@ public static void main(String[] args) {
 
     lista.mezclarTodosLosNodos();
     
+    System.out.println(lista.getHead().getDato());
     
     /*
     LeerTexto leer = new LeerTexto();
