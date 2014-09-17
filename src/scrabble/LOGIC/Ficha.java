@@ -1,6 +1,6 @@
 package scrabble.LOGIC;
 
-public class Ficha extends Bolsa{
+public class Ficha{
    private String valor; 
    private int puntaje;
 

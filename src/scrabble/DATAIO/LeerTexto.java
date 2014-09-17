@@ -7,12 +7,11 @@ import scrabble.EstructurasDeDatos.Lista;
 import scrabble.LOGIC.Ficha;
 //import scrabble.LOGIC.Subject;
 
-/**
- *
- * @author fabricio
- */
+
 public class LeerTexto extends Observable {
+    
     Lista <String> palabras = new Lista <>();
+    
     public Lista<String> leer(String PtxtData){
         
         int cont = 0;
@@ -41,11 +40,7 @@ public class LeerTexto extends Observable {
        
         super.notificarObservadores();
         return palabras;
-        
-        
-
-
-    }
+        }
    
     
 }
