@@ -10,7 +10,7 @@ public static void main(String[] args) {
     //Bolsa bolsa=new Bolsa();
 
     
-    
+    ///
     LeerTexto leer = new LeerTexto();
     Jugador jug = new Jugador();
     
