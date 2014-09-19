@@ -30,7 +30,7 @@ public class LeerTexto extends Observable {
                         strLinea = pala[0];
                     }
                     palabras.insertar(strLinea);
-                    System.out.println(strLinea);
+                    //System.out.println(strLinea);
 
                 }
             //fileDir.close();

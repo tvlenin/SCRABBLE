@@ -14,10 +14,10 @@ public class Jugador extends Bolsa {
         for (int i = 0; i < 7; i++){
             Nodo<Ficha> fichasJugador = super.listaFichas.getAndQuitarElementoAzar();
             _fichas.insertarFinal(fichasJugador.getDato());
-            System.out.println(fichasJugador.getDato().getData());
+            //System.out.println(fichasJugador.getDato().getData());
         }
         
-        System.out.println(super.listaFichas.getTalla());
+        //System.out.println(super.listaFichas.getTalla());
         
     }
     //Es una lista donde se encontraran los valores correspondientes a cada ficha
@@ -26,8 +26,7 @@ public class Jugador extends Bolsa {
     }
     public void sacarFichaParaSorteo(){
         char letraObetenida = super.listaFichas.mostrarElementoAzar().getDato().getCharData();
-        int valueAscii =(int)letraObetenida;
-        ptSorteoTurnos = valueAscii;
+        ptSorteoTurnos =(int)letraObetenida;
     }
     
     public int getNumeroIndicaTurno(){

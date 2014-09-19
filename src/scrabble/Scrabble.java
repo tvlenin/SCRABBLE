@@ -2,6 +2,7 @@ package scrabble;
 import scrabble.DATAIO.*;
 import scrabble.DATAIO.IOArduino;
 import scrabble.EstructurasDeDatos.Lista;
+import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
@@ -27,17 +28,17 @@ public class Scrabble {
             listaJugadores.insertar(jugador);
             cantidadJugadores--;
         }
-        listaJugadores.getHead().getDato().sacarFichaParaSorteo();
-        System.out.println(listaJugadores.getHead().getDato().getNumeroIndicaTurno());
-        
-        
-        
-        
-       
-        
+        this.sorteo();
         
         //TurnoSalida turnoSalida = new TurnoSalida();
-        
+    }
+    
+    public void sorteo(){
+        Nodo<Jugador> tmpNodo = listaJugadores.getHead();
+        while(Nodo != null){
+            tmpNodo.getDato().sacarFichaParaSorteo();
+            tmpNodo = tmpNodo.getSiguiente();
+        }
     }
 
 }

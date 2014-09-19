@@ -6,8 +6,8 @@ public class Ficha{
 
    public Ficha(int puntaje, String valor){
        
-       this.puntaje=puntaje;
-       this.valor=valor; 
+       this.puntaje = puntaje;
+       this.valor = valor; 
    }
    
    public String getData(){
