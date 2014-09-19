@@ -11,8 +11,15 @@ public class Ficha{
    }
    
    public String getData(){
-       return"Letra: "+valor+"; Puntaje: "+puntaje ;
+       return valor;
    }
+   public char getCharData(){
+       return valor.charAt(0);
+   }
+   public int getPuntaje(){
+       return puntaje;
+   }
+   
     public void update() {
         System.out.println("SIRVE");
     }
