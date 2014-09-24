@@ -15,12 +15,14 @@ public class Lista<E> {
     public void insertar(E x){
         Nodo<E> nuevo = new Nodo<>(x);        
         if (talla == 0 ){
-            cola=nuevo;}
+            cola = nuevo;
+        }
         else{
-            cabeza.previo = nuevo;}
+            cabeza.previo = nuevo;
+        }
         
         nuevo.siguiente = cabeza;
-        nuevo.previo= null;
+        nuevo.previo = null;
         cabeza = nuevo;
         this.talla++;
     }
@@ -45,14 +47,14 @@ public class Lista<E> {
     public boolean eliminar(E x){              //tested
         Nodo<E> tmp = cabeza, anterior = null;
         boolean res = false;
-        while ( tmp != null && tmp.dato.equals( x )){
+        while ( tmp != null && !tmp.dato.equals( x ) ){
             anterior = tmp;
-            tmp = tmp.siguiente;
+            tmp=tmp.siguiente;
         }
-        if (tmp != null){
+        if ( tmp != null ){
             res = true;
             this.talla--;
-            if(anterior == null){
+            if( anterior == null ){
                 this.cabeza = tmp.siguiente;
             }
             else{
@@ -60,23 +62,6 @@ public class Lista<E> {
             }                 
         }
         return res;
-    }
-    
-    public void eliminarLenin(Nodo x){
-        Nodo<E> datoEscogido =  x;
-        if (datoEscogido == this.cola){
-            this.cola = datoEscogido.getPrevio(); 
-        }
-        if (datoEscogido == this.cabeza){
-            //System.out.println("Entra porque es igual a cabeza");
-            this.cabeza = datoEscogido.getSiguiente();
-        }
-        else{
-            datoEscogido.previo.siguiente = datoEscogido.getSiguiente();
-            
-        }
-        //this.eliminar((E) datoEscogido);
-        talla --;
     }
     
     public Nodo<E> getDato(){
@@ -87,8 +72,8 @@ public class Lista<E> {
     
     public boolean buscar(E x){
         boolean resp = false;
-        for (Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente) {
-            if (x.equals(tmp.dato)) {
+        for ( Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente ) {
+            if ( x.equals(tmp.dato) ) {
             resp = true;
             
             }
@@ -99,17 +84,14 @@ public class Lista<E> {
     public Nodo<E> getAndQuitarElementoAzar(){
         Nodo<E> nodoTmp;
         int posicionAzar = (int )(Math.random() * talla);
-        System.out.println(posicionAzar);
         
         Nodo<E> datoEscogido = cabeza;
-        for (int cont = 0; cont < posicionAzar; cont++) {
+        for ( int cont = 0; cont < posicionAzar; cont++ ) {
             datoEscogido = datoEscogido.siguiente;
         }
-        nodoTmp = datoEscogido;
-        this.eliminarLenin(datoEscogido);
-        
-        
-        return nodoTmp;
+        nodoTmp=datoEscogido;
+        //this.eliminar();
+        return datoEscogido;
     }
     
     
@@ -133,7 +115,7 @@ public class Lista<E> {
     
          
     public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){
-        Nodo <E> tmpNodo=new Nodo(pElementoA.getDato());
+        Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
         pElementoA.setData(pElementoB.getDato());
         pElementoB.setData(tmpNodo.getDato());
     }
@@ -146,7 +128,7 @@ public class Lista<E> {
         for (int i = 0; i < talla; i++){
             int posicionAzar = (int )(1+(Math.random() * (talla-1))); //numeros [1 , talla-1]
             cambiandoNodoB = cabeza;
-            while(posicionAzar >= 1){
+            while( posicionAzar >= 1 ){
                 cambiandoNodoB = cambiandoNodoB.getSiguiente();
                 posicionAzar--;
             }

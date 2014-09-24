@@ -16,20 +16,42 @@ public class Scrabble {
     
     public Scrabble(){
         
+        this.preguntarQuienesJuegan();
+        this.sorteo();
+        //sortear las 7 fichas para cada jugador
         
+        this.primerTurno();/*
+            verificar que coloque una palabra en la ficha central
+        */
+        
+        //while(true){
+        this.turno();
+        //}
+        /*
+            turno commun (2mins)
+            jugada      ~        cambiar juego          ~   pasar turno
+            verificar           y mezclar bolsa
+            asignar puntaje                                 
+                
+        fin del juego 
+            no hay que poner    ~turno sin jugador TODOSx2  ~ 6 pases e impugnaciones de todos  ~la bolsa vacia
+                    
+            -(fichas en el mazo)                            ~sumar al ganador todas las fichas
+        */
+        }
+    
+    
+    public void preguntarQuienesJuegan(){
         leer = new LeerTexto();    
         tablero = new Tablero();
-        listaJugadores= new Lista<>();
+        listaJugadores = new Lista<>();
         Jugador jugador;
         
         while (cantidadJugadores > 0){
             jugador = new Jugador();
             listaJugadores.insertar(jugador);
-            cantidadJugadores--;
+            cantidadJugadores -- ;
         }
-        this.sorteo();
-        
-        //TurnoSalida turnoSalida = new TurnoSalida();
     }
     
     public void sorteo(){
@@ -39,5 +61,10 @@ public class Scrabble {
             tmpNodo = tmpNodo.getSiguiente();
         }
     }
+    
+    public void primerTurno(){
+        
+    }
 
+    public void turno(){}
 }

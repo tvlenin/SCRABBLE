@@ -43,6 +43,7 @@ public class LeerTexto extends Observable {
         super.notificarObservadores();
         return palabras;
         }
+    
    
     
 }
