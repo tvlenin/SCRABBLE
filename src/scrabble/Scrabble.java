@@ -21,6 +21,7 @@ public class Scrabble {
         tablero = new Tablero();
         listaJugadores= new Lista<>();
         Jugador jugador;
+        leer.leer("es_CR.dic");
         
         while (cantidadJugadores > 0){
             jugador = new Jugador();
@@ -28,7 +29,7 @@ public class Scrabble {
             cantidadJugadores--;
         }
         listaJugadores.getHead().getDato().sacarFichaParaSorteo();
-        System.out.println(listaJugadores.getHead().getDato().getNumeroIndicaTurno());
+        //System.out.println(listaJugadores.getHead().getDato().getNumeroIndicaTurno());
         
         
         

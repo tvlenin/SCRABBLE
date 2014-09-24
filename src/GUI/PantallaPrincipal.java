@@ -32,56 +32,51 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         lblCarcaj = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(522, 614));
         setMinimumSize(new java.awt.Dimension(522, 614));
         setPreferredSize(new java.awt.Dimension(522, 614));
+        setResizable(false);
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P3_Opaco.gif"))); // NOI18N
         jLabel2.setText("jLabel2");
         jLabel2.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel2.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel2.setPreferredSize(new java.awt.Dimension(30, 30));
         getContentPane().add(jLabel2);
         jLabel2.setBounds(240, 0, 32, 32);
+        jLabel2.getAccessibleContext().setAccessibleName("lblP3");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P2_Opaco.gif"))); // NOI18N
         jLabel3.setText("jLabel2");
         jLabel3.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel3.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel3.setPreferredSize(new java.awt.Dimension(30, 30));
         getContentPane().add(jLabel3);
         jLabel3.setBounds(490, 240, 32, 32);
+        jLabel3.getAccessibleContext().setAccessibleName("lblP2");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P4_Opaco.gif"))); // NOI18N
         jLabel4.setText("jLabel2");
         jLabel4.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel4.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel4.setPreferredSize(new java.awt.Dimension(30, 30));
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 240, 32, 32);
+        jLabel4.getAccessibleContext().setAccessibleName("lblP4");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P1_Opaco.gif"))); // NOI18N
         jLabel5.setText("jLabel2");
         jLabel5.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel5.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel5.setPreferredSize(new java.awt.Dimension(30, 30));
         getContentPane().add(jLabel5);
         jLabel5.setBounds(240, 490, 32, 32);
-
-        jLabel1.setBackground(new java.awt.Color(254, 127, 1));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/tablero.gif"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jLabel1.setBorder(null);
-        jLabel1.setMaximumSize(new java.awt.Dimension(460, 460));
-        jLabel1.setMinimumSize(new java.awt.Dimension(460, 460));
-        jLabel1.setPreferredSize(new java.awt.Dimension(460, 460));
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 460, 460);
-        jLabel1.getAccessibleContext().setAccessibleName("lblTablero");
+        jLabel5.getAccessibleContext().setAccessibleName("lblP1");
 
         lblCarcaj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/carcaj.png"))); // NOI18N
         lblCarcaj.setText("jLabel6");
@@ -92,6 +87,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         lblCarcaj.setBounds(50, 520, 411, 90);
         lblCarcaj.getAccessibleContext().setAccessibleName("lblCarcaj");
         lblCarcaj.getAccessibleContext().setAccessibleDescription("");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/tablero.gif"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(30, 30, 455, 455);
+        jLabel6.getAccessibleContext().setAccessibleName("lblTablero");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -132,11 +133,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblCarcaj;
     // End of variables declaration//GEN-END:variables
 }
