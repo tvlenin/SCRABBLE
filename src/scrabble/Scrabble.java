@@ -47,9 +47,11 @@ public class Scrabble {
     public void preguntarQuienesJuegan(){
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
-        
+        numJugador=0;
         while (numJugador <= 4){
-            Jugador jugadorTmp = new Jugador(bolsa.sacarFichaParaSorteo());
+            
+            System.out.println("s");
+            Jugador jugadorTmp = new Jugador();
             listaJugadores.insertar(jugadorTmp);
             
             System.out.println(listaJugadores.getHead().getDato().numeroJugador());
