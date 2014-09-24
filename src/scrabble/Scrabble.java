@@ -1,6 +1,5 @@
 package scrabble;
 import scrabble.DATAIO.*;
-import scrabble.DATAIO.IOArduino;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
@@ -35,7 +34,7 @@ public class Scrabble {
     
     public void sorteo(){
         Nodo<Jugador> tmpNodo = listaJugadores.getHead();
-        while(Nodo != null){
+        while(tmpNodo != null){
             tmpNodo.getDato().sacarFichaParaSorteo();
             tmpNodo = tmpNodo.getSiguiente();
         }
