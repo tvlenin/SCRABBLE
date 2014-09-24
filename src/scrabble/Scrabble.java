@@ -10,14 +10,15 @@ import scrabble.LOGIC.TurnoSalida;
 public class Scrabble {
     
     private int cantidadJugadores = 4;
-    private Lista<Jugador> listaJugadores;
+    private Lista <Jugador> listaJugadores = new Lista<>();
     private LeerTexto leer;
     private Tablero tablero;
-    
+    private int numJugador = 1;
     public Scrabble(){
         
+        
         this.preguntarQuienesJuegan();
-        this.sorteo();
+       // this.sorteo();
         //sortear las 7 fichas para cada jugador
         
         this.primerTurno();/*
@@ -42,18 +43,17 @@ public class Scrabble {
     
     
     public void preguntarQuienesJuegan(){
-        leer = new LeerTexto();    
-        tablero = new Tablero();
-        listaJugadores = new Lista<>();
-        Jugador jugador;
+        // se lee del arduino cuantos botones entran
+        // se toca el boton del centro
         
-        while (cantidadJugadores > 0){
-            jugador = new Jugador();
-            listaJugadores.insertar(jugador);
-            cantidadJugadores -- ;
+        while (numJugador <= 4){
+            Jugador jugadorTmp = new Jugador(this.numJugador);
+            listaJugadores.insertar(jugadorTmp);
+            numJugador ++;
+            System.out.println(listaJugadores.getHead().getDato().numeroJugador());
+    
         }
     }
-    
     public void sorteo(){
         Nodo<Jugador> tmpNodo = listaJugadores.getHead();
         while(tmpNodo != null){
