@@ -1,25 +1,44 @@
 package scrabble;
 import scrabble.DATAIO.*;
-import scrabble.LOGIC.Jugador;
+import scrabble.DATAIO.IOArduino;
+import scrabble.EstructurasDeDatos.Lista;
+import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
-import scrabble.LOGIC.TurnoSalida;
+import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
+import scrabble.LOGIC.TurnoSalida;
 
 public class Scrabble {
+    
+    private int cantidadJugadores = 4;
+    private Lista<Jugador> listaJugadores;
+    private LeerTexto leer;
+    private Tablero tablero;
     
     public Scrabble(){
         
         
-        LeerTexto leer = new LeerTexto();
+        leer = new LeerTexto();    
+        tablero = new Tablero();
+        listaJugadores= new Lista<>();
+        Jugador jugador;
         
-        //hacer un jugador por cada boton presionado (lectura del arduino)
-        // rifa para ver quien comienza
-       
-        Jugador jug = new Jugador();
-        Tablero tablero = new Tablero();
+        while (cantidadJugadores > 0){
+            jugador = new Jugador();
+            listaJugadores.insertar(jugador);
+            cantidadJugadores--;
+        }
+        this.sorteo();
         
         //TurnoSalida turnoSalida = new TurnoSalida();
-        
+    }
+    
+    public void sorteo(){
+        Nodo<Jugador> tmpNodo = listaJugadores.getHead();
+        while(Nodo != null){
+            tmpNodo.getDato().sacarFichaParaSorteo();
+            tmpNodo = tmpNodo.getSiguiente();
+        }
     }
 
 }

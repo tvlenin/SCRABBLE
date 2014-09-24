@@ -4,13 +4,12 @@ import java.io.*;
 
 import scrabble.EstructurasDeDatos.Lista;
 
-import scrabble.LOGIC.Ficha;
 //import scrabble.LOGIC.Subject;
 
 
 public class LeerTexto extends Observable {
     
-    Lista <String> palabras = new Lista <>();
+    private Lista <String> palabras = new Lista <>();
     
     public Lista<String> leer(String PtxtData){
         
@@ -18,20 +17,23 @@ public class LeerTexto extends Observable {
         
         
         try{
-            // Abrimos el archivo
-            FileInputStream fstream = new FileInputStream("src/scrabble/Ficheros/"+PtxtData);
-            // Creamos el Buffer de Lectura
-            DataInputStream entrada = new DataInputStream(fstream);
-                // Creamos el Buffer de Lectura
-                BufferedReader buffer = new BufferedReader(new InputStreamReader(entrada));
-                String strLinea;
+            
+            File fileDir = new File("src/scrabble/Ficheros/"+PtxtData);
+            Reader inpu = new InputStreamReader(new FileInputStream(fileDir), "ISO-8859-15");
+            BufferedReader buffer = new BufferedReader(inpu );
+            
+            String strLinea;
                 // Leer el archivo linea por linea
                 while ((strLinea = buffer.readLine()) != null)   {
+                    if (strLinea.contains("/")){
+                        String [] pala = strLinea.split("/");
+                        strLinea = pala[0];
+                    }
                     palabras.insertar(strLinea);
-                    //System.out.println(strLinea.toString());
+                    //System.out.println(strLinea);
 
                 }
-            entrada.close();
+            //fileDir.close();
         }catch (IOException e){ //Catch de excepciones
             System.err.println("Ocurrio un error: " + e.getMessage());
         
