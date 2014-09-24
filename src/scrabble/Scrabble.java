@@ -3,7 +3,6 @@ import scrabble.DATAIO.*;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Bolsa;
 import scrabble.LOGIC.TurnoSalida;
-import scrabble.DATAIO.IOArduino;
 import scrabble.LOGIC.Tablero;
 
 public class Scrabble {
