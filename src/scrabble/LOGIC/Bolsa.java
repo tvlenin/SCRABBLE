@@ -25,6 +25,11 @@ public abstract class Bolsa extends LeerTexto implements Observador {
         }
     }
     
+    public int sacarFichaParaSorteo(){
+        char letraObetenida = listaFichas.mostrarElementoAzar().getDato().getCharData();
+        int ptSorteoTurnos =(int)letraObetenida;
+        return ptSorteoTurnos;
+    }
     
     @Override
     public void actualizar() {

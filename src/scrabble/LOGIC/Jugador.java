@@ -26,10 +26,10 @@ public class Jugador extends Bolsa {
     public Lista<Ficha> fichasJugador(){        
         return null;
     }
-    public void sacarFichaParaSorteo(){
+    /*public void sacarFichaParaSorteo(){
         char letraObetenida = super.listaFichas.mostrarElementoAzar().getDato().getCharData();
         ptSorteoTurnos =(int)letraObetenida;
-    }
+    }*/
     
     public int getNumeroIndicaTurno(){
         return ptSorteoTurnos;

@@ -13,7 +13,9 @@ public class Scrabble {
     private Lista <Jugador> listaJugadores = new Lista<>();
     private LeerTexto leer;
     private Tablero tablero;
-    private int numJugador = 1;
+    private int numJugador;
+    private Bolsa bolsa;
+    
     public Scrabble(){
         
         
@@ -47,11 +49,11 @@ public class Scrabble {
         // se toca el boton del centro
         
         while (numJugador <= 4){
-            Jugador jugadorTmp = new Jugador(this.numJugador);
+            Jugador jugadorTmp = new Jugador(bolsa.sacarFichaParaSorteo());
             listaJugadores.insertar(jugadorTmp);
-            numJugador ++;
+            
             System.out.println(listaJugadores.getHead().getDato().numeroJugador());
-    
+            numJugador ++;
         }
     }
     public void sorteo(){

@@ -4,9 +4,13 @@ import scrabble.EstructurasDeDatos.Lista;
 
 public class Tablero {
 
-    public Lista<Ficha> fichaTablero(){
-        Lista<Ficha> espacio = new Lista<>();
-        return espacio;
+    
+    public Tablero(){
+        Lista <CampoTablero> tablero = new Lista();
+        
+        for (int i = 0; i < 225; i++ ){
+            CampoTablero campo = new CampoTablero(984100512);
+        }
     }
     
         
