@@ -11,9 +11,9 @@ public class Nodo<E>{
     }
     
     public Nodo(E pDato, Nodo<E> pSiguiente, Nodo<E> pPrevio){
-        this.dato=pDato;
-        this.siguiente=pSiguiente;
-        this.previo= pPrevio;
+        this.dato = pDato;
+        this.siguiente = pSiguiente;
+        this.previo = pPrevio;
     }
     
     public void setData(E pData){

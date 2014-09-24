@@ -21,7 +21,7 @@ public class Ficha{
    }
    
     public void update() {
-        System.out.println("SIRVE");
+        //System.out.println("SIRVE");
     }
 
     
