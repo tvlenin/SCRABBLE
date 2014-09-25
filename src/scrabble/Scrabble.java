@@ -18,7 +18,7 @@ public class Scrabble {
     
     public Scrabble(){
         
-        
+        Tablero tab = new Tablero();
         this.preguntarQuienesJuegan();
        // this.sorteo();
         //sortear las 7 fichas para cada jugador
@@ -50,11 +50,10 @@ public class Scrabble {
         numJugador=0;
         while (numJugador <= 4){
             
-            System.out.println("s");
             Jugador jugadorTmp = new Jugador();
             listaJugadores.insertar(jugadorTmp);
             
-            System.out.println(listaJugadores.getHead().getDato().numeroJugador());
+            //System.out.println(listaJugadores.getHead().getDato().numeroJugador());
             numJugador ++;
         }
     }
