@@ -17,8 +17,12 @@ public class Scrabble extends Bolsa {
     private Bolsa bolsa;
     
     public Scrabble(){
-        //this.preguntarQuienesJuegan();
-       // this.sorteo();
+        this.preguntarQuienesJuegan();
+        System.out.println(listaJugadores.getHead().getDato().getNumeroIndicaTurno());
+        System.out.println(listaJugadores.getHead().getSiguiente().getDato().getNumeroIndicaTurno());
+        System.out.println(listaJugadores.getHead().getSiguiente().getSiguiente().getDato().getNumeroIndicaTurno());
+        System.out.println(listaJugadores.getHead().getSiguiente().getSiguiente().getSiguiente().getDato().getNumeroIndicaTurno());
+        // this.sorteo();
         //sortear las 7 fichas para cada jugador
         
         
@@ -46,7 +50,7 @@ public class Scrabble extends Bolsa {
         }
     
     
-    public void preguntarQuienesJuegan(){
+    public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
         int nJugadores = 4;
@@ -62,13 +66,18 @@ public class Scrabble extends Bolsa {
         while (iterador != null) {
             Nodo<Jugador> nodoComparar = iterador.getSiguiente();
             while(nodoComparar!= null){
-                if(iterador.getDato().getNumeroIndicaTurno() < nodoComparar.getDato().getNumeroIndicaTurno()){
+                if (iterador.getDato().getNumeroIndicaTurno() == nodoComparar.getDato().getNumeroIndicaTurno()){
+                    iterador.getDato().sacarFichaParaSorteo();
+                    iterador = listaJugadores.getHead();
+                    
+                }if(iterador.getDato().getNumeroIndicaTurno() < nodoComparar.getDato().getNumeroIndicaTurno()){
                     listaJugadores.intercambiarData(iterador, nodoComparar);
                 }
                 nodoComparar= nodoComparar.getSiguiente();
             }
             iterador = iterador.getSiguiente();
         }
+        
     }
     
     
