@@ -25,9 +25,11 @@ public class Jugador extends Bolsa {
     public Lista<Ficha> fichasJugador(){        
         return null;
     }
-    public void sacarFichaParaSorteo(){
+    
+    public int sacarFichaParaSorteo(){
         char letraObetenida = super.listaFichas.mostrarElementoAzar().getDato().getCharData();
         ptSorteoTurnos =(int)letraObetenida;
+        return ptSorteoTurnos;
     }
     
     public int getNumeroIndicaTurno(){
