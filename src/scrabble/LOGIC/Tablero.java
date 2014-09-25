@@ -7,6 +7,7 @@ import scrabble.EstructurasDeDatos.Nodo;
 public class Tablero {
     LeerTexto leer = new LeerTexto();
     
+    
     public Tablero(){
         Lista <CampoTablero> tablero = new Lista <>();
         Lista <String> listaLecturaDeFichasTxt = leer.leer("CAMPOSTABLERO.TXT");
