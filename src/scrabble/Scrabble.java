@@ -7,7 +7,7 @@ import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
 import scrabble.LOGIC.TurnoSalida;
 
-public class Scrabble {
+public class Scrabble extends Bolsa {
     
     private int cantidadJugadores = 4;
     private Lista <Jugador> listaJugadores = new Lista<>();
@@ -17,13 +17,15 @@ public class Scrabble {
     private Bolsa bolsa;
     
     public Scrabble(){
-        
-        Tablero tab = new Tablero();
-        this.preguntarQuienesJuegan();
+        //this.preguntarQuienesJuegan();
        // this.sorteo();
         //sortear las 7 fichas para cada jugador
         
-        this.primerTurno();/*
+        
+        Lista<String> lista = new Lista<>();
+        
+        this.primerTurno();
+        /*
             verificar que coloque una palabra en la ficha central
         */
         
@@ -47,27 +49,34 @@ public class Scrabble {
     public void preguntarQuienesJuegan(){
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
-        numJugador=0;
-        while (numJugador <= 4){
-            
-            Jugador jugadorTmp = new Jugador();
-            listaJugadores.insertar(jugadorTmp);
-            
-            //System.out.println(listaJugadores.getHead().getDato().numeroJugador());
-            numJugador ++;
+        int nJugadores = 4;
+        Jugador jugadorNuevo;
+        
+        while(nJugadores>0){ //crear la cantidad de jugadores deseados y sacar una ficha
+            jugadorNuevo = new Jugador();
+            jugadorNuevo.sacarFichaParaSorteo();
+            listaJugadores.insertar(jugadorNuevo);
+            nJugadores--;
+        }
+        Nodo<Jugador> iterador = listaJugadores.getHead();
+        while (iterador != null) {
+            Nodo<Jugador> nodoComparar = iterador.getSiguiente();
+            while(nodoComparar!= null){
+                if(iterador.getDato().getNumeroIndicaTurno() < nodoComparar.getDato().getNumeroIndicaTurno()){
+                    listaJugadores.intercambiarData(iterador, nodoComparar);
+                }
+                nodoComparar= nodoComparar.getSiguiente();
+            }
+            iterador = iterador.getSiguiente();
         }
     }
-    public void sorteo(){
-        Nodo<Jugador> tmpNodo = listaJugadores.getHead();
-        while(tmpNodo != null){
-            tmpNodo.getDato().sacarFichaParaSorteo();
-            tmpNodo = tmpNodo.getSiguiente();
-        }
-    }
+    
     
     public void primerTurno(){
         
     }
 
     public void turno(){}
-}
+
+    }
+

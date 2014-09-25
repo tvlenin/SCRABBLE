@@ -11,9 +11,17 @@ public class Lista<E> {
         cola = null;
         talla = 0;
     }
-     
-    public void insertar(E x){
-        Nodo<E> nuevo = new Nodo<>(x);        
+    
+    public void insertarAuto(E pData){ //si la lista esta vacia realiza un insertar, sino inserta al final
+        if (talla == 0){
+            this.insertar(pData);
+        }
+        else{
+            this.insertarFinal(pData);
+        }
+    }
+    public void insertar(E pData){
+        Nodo<E> nuevo = new Nodo<>(pData);        
         if (talla == 0 ){
             cola = nuevo;
         }
@@ -25,6 +33,23 @@ public class Lista<E> {
         nuevo.previo = null;
         cabeza = nuevo;
         this.talla++;
+    }
+    
+    public void insertarEnMedio( E pData, Nodo<E> pNodoPrevio){
+        if (pNodoPrevio == cabeza){
+            System.out.println("En vez de 'insertarEnMedio' utilice (insertar || insertarAuto) ");
+            return;
+        }
+        Nodo<E> nuevoNodo = new Nodo<>(pData);
+        Nodo<E> nodoTmp = pNodoPrevio.getSiguiente();
+        
+        pNodoPrevio.siguiente = nuevoNodo;
+        nuevoNodo.previo = pNodoPrevio;
+        nuevoNodo.siguiente = nodoTmp;
+        nodoTmp.previo = nuevoNodo;
+        
+        this.talla++;
+        
     }
     
     public void insertarFinal(E x) {
@@ -113,7 +138,45 @@ public class Lista<E> {
         return tmp2;
     } 
     
-         
+    public void intercambiarNodos(Nodo<E> a, Nodo<E> b){
+        
+        if (a == b){
+        return;
+        }
+        if (a.siguiente == b) { // contiguos
+            a.siguiente = b.siguiente;
+            b.previo = a.previo;
+            if (a.siguiente != null){
+                a.siguiente.previo = a;
+            }
+            if (b.previo != null){
+                b.previo.siguiente = b;
+            }
+            b.siguiente = a;
+            a.previo = b;
+        }
+        else {
+            Nodo p = b.previo;
+            Nodo n = b.siguiente;
+            b.previo = a.previo;
+            b.siguiente = a.siguiente;
+            a.previo = p;
+            a.siguiente = n;
+            if (b.siguiente != null){
+                b.siguiente.previo = b;
+            }
+            if (b.previo != null){
+                b.previo.siguiente = b;
+            }
+            if (a.siguiente != null){
+                a.siguiente.previo = a;
+            }
+            if (a.previo != null){
+                a.previo.siguiente = a;
+            }
+        }
+    
+    }     
     public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){
         Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
         pElementoA.setData(pElementoB.getDato());
