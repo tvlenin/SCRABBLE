@@ -1,4 +1,5 @@
 package scrabble;
+import GUI.PantallaPrincipal;
 import scrabble.DATAIO.*;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
@@ -9,32 +10,23 @@ import scrabble.LOGIC.TurnoSalida;
 
 public class Scrabble extends Bolsa {
     
-    private int cantidadJugadores = 4;
+    
     private Lista <Jugador> listaJugadores = new Lista<>();
-    private LeerTexto leer;
+    private LeerTexto leer = new LeerTexto();
     private Tablero tablero;
-    private int numJugador;
     private Bolsa bolsa;
+    Lista<String> listaDiccionario = leer("es_CR.dic");
     
     public Scrabble(){
+        
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaPrincipal().setVisible(true);
+            }
+        });
         this.preguntarQuienesJuegan();
-        System.out.println(listaJugadores.getHead().getDato().getNumeroIndicaTurno());
-        System.out.println(listaJugadores.getHead().getSiguiente().getDato().getNumeroIndicaTurno());
-        System.out.println(listaJugadores.getHead().getSiguiente().getSiguiente().getDato().getNumeroIndicaTurno());
-        System.out.println(listaJugadores.getHead().getSiguiente().getSiguiente().getSiguiente().getDato().getNumeroIndicaTurno());
-        // this.sorteo();
-        //sortear las 7 fichas para cada jugador
         
-        
-        Lista<String> lista = new Lista<>();
-        
-        this.primerTurno();
-        /*
-            verificar que coloque una palabra en la ficha central
-        */
-        
-        //while(true){
-        this.turno();
+        this.primerTurno();//al cumplirse las condiciones llama a turno normal
         //}
         /*
             turno commun (2mins)
@@ -76,13 +68,36 @@ public class Scrabble extends Bolsa {
                 nodoComparar= nodoComparar.getSiguiente();
             }
             iterador = iterador.getSiguiente();
-        }
-        
+        } 
     }
     
-    
     public void primerTurno(){
-        
+        boolean flag = true;
+        while(flag){
+            String codeArduino = "";
+
+            Lista <Integer> listaPosiciones = new Lista <>();
+            Lista <String> listaLetras = new Lista <>();
+            listaPosiciones.insertar(113);
+            listaLetras.insertar("a");
+            String palabra = "";
+
+            Nodo <String> iteradorDeString = listaLetras.getHead();
+            Nodo <Integer> iteradorDePosiciones = listaPosiciones.getHead();
+            
+            while (iteradorDePosiciones != null){
+                if (iteradorDePosiciones.getDato() == 113){
+                    flag = false;
+                }
+             palabra = palabra + iteradorDeString.getDato();
+             iteradorDeString = iteradorDeString.getSiguiente();
+             iteradorDePosiciones = iteradorDePosiciones.getSiguiente();
+            }
+            if (listaDiccionario.buscar(palabra)){
+                this.turno();
+            }   
+        }
+        //this.primerTurno();   
     }
 
     public void turno(){}

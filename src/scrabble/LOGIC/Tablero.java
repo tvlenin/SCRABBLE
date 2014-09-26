@@ -6,10 +6,11 @@ import scrabble.EstructurasDeDatos.Nodo;
 
 public class Tablero {
     LeerTexto leer = new LeerTexto();
-    
+    Lista <CampoTablero> tablero;
     
     public Tablero(){
-        Lista <CampoTablero> tablero = new Lista <>();
+              
+        tablero = new Lista <>();
         Lista <String> listaLecturaDeFichasTxt = leer.leer("CAMPOSTABLERO.TXT");
         
         Nodo <String> tmpDataLista = listaLecturaDeFichasTxt.getHead();
@@ -26,5 +27,11 @@ public class Tablero {
         System.out.println(tablero.getHead().getDato().getPosicion());
     }
     
+    public boolean verificaPosEnCentro(int pos){
+        boolean resp = false;
+        if(pos == 113)
+            resp = true;
+        return resp;
+    }
         
 }

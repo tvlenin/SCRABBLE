@@ -11,7 +11,7 @@ public class CampoTablero {
         this.ficha = "";
         this.valorFicha = 0;
         this.descripcion = descrip;
-        this.pos = pos;
+        this.pos = pos;                 //posisicion [1 - 255] 
         
     }
     public int getPosicion(){

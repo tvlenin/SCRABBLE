@@ -13,9 +13,6 @@ public class LeerTexto extends Observable {
     
     public Lista<String> leer(String PtxtData){
         
-        int cont = 0;
-        
-        
         try{
             
             File fileDir = new File("src/scrabble/Ficheros/"+PtxtData);
