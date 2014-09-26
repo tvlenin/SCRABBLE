@@ -6,9 +6,11 @@ import scrabble.EstructurasDeDatos.Nodo;
 public class Jugador extends Bolsa {
     
     private int ptSorteoTurnos;
+    private int turno;
     
-    public Jugador(){
+    public Jugador(int turnos){
         ptSorteoTurnos = 0;
+        this.turno = turnos;
         
         Lista<Ficha> _fichas = new Lista<> ();
         for (int i = 0; i < 7; i++){
@@ -26,14 +28,17 @@ public class Jugador extends Bolsa {
     }
     public void sacarFichaParaSorteo(){
         char letraObetenida = super.listaFichas.mostrarElementoAzar().getDato().getCharData();
-        int valueAscii =(int)letraObetenida;
-        ptSorteoTurnos = valueAscii;
+        ptSorteoTurnos =(int)letraObetenida;
     }
     
     public int getNumeroIndicaTurno(){
         return ptSorteoTurnos;
     }
-    public void numeroJugador(){
+    public int numeroJugador(){
+        return this.turno;
+    }
+    public void setnumeroJugador(int turno){
+        this.turno = turno;
     }
     
     public void puntajeJugador(){
