@@ -7,13 +7,23 @@ import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
 import scrabble.LOGIC.TurnoSalida;
 
+/**
+ * Clase en la que se manejara las acciones que involucran el funcionamiento general del programa.
+ * @author abrahamon
+ */
 public class Scrabble {
     
-    private int cantidadJugadores = 4;
-    private Lista <Jugador> listaJugadores = new Lista<>();
-    private LeerTexto leer;
+    private int cantidadJugadores = 4; //Cantidad de jugadores que participaran en la partida
+    private Lista <Jugador> listaJugadores = new Lista<>(); //Lista en la que se almacenaran los jugadores que participen de la partida
+    private LeerTexto leer; 
     private Tablero tablero;
-    private int numJugador = 1;
+    private int numJugador = 1; // Inidica cual de los jugadores es el que esta en su turno
+    
+    /**
+     * Metodo constructor de la clase Scrabble, en donde se pregunta la cantidad de jugadores que participaran, 
+     * Se inicia el primer turno del juego y tambien se inician los turnos siguientes.
+     * @author abrahamon
+     */
     public Scrabble(){
         
         
@@ -41,7 +51,10 @@ public class Scrabble {
         */
         }
     
-    
+    /**
+     * Metodo en el que se establece la cantidad de jugadores que participaran en la partida del juego.
+     * @author abrahamon
+     */
     public void preguntarQuienesJuegan(){
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
@@ -54,6 +67,11 @@ public class Scrabble {
     
         }
     }
+    
+    /**
+     * Metodo en el cual se realiza un sorteo de las siete fichas que tendran los jugadores al iniciar la partida.
+     * @author abrahamon
+     */
     public void sorteo(){
         Nodo<Jugador> tmpNodo = listaJugadores.getHead();
         while(tmpNodo != null){
@@ -62,9 +80,20 @@ public class Scrabble {
         }
     }
     
+    /**
+     * Metodo en el que se gestionara las acciones referentes al primer turno del juego,
+     * El cual posee algunas caracteristicas distintas a los demas turnos del juego.
+     * @author abrahamon
+     */
     public void primerTurno(){
         
     }
-
+    
+    /**
+     * Metodo en el que se gestinaran las tareas que son necesarias para el analisis, 
+     * Y el desarrollo de los turnos del juego durante la partida, 
+     * A excepcion del primer turno que posee caracteristicas distintas y debe analizarce por separado.
+     * @author abrahamon
+     */
     public void turno(){}
 }

@@ -6,11 +6,22 @@ import scrabble.EstructurasDeDatos.Lista;
 
 //import scrabble.LOGIC.Subject;
 
-
+/**
+ * Clase en la que se gestinan las tareas relacionadas con la lectura y analisis de archivos de texto, 
+ * Que contengan distintos elementos que sean necesarios para el funcinamiento y ejecucion del programa.
+ * @author tvlenin
+ */
 public class LeerTexto extends Observable {
     
+    //Lista en la que se almacenaran las palabras que contengan los archivos de texto (diccionarios).
     private Lista <String> palabras = new Lista <>();
     
+    /**
+     * Metodo que devuelve una lista de tipo String, 
+     * En la que cada elemento de la lista representa una linea de texto del archivo que se esta analizando.
+     * @param PtxtData Parametro en el que se almacena el nombre del archivo de texto que se va a analizar.
+     * Retorna una lista en la que se almacenan las palabras que se analizaron del archivo de texto. 
+     */
     public Lista<String> leer(String PtxtData){
         
         int cont = 0;
