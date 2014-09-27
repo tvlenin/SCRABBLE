@@ -24,14 +24,35 @@ public class Tablero {
             tmpDataLista = tmpDataLista.getSiguiente();
             
         }
-        System.out.println(tablero.getHead().getDato().getPosicion());
+        //System.out.println(tablero.getHead().getDato().getPosicion());
     }
-    
+       
     public boolean verificaPosEnCentro(int pos){
         boolean resp = false;
         if(pos == 113)
             resp = true;
         return resp;
     }
-        
+    
+    public int getBonusPosX(int pPosicion){//necesaria para mostrar el bonus en x posicion
+        int resp = 0;
+        Nodo<CampoTablero> iteradorPosTablero = tablero.getHead();
+        while(pPosicion > 0){
+            iteradorPosTablero = iteradorPosTablero.getSiguiente();
+            pPosicion--;
+        }
+        resp = iteradorPosTablero.getDato().getMultiplicador();
+        return resp;
+    }
+    
+    public String getDescripcionPosX(int pPosicion){//necesaria para mostrar el bonus en x posicion
+        String resp ="";
+        Nodo<CampoTablero> iteradorPosTablero = tablero.getHead();
+        while(pPosicion > 0){
+            iteradorPosTablero = iteradorPosTablero.getSiguiente();
+            pPosicion--;
+        }
+        resp = iteradorPosTablero.getDato().getDescripcion();
+        return resp;
+    }
 }

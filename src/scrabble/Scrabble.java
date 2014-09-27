@@ -6,24 +6,23 @@ import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
-import scrabble.LOGIC.TurnoSalida;
-
 public class Scrabble extends Bolsa {
     
     
     private Lista <Jugador> listaJugadores = new Lista<>();
     private LeerTexto leer = new LeerTexto();
     private Tablero tablero;
-    private Bolsa bolsa;
+    private Nodo<Jugador> nodoJugadorConElTurno;
     Lista<String> listaDiccionario = leer("es_CR.dic");
     
     public Scrabble(){
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new PantallaPrincipal().setVisible(true);
             }
         });
+        */
         this.preguntarQuienesJuegan();
         
         this.primerTurno();//al cumplirse las condiciones llama a turno normal
@@ -72,35 +71,56 @@ public class Scrabble extends Bolsa {
     }
     
     public void primerTurno(){
-        boolean flag = true;
+        boolean flag = true; //mientras no se coloque una palabra en la posicion correcta no se comienza.
+        nodoJugadorConElTurno = listaJugadores.getHead();   
         while(flag){
             String codeArduino = "";
 
-            Lista <Integer> listaPosiciones = new Lista <>();
-            Lista <String> listaLetras = new Lista <>();
-            listaPosiciones.insertar(113);
-            listaLetras.insertar("a");
+            Lista <Integer> listaPosiciones = new Lista <>(); // integers con posiciones
+            Lista <Character> listaLetras = new Lista <>();      // strings  con letras
             String palabra = "";
-
-            Nodo <String> iteradorDeString = listaLetras.getHead();
-            Nodo <Integer> iteradorDePosiciones = listaPosiciones.getHead();
             
-            while (iteradorDePosiciones != null){
-                if (iteradorDePosiciones.getDato() == 113){
-                    flag = false;
-                }
-             palabra = palabra + iteradorDeString.getDato();
-             iteradorDeString = iteradorDeString.getSiguiente();
-             iteradorDePosiciones = iteradorDePosiciones.getSiguiente();
+            listaPosiciones.insertar(113);                    // EN EL MOMENTO NO HAY VERIFICADOR DE POSICION; BORRAR ENTONCES
+            listaLetras.insertar('a');                        //  ' '   '   '   '   '   '   '   '   '   '   '   '   '   '
+            //segun el codigo del arduino interpretarlo para letra y posicion,
+            
+            for (Nodo<Character> iteradorDeLetras= listaLetras.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
+                palabra = palabra+iteradorDeLetras.getDato();
             }
             if (listaDiccionario.buscar(palabra)){
-                this.turno();
-            }   
+                for (Nodo<Integer> iteradorDePos = listaPosiciones.getHead(); iteradorDePos != null; iteradorDePos= iteradorDePos.getSiguiente()){
+                    if (iteradorDePos.getDato() == 133){
+                        //quitar las fichas que coloco el jugador, añadir ptj respectivo y colocar en el tablero
+                        nodoJugadorConElTurno = nodoJugadorConElTurno.getSiguiente();
+                        this.turno();
+                        flag = false;
+                    }
+                }
+            }  
         }
-        //this.primerTurno();   
+        System.out.println("Mal colocada la primera ficha, voler colocar");
+        this.primerTurno();   
     }
-
+    
     public void turno(){}
-
+    
+    //solo en caso de que se coloque una palabra correctamente se llama a este metodo
+    public void asignarPtjJugador(Lista<Character> listaLetras, Nodo<Character> iteradorLetras, 
+                                  Lista<Integer> listaPos,Nodo<Integer> iteradorPos)
+    {//sus argumentos: 2 listas simetricas, primera con letra colocada y segunda con posicion colocada
+        int bonusPorPalabra =1;
+        
+        if(listaLetras.getTalla() != listaPos.getTalla()){
+            System.out.println("Listas de distinto tamaño en asignarPtjJugador, com.scrabble");
+            return;
+        }
+        while(iteradorLetras != null && iteradorPos != null){
+            if(tablero.getDescripcionPosX(iteradorPos.getDato()) == "l"){
+                
+            }
+        }
+        
+    }
+    public void verificarFinJuego(){}
     }
 
