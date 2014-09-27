@@ -16,7 +16,7 @@ public class LeerTexto extends Observable {
         try{
             
             File fileDir = new File("src/scrabble/Ficheros/"+PtxtData);
-            Reader inpu = new InputStreamReader(new FileInputStream(fileDir), "ISO-8859-15");
+            Reader inpu = new InputStreamReader(new FileInputStream(fileDir), "ISO-8859-15");//"ISO-8859-15"
             BufferedReader buffer = new BufferedReader(inpu );
             
             String strLinea;

@@ -4,25 +4,26 @@ import scrabble.DATAIO.*;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
-import scrabble.LOGIC.Ficha;
+import scrabble.LOGIC.Diccionario;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
 public class Scrabble extends Bolsa {
     
-    
+    private int cantidadJugadores = 1;
     private Lista <Jugador> listaJugadores = new Lista<>();
     private LeerTexto leer = new LeerTexto();
     private Tablero tablero;
     private Nodo<Jugador> nodoJugadorConElTurno;
     Lista<String> listaDiccionario = leer("es_CR.dic");
     
+    
     public Scrabble(){
         
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PantallaPrincipal().setVisible(true);
-            }
-        });
+        this.preguntarQuienesJuegan();
+        //System.out.println(listaJugadores.getHead().getDato().buscarPalabra("ábaco"));
+        this.primerTurno();
+        /*
+            verificar que coloque una palabra en la ficha central
         */
         this.preguntarQuienesJuegan();
         
@@ -45,10 +46,10 @@ public class Scrabble extends Bolsa {
     public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
-        int nJugadores = 4;
+        int nJugadores = 1;
         Jugador jugadorNuevo;
         
-        while(nJugadores>0){ //crear la cantidad de jugadores deseados y sacar una ficha
+        while(nJugadores > 0){ //crear la cantidad de jugadores deseados y sacar una ficha
             jugadorNuevo = new Jugador();
             jugadorNuevo.sacarFichaParaSorteo();
             listaJugadores.insertar(jugadorNuevo);
