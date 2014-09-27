@@ -3,38 +3,32 @@ import scrabble.DATAIO.*;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
+import scrabble.LOGIC.Diccionario;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
 import scrabble.LOGIC.TurnoSalida;
 
 public class Scrabble extends Bolsa {
     
-    private int cantidadJugadores = 4;
+    private int cantidadJugadores = 1;
     private Lista <Jugador> listaJugadores = new Lista<>();
     private LeerTexto leer;
     private Tablero tablero;
     private int numJugador;
     private Bolsa bolsa;
     
+    
     public Scrabble(){
+        
         this.preguntarQuienesJuegan();
-        System.out.println(listaJugadores.getHead().getDato().getNumeroIndicaTurno());
-        System.out.println(listaJugadores.getHead().getSiguiente().getDato().getNumeroIndicaTurno());
-        System.out.println(listaJugadores.getHead().getSiguiente().getSiguiente().getDato().getNumeroIndicaTurno());
-        System.out.println(listaJugadores.getHead().getSiguiente().getSiguiente().getSiguiente().getDato().getNumeroIndicaTurno());
-        // this.sorteo();
-        //sortear las 7 fichas para cada jugador
-        
-        
-        Lista<String> lista = new Lista<>();
-        
+        //System.out.println(listaJugadores.getHead().getDato().buscarPalabra("ábaco"));
         this.primerTurno();
         /*
             verificar que coloque una palabra en la ficha central
         */
         
         //while(true){
-        this.turno();
+        //this.turno();
         //}
         /*
             turno commun (2mins)
@@ -53,10 +47,10 @@ public class Scrabble extends Bolsa {
     public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
-        int nJugadores = 4;
+        int nJugadores = 1;
         Jugador jugadorNuevo;
         
-        while(nJugadores>0){ //crear la cantidad de jugadores deseados y sacar una ficha
+        while(nJugadores > 0){ //crear la cantidad de jugadores deseados y sacar una ficha
             jugadorNuevo = new Jugador();
             jugadorNuevo.sacarFichaParaSorteo();
             listaJugadores.insertar(jugadorNuevo);
