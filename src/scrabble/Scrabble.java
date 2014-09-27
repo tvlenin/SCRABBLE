@@ -4,6 +4,7 @@ import scrabble.DATAIO.*;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
+import scrabble.LOGIC.Ficha;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
 public class Scrabble extends Bolsa {
@@ -76,10 +77,10 @@ public class Scrabble extends Bolsa {
         while(flag){
             String codeArduino = "";
 
+            
             Lista <Integer> listaPosiciones = new Lista <>(); // integers con posiciones
             Lista <Character> listaLetras = new Lista <>();      // strings  con letras
             String palabra = "";
-            
             listaPosiciones.insertar(113);                    // EN EL MOMENTO NO HAY VERIFICADOR DE POSICION; BORRAR ENTONCES
             listaLetras.insertar('a');                        //  ' '   '   '   '   '   '   '   '   '   '   '   '   '   '
             //segun el codigo del arduino interpretarlo para letra y posicion,
@@ -109,14 +110,20 @@ public class Scrabble extends Bolsa {
                                   Lista<Integer> listaPos,Nodo<Integer> iteradorPos)
     {//sus argumentos: 2 listas simetricas, primera con letra colocada y segunda con posicion colocada
         int bonusPorPalabra =1;
+        int bonusPorLetra=1;
+        int puntajePalabra= 0;
         
         if(listaLetras.getTalla() != listaPos.getTalla()){
             System.out.println("Listas de distinto tamaño en asignarPtjJugador, com.scrabble");
             return;
         }
         while(iteradorLetras != null && iteradorPos != null){
+            bonusPorLetra =1; 
             if(tablero.getDescripcionPosX(iteradorPos.getDato()) == "l"){
-                
+                bonusPorLetra = tablero.getBonusPosX(iteradorPos.getDato());
+            }
+            if(tablero.getDescripcionPosX(iteradorPos.getDato()) == "p"){
+                bonusPorPalabra= bonusPorPalabra*tablero.getBonusPosX(iteradorPos.getDato());
             }
         }
         
