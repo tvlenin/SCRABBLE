@@ -72,7 +72,7 @@ public class Scrabble extends Bolsa {
         } 
     }
     
-    public void primerTurno(){
+     public void primerTurno(){
         boolean flag = true; //mientras no se coloque una palabra en la posicion correcta no se comienza.
         nodoJugadorConElTurno = listaJugadores.getHead();   
         while(flag){
@@ -83,11 +83,10 @@ public class Scrabble extends Bolsa {
             Lista <Character> listaLetras = new Lista <>();      // strings  con letras
             String palabra = "";
             listaPosiciones.insertar(113);                    // EN EL MOMENTO NO HAY VERIFICADOR DE POSICION; BORRAR ENTONCES
-            listaLetras.insertar('a');
+            listaLetras.insertar('a');                        //  ' '   '   '   '   '   '   '   '   '   '   '   '   '   '
+            //segun el codigo del arduino interpretarlo para letra y posicion,
             
-//segun el codigo del arduino interpretarlo para letra y posicion,
-            
-            for (Nodo<Character> iteradorDeLetras = listaLetras.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
+            for (Nodo<Character> iteradorDeLetras= listaLetras.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
                 palabra = palabra+iteradorDeLetras.getDato();
             }
             if (listaDiccionario.buscar(palabra)){
@@ -101,8 +100,6 @@ public class Scrabble extends Bolsa {
                 }
             }  
         }
-        System.out.println("Mal colocada la primera ficha, voler colocar");
-        this.primerTurno();   
     }
     
     public void turno(){}
