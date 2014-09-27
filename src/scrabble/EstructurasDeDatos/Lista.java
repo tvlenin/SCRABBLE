@@ -115,8 +115,11 @@ public class Lista<E> {
             datoEscogido = datoEscogido.siguiente;
         }
         nodoTmp=datoEscogido;
-        //this.eliminar();
-        return datoEscogido;
+        datoEscogido = datoEscogido.getPrevio();
+        datoEscogido.siguiente = datoEscogido.getSiguiente();
+        //datoEscogido = null;
+        this.talla --;
+        return nodoTmp;
     }
     
     

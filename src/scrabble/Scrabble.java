@@ -83,10 +83,11 @@ public class Scrabble extends Bolsa {
             Lista <Character> listaLetras = new Lista <>();      // strings  con letras
             String palabra = "";
             listaPosiciones.insertar(113);                    // EN EL MOMENTO NO HAY VERIFICADOR DE POSICION; BORRAR ENTONCES
-            listaLetras.insertar('a');                        //  ' '   '   '   '   '   '   '   '   '   '   '   '   '   '
-            //segun el codigo del arduino interpretarlo para letra y posicion,
+            listaLetras.insertar('a');
             
-            for (Nodo<Character> iteradorDeLetras= listaLetras.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
+//segun el codigo del arduino interpretarlo para letra y posicion,
+            
+            for (Nodo<Character> iteradorDeLetras = listaLetras.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
                 palabra = palabra+iteradorDeLetras.getDato();
             }
             if (listaDiccionario.buscar(palabra)){
