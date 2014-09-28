@@ -1,5 +1,5 @@
 package scrabble.LOGIC;
-import scrabble.LOGIC.Diccionario;
+
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 
@@ -10,7 +10,7 @@ public class Jugador extends Bolsa {
     private int turno;
     private int nTurnosSaltados;
     private String palabra = "";
-    public static Diccionario dic = new Diccionario();
+    //public static Diccionario dic = new Diccionario();
     private Lista<Ficha> _fichas;
     
     public Jugador(){
@@ -21,12 +21,15 @@ public class Jugador extends Bolsa {
         for (int i = 0; i < 7; i++){
             Nodo<Ficha> fichasJugador = super.listaFichas.getAndQuitarElementoAzar();
             _fichas.insertarFinal(fichasJugador.getDato());
-            System.out.println(fichasJugador.getDato().getData());
+            
+            
         }
+        System.out.println(super.listaFichas.getTalla());
         
-        //System.out.println(super.listaFichas.getTalla());
+        
         
     }
+    
     //Es una lista donde se encontraran los valores correspondientes a cada ficha
     public Lista<Ficha> fichasJugador(){        
         return null;
@@ -58,9 +61,7 @@ public class Jugador extends Bolsa {
     public void sumarPuntaje(int pData){
         puntajeJugador = puntajeJugador + pData;
     }
-    public boolean buscarPalabra(String palabra){
-        return dic.diccionario.buscar(palabra);   
-    }
+   
     
 
     
