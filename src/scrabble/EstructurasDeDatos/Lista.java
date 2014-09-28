@@ -54,7 +54,6 @@ public class Lista<E> {
     
     public void insertarFinal(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
-        this.talla++;
         Nodo<E> tmpNodo = cabeza;
         if (tmpNodo == null){
             cabeza = nuevo;
@@ -66,10 +65,13 @@ public class Lista<E> {
             }
             tmpNodo.siguiente = nuevo;
         }
+        this.talla++;
     }
     
       
-    public boolean eliminar(E x){              //tested
+    public boolean eliminar(E x){
+        if (talla == 1) //no se puede eliminar una lista con un nodo
+            return false;//otra solucion posible es apuntar null, head y tail
         Nodo<E> tmp = cabeza, anterior = null;
         boolean res = false;
         while ( tmp != null && !tmp.dato.equals( x ) ){
@@ -115,11 +117,9 @@ public class Lista<E> {
             datoEscogido = datoEscogido.siguiente;
         }
         nodoTmp=datoEscogido;
-        datoEscogido = datoEscogido.getPrevio();
-        datoEscogido.siguiente = datoEscogido.getSiguiente();
-        //datoEscogido = null;
-        this.talla --;
-        return nodoTmp;
+        this.eliminar(datoEscogido.getDato());
+        talla--;
+        return datoEscogido;
     }
     
     
@@ -127,7 +127,7 @@ public class Lista<E> {
         return cabeza;
     }
         
-    //metodo para obtener elemento al azar y eliminarlo 
+    //metodo para obtener elemento al azar solamente
     public Nodo<E> mostrarElementoAzar(){ //muestra solamente 
     
         int posicionAzar = (int )(Math.random() * talla);
@@ -141,46 +141,46 @@ public class Lista<E> {
         return tmp2;
     } 
     
-    public void intercambiarNodos(Nodo<E> a, Nodo<E> b){
+    public void intercambiarNodos(Nodo<E> pNodoA, Nodo<E> pNodoB){
         
-        if (a == b){
+        if (pNodoA == pNodoB){
         return;
         }
-        if (a.siguiente == b) { // contiguos
-            a.siguiente = b.siguiente;
-            b.previo = a.previo;
-            if (a.siguiente != null){
-                a.siguiente.previo = a;
+        if (pNodoA.siguiente == pNodoB) { // contiguos
+            pNodoA.siguiente = pNodoB.siguiente;
+            pNodoB.previo = pNodoA.previo;
+            if (pNodoA.siguiente != null){
+                pNodoA.siguiente.previo = pNodoA;
             }
-            if (b.previo != null){
-                b.previo.siguiente = b;
+            if (pNodoB.previo != null){
+                pNodoB.previo.siguiente = pNodoB;
             }
-            b.siguiente = a;
-            a.previo = b;
+            pNodoB.siguiente = pNodoA;
+            pNodoA.previo = pNodoB;
         }
         else {
-            Nodo p = b.previo;
-            Nodo n = b.siguiente;
-            b.previo = a.previo;
-            b.siguiente = a.siguiente;
-            a.previo = p;
-            a.siguiente = n;
-            if (b.siguiente != null){
-                b.siguiente.previo = b;
+            Nodo p = pNodoB.previo;
+            Nodo n = pNodoB.siguiente;
+            pNodoB.previo = pNodoA.previo;
+            pNodoB.siguiente = pNodoA.siguiente;
+            pNodoA.previo = p;
+            pNodoA.siguiente = n;
+            if (pNodoB.siguiente != null){
+                pNodoB.siguiente.previo = pNodoB;
             }
-            if (b.previo != null){
-                b.previo.siguiente = b;
+            if (pNodoB.previo != null){
+                pNodoB.previo.siguiente = pNodoB;
             }
-            if (a.siguiente != null){
-                a.siguiente.previo = a;
+            if (pNodoA.siguiente != null){
+                pNodoA.siguiente.previo = pNodoA;
             }
-            if (a.previo != null){
-                a.previo.siguiente = a;
+            if (pNodoA.previo != null){
+                pNodoA.previo.siguiente = pNodoA;
             }
         }
     
     }     
-    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){
+    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){//metodo intocable ejemplo de lo que no se deberia hacer no se usa
         Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
         pElementoA.setData(pElementoB.getDato());
         pElementoB.setData(tmpNodo.getDato());

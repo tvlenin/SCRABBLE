@@ -13,17 +13,21 @@ public class CampoTablero {
         this.valorFicha = 0;
         this.descripcion = descrip;
         this.pos = pos;                 //posisicion [1 - 255] 
-        
     }
+
     public int getPosicion(){
         return this.pos;
     }
+    
     public String getDescripcion(){
         return this.descripcion;
     }
+    
     public int getMultiplicador(){
         return this.multiple;
     }
+    
+    
      
     
 }
