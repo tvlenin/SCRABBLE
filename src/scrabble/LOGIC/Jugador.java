@@ -10,7 +10,7 @@ public class Jugador extends Bolsa {
     private int turno;
     private int nTurnosSaltados;
     private String palabra = "";
-    public static Diccionario dic = new Diccionario();
+    //public static Diccionario dic = new Diccionario();
     private Lista<Ficha> _fichas;
     
     public Jugador(){
@@ -61,9 +61,7 @@ public class Jugador extends Bolsa {
     public void sumarPuntaje(int pData){
         puntajeJugador = puntajeJugador + pData;
     }
-    public boolean buscarPalabra(String palabra){
-        return dic.diccionario.buscar(palabra);   
-    }
+   
     
 
     
