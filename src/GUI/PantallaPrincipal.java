@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package GUI;
 
@@ -10,7 +5,7 @@ package GUI;
  *
  * @author fabricio
  */
-public class PantallaPrincipal extends javax.swing.JFrame {
+public class PantallaPrincipal extends javax.swing.JFrame{
 
     /**
      * Creates new form pantalla
@@ -75,7 +70,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(254, 127, 1));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/tablero.gif"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jLabel1.setBorder(null);
         jLabel1.setMaximumSize(new java.awt.Dimension(460, 460));
         jLabel1.setMinimumSize(new java.awt.Dimension(460, 460));
         jLabel1.setPreferredSize(new java.awt.Dimension(460, 460));
