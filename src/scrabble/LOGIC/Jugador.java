@@ -62,7 +62,15 @@ public class Jugador extends Bolsa {
         return dic.diccionario.buscar(palabra);   
     }
     
-
+    public int getTurnosPasados(){
+        return nTurnosSaltados;
+    }
+    
+    public boolean revisarBolsaVacia(){
+        if(bolsaVacia())
+            return true;
+        return false;
+    }
     
     
 }

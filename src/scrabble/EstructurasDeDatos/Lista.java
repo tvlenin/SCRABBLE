@@ -70,8 +70,13 @@ public class Lista<E> {
     
       
     public boolean eliminar(E x){
-        if (talla == 1) //no se puede eliminar una lista con un nodo
-            return false;//otra solucion posible es apuntar null, head y tail
+        if(cabeza == null)
+            return false;
+        if (talla == 1){ //no se puede eliminar una lista con un nodo
+            cabeza = null;
+            cola= null;
+            talla = 0;
+        }
         Nodo<E> tmp = cabeza, anterior = null;
         boolean res = false;
         while ( tmp != null && !tmp.dato.equals( x ) ){
@@ -203,6 +208,9 @@ public class Lista<E> {
         }
     }
     
+    public Nodo<E> getTail(){
+        return cola;
+    }
     public int getTalla(){
         return this.talla;
     } 
