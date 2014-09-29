@@ -7,7 +7,7 @@ import scrabble.EstructurasDeDatos.Lista;
 //import scrabble.LOGIC.Subject;
 
 
-public class LeerTexto extends Observable {
+public class LeerTexto  {
     
     private Lista <String> palabras = new Lista <>();
     
@@ -37,10 +37,10 @@ public class LeerTexto extends Observable {
         }
         //System.out.println(palabras.buscar("dog"));
        
-        super.notificarObservadores();
+        //super.notificarObservadores();
         return palabras;
         }
     
-   
+
     
 }
