@@ -21,13 +21,7 @@ public class Scrabble extends Bolsa {
     public Scrabble(){
         this.TurnosSaltadosSeguidos = 0;
         this.preguntarQuienesJuegan();
-        this.primerTurno(); //verificar que coloque una palabra en la ficha central
-        this.preguntarQuienesJuegan();
-        /*fin del juego 
-            no hay que poner    ~turno sin jugador TODOSx2  ~ 6 pases e impugnaciones de todos  ~la bolsa vacia
-                    
-            -(fichas en el mazo)                            ~sumar al ganador todas las fichas
-        */
+        this.primerTurno();
         }
     
     
@@ -95,14 +89,14 @@ public class Scrabble extends Bolsa {
     
     public void turno(){
         boolean flag = true;
-        while(flag){
+        //while(flag){
             String palabra="perro";
             Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
             Lista<Integer> listaPosiciones = new Lista<>();//lista con todas las posiciones donde se coloco una ficha
             listaPosiciones.insertar(113);
             
             
-        }
+        //}
         if(this.terminoElJuego()){
             this.finJuego();
         }
