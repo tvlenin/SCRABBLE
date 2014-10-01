@@ -24,7 +24,7 @@ public class Jugador extends Bolsa {
             
             
         }
-        System.out.println(super.listaFichas.getTalla());
+        //System.out.println(super.listaFichas.getTalla());
         
         
         
