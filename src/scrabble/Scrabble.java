@@ -65,14 +65,14 @@ public class Scrabble extends Bolsa {
         nodoJugadorConElTurno = listaJugadores.getHead();   
         while(flag){
             
-            String palabra="perro";
+            String palabra="";
             Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
             //lectura del arduino, POS Mazo y POS tablero
             Lista<Integer> listaPosiciones = new Lista<>();
             listaPosiciones.insertar(113);
             
             for (Nodo<Ficha> iteradorDeLetras= listaFichasColocadas.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
-                palabra = palabra+iteradorDeLetras.getDato().getData();
+                palabra = palabra+iteradorDeLetras.getDato().getData();// Conccatena la palabra almacenada en una lista
             }
             if (listaDiccionario.buscar(palabra)){
                 for (Nodo<Integer> iteradorDePos = listaPosiciones.getHead(); iteradorDePos != null; iteradorDePos= iteradorDePos.getSiguiente()){
