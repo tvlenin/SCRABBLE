@@ -127,8 +127,7 @@ public class Scrabble extends Bolsa {
         int bonusPorLetra=1;
         int puntajePalabra= 0;
         while(iteradorFichas != null && iteradorPos != null){
-            bonusPorLetra = 1; 
-            /*
+            bonusPorLetra = 1;
             if( tablero.getDescripcionPosX(iteradorPos.getDato()) == "l" ){
                 bonusPorLetra = tablero.getBonusPosX(iteradorPos.getDato());
             }
@@ -136,7 +135,7 @@ public class Scrabble extends Bolsa {
                 bonusPorPalabra= bonusPorPalabra*tablero.getBonusPosX(iteradorPos.getDato());
             }
             puntajePalabra = puntajePalabra + bonusPorLetra;
-            iteradorFichas = iteradorFichas.getSiguiente(); */
+            iteradorFichas = iteradorFichas.getSiguiente(); 
             iteradorPos = iteradorPos.getSiguiente();
         }
         puntajePalabra = puntajePalabra*bonusPorPalabra;
