@@ -21,7 +21,7 @@ public class Scrabble extends Bolsa {
     public Scrabble(){
         this.TurnosSaltadosSeguidos = 0;
         this.preguntarQuienesJuegan();
-        this.primerTurno();
+        //this.primerTurno();
         }
     
     
@@ -107,6 +107,7 @@ public class Scrabble extends Bolsa {
     }
     
     public void finJuego(){}
+    
     public boolean terminoElJuego(){
         if(TurnosSaltadosSeguidos >= cantidadJugadores*2)
             return true;
@@ -127,6 +128,7 @@ public class Scrabble extends Bolsa {
         int puntajePalabra= 0;
         while(iteradorFichas != null && iteradorPos != null){
             bonusPorLetra = 1; 
+            /*
             if( tablero.getDescripcionPosX(iteradorPos.getDato()) == "l" ){
                 bonusPorLetra = tablero.getBonusPosX(iteradorPos.getDato());
             }
@@ -134,12 +136,10 @@ public class Scrabble extends Bolsa {
                 bonusPorPalabra= bonusPorPalabra*tablero.getBonusPosX(iteradorPos.getDato());
             }
             puntajePalabra = puntajePalabra + bonusPorLetra;
-            iteradorFichas = iteradorFichas.getSiguiente();
+            iteradorFichas = iteradorFichas.getSiguiente(); */
             iteradorPos = iteradorPos.getSiguiente();
         }
         puntajePalabra = puntajePalabra*bonusPorPalabra;
         nodoJugadorConElTurno.getDato().sumarPuntaje(puntajePalabra); 
     }
-    public void verificarFinJuego(){}
-    }
-
+}
