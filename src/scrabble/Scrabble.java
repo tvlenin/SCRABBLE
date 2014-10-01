@@ -10,7 +10,7 @@ import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
 public class Scrabble extends Bolsa {
     
-    private int cantidadJugadores = 1;
+    private int cantidadJugadores = 2;
     private Lista <Jugador> listaJugadores = new Lista<>();
     private LeerTexto leer = new LeerTexto();
     private Tablero tablero = new Tablero();
@@ -21,13 +21,7 @@ public class Scrabble extends Bolsa {
     public Scrabble(){
         this.TurnosSaltadosSeguidos = 0;
         this.preguntarQuienesJuegan();
-        this.primerTurno(); //verificar que coloque una palabra en la ficha central
-        this.preguntarQuienesJuegan();
-        /*fin del juego 
-            no hay que poner    ~turno sin jugador TODOSx2  ~ 6 pases e impugnaciones de todos  ~la bolsa vacia
-                    
-            -(fichas en el mazo)                            ~sumar al ganador todas las fichas
-        */
+        this.primerTurno();
         }
     
     
@@ -80,7 +74,8 @@ public class Scrabble extends Bolsa {
                         asignarPtjJugador( listaFichasColocadas.getHead(), listaPosiciones.getHead());
                         
                         this.asignarPtjJugador(listaFichasColocadas.getHead(), listaPosiciones.getHead());
-                        //quitar las fichas que coloco el jugador, añadir ptj respectivo y colocar en el tablero
+                        
+                        //quitar las fichas que coloco el jugador y colocar en el tablero
                         nodoJugadorConElTurno = nodoJugadorConElTurno.getSiguiente();
                         this.turno();
                         flag = false;
@@ -93,7 +88,35 @@ public class Scrabble extends Bolsa {
     }
     
     public void turno(){
-        
+        boolean flag = true;
+        //while(flag){
+            String palabra="perro";
+            Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
+            Lista<Integer> listaPosiciones = new Lista<>();//lista con todas las posiciones donde se coloco una ficha
+            listaPosiciones.insertar(113);
+            
+            
+        //}
+        if(this.terminoElJuego()){
+            this.finJuego();
+        }
+        if (nodoJugadorConElTurno == listaJugadores.getTail())
+            nodoJugadorConElTurno = listaJugadores.getHead();
+        else
+            nodoJugadorConElTurno = nodoJugadorConElTurno.getSiguiente();
+    }
+    
+    public void finJuego(){}
+    public boolean terminoElJuego(){
+        if(TurnosSaltadosSeguidos >= cantidadJugadores*2)
+            return true;
+        for (Nodo<Jugador> iterador = listaJugadores.getHead(); iterador != null; iterador = iterador.getSiguiente()){
+            if(iterador.getDato().getTurnosPasados() < 6)
+                return false;
+        }
+        if (nodoJugadorConElTurno.getDato().revisarBolsaVacia())
+            return true;
+        return false;
     }
     
     //solo en caso de que se coloque una palabra correctamente se llama a este metodo

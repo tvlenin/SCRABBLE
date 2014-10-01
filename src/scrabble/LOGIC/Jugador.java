@@ -63,7 +63,15 @@ public class Jugador extends Bolsa {
     }
    
     
-
+    public int getTurnosPasados(){
+        return nTurnosSaltados;
+    }
+    
+    public boolean revisarBolsaVacia(){
+        if(bolsaVacia())
+            return true;
+        return false;
+    }
     
     
 }

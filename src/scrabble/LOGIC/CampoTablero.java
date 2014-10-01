@@ -7,22 +7,29 @@ public class CampoTablero {
     private String descripcion;
     private int pos;            //posicion respecto al tablero
     
-    public CampoTablero( int pos, int multiplicador, String descrip){
-        this.multiple = multiplicador;
+    public CampoTablero( int pPos, int pMultiplicador, String pDescrip){
+        this.multiple = pMultiplicador;
         this.ficha = null;
         this.valorFicha = 0;
-        this.descripcion = descrip;
-        this.pos = pos;                 //posisicion [1 - 255] 
+        this.descripcion = pDescrip;
+        this.pos = pPos;                 //posisicion [1 - 255] 
     }
 
     public int getPosicion(){
         return this.pos;
     }
     
+    public void ponerFicha(Ficha pFicha){
+        this.ficha = pFicha.getData();
+    }
     public String getDescripcion(){
         return this.descripcion;
     }
-    
+    public boolean tieneFichaAlready(){
+        if(descripcion == null )
+            return false;
+        return true;
+    }
     public int getMultiplicador(){
         return this.multiple;
     }

@@ -44,7 +44,6 @@ public class Tablero {
         resp = iteradorPosTablero.getDato().getMultiplicador();
         return resp;
     }
-    
     public String getDescripcionPosX(int pPosicion){//necesaria para mostrar el bonus en x posicion
         String resp ="";
         Nodo<CampoTablero> iteradorPosTablero = tablero.getHead();

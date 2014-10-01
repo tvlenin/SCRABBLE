@@ -31,6 +31,12 @@ public abstract class Bolsa extends LeerTexto implements Observador {
         return ptSorteoTurnos;
     }*/
     
+    public boolean bolsaVacia(){
+        if (listaFichas.getTalla() == 0)
+            return true;
+        return false;
+    }
+    
     @Override
     public void actualizar() {
         //System.out.println("Te observo");
