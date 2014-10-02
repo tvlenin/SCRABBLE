@@ -4,7 +4,6 @@ import scrabble.DATAIO.*;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
-
 import scrabble.LOGIC.Ficha;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
@@ -23,7 +22,6 @@ public class Scrabble extends Bolsa {
         this.preguntarQuienesJuegan();
         //this.primerTurno();
         }
-    
     
     public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
@@ -58,7 +56,6 @@ public class Scrabble extends Bolsa {
         boolean flag = true; //mientras no se coloque una palabra en la posicion correcta no se comienza.
         nodoJugadorConElTurno = listaJugadores.getHead();   
         while(flag){
-            
             String palabra="perro";
             Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
             //lectura del arduino, POS Mazo y POS tablero

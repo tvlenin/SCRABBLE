@@ -20,7 +20,7 @@ public abstract class Bolsa extends LeerTexto implements Observador {
             String [] letra = tmpDataLista.getDato().split("_");
             Ficha ficha = new Ficha(Integer.parseInt(letra[0]),letra[1]);
             
-            listaFichas.insertar(ficha);
+            listaFichas.insertarFinal(ficha);
             tmpDataLista = tmpDataLista.getSiguiente();           
         }
     }

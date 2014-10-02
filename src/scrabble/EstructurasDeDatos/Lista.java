@@ -28,13 +28,25 @@ public class Lista<E> {
         else{
             cabeza.previo = nuevo;
         }
-        
         nuevo.siguiente = cabeza;
         nuevo.previo = null;
         cabeza = nuevo;
         this.talla++;
     }
     
+    public void insertarFinal(E pData) {
+        Nodo<E> nuevo = new Nodo<>(pData);
+        if( talla == 0){
+            cabeza = nuevo;
+        }
+        else{
+            cola.siguiente = nuevo;
+        }
+        nuevo.previo = cola;
+        nuevo.siguiente = null;
+        cola = nuevo;
+        talla++;
+    }
     public void insertarEnMedio( E pData, Nodo<E> pNodoPrevio){
         if (pNodoPrevio == cabeza){
             System.out.println("En vez de 'insertarEnMedio' utilice (insertar || insertarAuto) ");
@@ -49,25 +61,7 @@ public class Lista<E> {
         nodoTmp.previo = nuevoNodo;
         
         this.talla++;
-        
     }
-    
-    public void insertarFinal(E x) {
-        Nodo<E> nuevo = new Nodo<>(x);
-        Nodo<E> tmpNodo = cabeza;
-        if (tmpNodo == null){
-            cabeza = nuevo;
-        }
-        else {
-            
-            while ( tmpNodo.siguiente != null ) {
-            tmpNodo = tmpNodo.siguiente;
-            }
-            tmpNodo.siguiente = nuevo;
-        }
-        this.talla++;
-    }
-    
       
     public boolean eliminar(E x){
         if(cabeza == null)
@@ -107,7 +101,6 @@ public class Lista<E> {
         for ( Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente ) {
             if ( x.equals(tmp.dato) ) {
             resp = true;
-            
             }
         }    
         return resp;
@@ -124,7 +117,7 @@ public class Lista<E> {
         nodoTmp=datoEscogido;
         this.eliminar(datoEscogido.getDato());
         talla--;
-        return datoEscogido;
+        return nodoTmp;
     }
     
     
