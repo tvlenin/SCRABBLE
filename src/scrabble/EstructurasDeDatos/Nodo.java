@@ -6,7 +6,7 @@ package scrabble.EstructurasDeDatos;
  * @author abrahamon
  */
 public class Nodo<E>{
-    E dato;
+    E dato; //Dato que se colocara como un nodo en una lista
     Nodo<E> siguiente;
     Nodo<E> previo;
     

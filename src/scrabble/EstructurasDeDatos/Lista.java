@@ -9,7 +9,7 @@ public class Lista<E> {
 
     protected Nodo<E> cabeza;
     protected Nodo<E> cola;
-    protected int talla;
+    protected int talla; //Almacena la cantidad de elementos que se encuentren en una lista
     
     /**
      * Metodo constructor de la clase Lista, que se utiliza para inicializar la lista de elementos.

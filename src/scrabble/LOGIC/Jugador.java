@@ -11,8 +11,8 @@ import scrabble.EstructurasDeDatos.Nodo;
  */
 public class Jugador extends Bolsa {
     
-    private int ptSorteoTurnos;
-    private int turno;
+    private int ptSorteoTurnos; //Almacena el puntaje que obtienen los jugadores cuando se hace la rifa
+    private int turno; //Almacena el numero del turno
 
     /**
      * Metodo constructor de la clase Jugador en el que se crea una lista para almacenar las fichas de cada jugador,

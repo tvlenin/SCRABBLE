@@ -6,9 +6,9 @@ package scrabble.LOGIC;
  */
 public class Ficha{
     
-   private String valor; 
+   private String valor;  //Almacena el valor que posee una ficha
    
-   private int puntaje;
+   private int puntaje; //Almacena el puntaje que poseen las fichas
 
    /**
     * Metodo en el que se le asigna un valor a una ficha y tambien se le asigna la puntuacion correspondiente.
