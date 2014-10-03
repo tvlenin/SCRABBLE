@@ -3,7 +3,11 @@ package scrabble.LOGIC;
 public class Ficha{
    private String valor; 
    private int puntaje;
-
+  
+   /**
+ * Clase en la que se analizaran algunos datos referentes a las fichas del juego
+ * @author abrahamon
+ */
    public Ficha(int puntaje, String valor){
        
        this.puntaje = puntaje;
