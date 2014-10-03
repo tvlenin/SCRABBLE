@@ -9,7 +9,10 @@ import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import java.util.Enumeration;
  
- 
+/**
+ * Clase en la que se manejan las operaciones relacionadas con los datos del Arduino
+ * @author tvlenin
+ */ 
 public class IOArduino implements SerialPortEventListener {
     private int columna;
     private int fila;

@@ -8,6 +8,12 @@ import scrabble.LOGIC.Bolsa;
 import scrabble.LOGIC.Ficha;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
+
+/**
+ * Clase en la que se manejara todos los aspectos relacionados con el funcionamiento del juego, como
+ * Los turnos del juego, los puntajes de los jugadores y verificar cuantos jugadores participaran
+ * @author abrahamon
+ */
 public class Scrabble extends Bolsa {
     
     private int cantidadJugadores = 2;
@@ -18,6 +24,12 @@ public class Scrabble extends Bolsa {
     Lista<String> listaDiccionario = leer("es_CR.dic");
     private int TurnosSaltadosSeguidos;
     
+    
+    /**
+     * Metodo constructor de la clase Scrabble, en donde se pregunta la cantidad de jugadores que participaran, 
+     * Se inicia el primer turno del juego y tambien se inician los turnos siguientes.
+     * @author abrahamon
+     */
     public Scrabble(){
         this.TurnosSaltadosSeguidos = 0;
         this.preguntarQuienesJuegan();
@@ -25,6 +37,12 @@ public class Scrabble extends Bolsa {
         }
     
     
+    /**
+     * Metodo en el que se verifica la cantidad de jugadores que participaran en el juego,
+     * Se realiza una rifa de fichas para establecer el orden en el que realizara el juego 
+     * Y ordena a los jugadores de acuerdo al orden establecido por la ficha
+     * @abrahamon
+     */
     public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
@@ -54,6 +72,12 @@ public class Scrabble extends Bolsa {
         } 
     }
     
+    
+    /**
+     * Metodo que se ejecuta cuando se inicia el juego, para verificar que en el primer turno,
+     * Se cumplan los aspectos necesarios para que este pueda ser valido.
+     * @author abrahamon
+     */
     public void primerTurno(){
         boolean flag = true; //mientras no se coloque una palabra en la posicion correcta no se comienza.
         nodoJugadorConElTurno = listaJugadores.getHead();   
@@ -83,10 +107,14 @@ public class Scrabble extends Bolsa {
                 }
             }  
         }
-        System.out.println("Mal colocada la primera ficha, voler colocar");
+        System.out.println("La primera ficha esta colocada incorrectamente, volver a colocarla en otra casilla");
         this.primerTurno();   
     }
     
+    
+    /**
+     * 
+     */
     public void turno(){
         boolean flag = true;
         //while(flag){

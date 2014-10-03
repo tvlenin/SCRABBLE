@@ -34,37 +34,37 @@ public class PantallaPrincipal extends javax.swing.JFrame{
         setMinimumSize(new java.awt.Dimension(522, 614));
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P3_Opaco.gif"))); // NOI18N
         jLabel2.setText("jLabel2");
-        jLabel2.setMaximumSize(new java.awt.Dimension(30, 30));
-        jLabel2.setMinimumSize(new java.awt.Dimension(30, 30));
-        jLabel2.setPreferredSize(new java.awt.Dimension(30, 30));
+        jLabel2.setMaximumSize(new java.awt.Dimension(29, 29));
+        jLabel2.setMinimumSize(new java.awt.Dimension(29, 29));
+        jLabel2.setPreferredSize(new java.awt.Dimension(29, 29));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(240, 0, 32, 32);
+        jLabel2.setBounds(240, 0, 29, 29);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P2_Opaco.gif"))); // NOI18N
         jLabel3.setText("jLabel2");
-        jLabel3.setMaximumSize(new java.awt.Dimension(30, 30));
-        jLabel3.setMinimumSize(new java.awt.Dimension(30, 30));
-        jLabel3.setPreferredSize(new java.awt.Dimension(30, 30));
+        jLabel3.setMaximumSize(new java.awt.Dimension(29, 29));
+        jLabel3.setMinimumSize(new java.awt.Dimension(29, 29));
+        jLabel3.setPreferredSize(new java.awt.Dimension(29, 29));
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(490, 240, 32, 32);
+        jLabel3.setBounds(490, 240, 29, 29);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P4_Opaco.gif"))); // NOI18N
         jLabel4.setText("jLabel2");
-        jLabel4.setMaximumSize(new java.awt.Dimension(30, 30));
-        jLabel4.setMinimumSize(new java.awt.Dimension(30, 30));
-        jLabel4.setPreferredSize(new java.awt.Dimension(30, 30));
+        jLabel4.setMaximumSize(new java.awt.Dimension(29, 29));
+        jLabel4.setMinimumSize(new java.awt.Dimension(29, 29));
+        jLabel4.setPreferredSize(new java.awt.Dimension(29, 29));
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 240, 32, 32);
+        jLabel4.setBounds(0, 240, 29, 29);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/A.GIF"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/P1_Opaco.gif"))); // NOI18N
         jLabel5.setText("jLabel2");
         jLabel5.setMaximumSize(new java.awt.Dimension(30, 30));
         jLabel5.setMinimumSize(new java.awt.Dimension(30, 30));
         jLabel5.setPreferredSize(new java.awt.Dimension(30, 30));
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(240, 490, 32, 32);
+        jLabel5.setBounds(240, 480, 32, 32);
 
         lblCarcaj.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/carcaj.png"))); // NOI18N
         lblCarcaj.setText("jLabel6");
@@ -79,11 +79,11 @@ public class PantallaPrincipal extends javax.swing.JFrame{
         jLabel1.setBackground(new java.awt.Color(254, 127, 1));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Imagenes/tablero.gif"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jLabel1.setMaximumSize(new java.awt.Dimension(460, 460));
-        jLabel1.setMinimumSize(new java.awt.Dimension(460, 460));
-        jLabel1.setPreferredSize(new java.awt.Dimension(460, 460));
+        jLabel1.setMaximumSize(new java.awt.Dimension(455, 454));
+        jLabel1.setMinimumSize(new java.awt.Dimension(455, 454));
+        jLabel1.setPreferredSize(new java.awt.Dimension(455, 454));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 460, 460);
+        jLabel1.setBounds(30, 30, 455, 454);
         jLabel1.getAccessibleContext().setAccessibleName("lblTablero");
 
         pack();
