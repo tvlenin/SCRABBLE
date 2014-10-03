@@ -15,6 +15,7 @@ import java.util.Enumeration;
 public class IOArduino implements SerialPortEventListener {
     private int columna;
     private int fila;
+    private int ultimoBoton;
     
     //lista con los observadores
   
@@ -44,7 +45,6 @@ private static final String PORT_NAMES[] = {
  private static final int DATA_RATE = 9600;
  
  public void initialize() {
-  System.out.println("ARDUINO HACIENDO DE LAS ");
   CommPortIdentifier portId = null;
   Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
  
@@ -81,6 +81,10 @@ private static final String PORT_NAMES[] = {
    // add event listeners
    serialPort.addEventListener(this);
    serialPort.notifyOnDataAvailable(true);
+   
+   //System.out.println("COMENCE EL WHILE TRUE EN SERAL EVENT");
+   this.serialEvent();//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+   
   } catch (Exception e) {
    System.err.println(e.toString());
   }
@@ -101,104 +105,44 @@ private static final String PORT_NAMES[] = {
   * Handle an event on the serial port. Read the data and print it.
      * @param oEvent
   */
- public synchronized void serialEvent() {
- // if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-   try {
-        while (true){
-            valorArduino = input.readLine();
+ public synchronized void serialEvent() {//
+     
+ //if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+     try {
+         //while (true){
+             valorArduino = input.readLine();
+             if (valorArduino.contains(",")){
+                 //System.out.println(valorArduino);
+                 String valores[] = valorArduino.split(",");
+                 this.columna = Integer.parseInt(valores[0]);
+                 this.fila = Integer.parseInt(valores[1]);
 
-            
-        if (valorArduino.contains(",")){
-            System.out.println(valorArduino);
-            String valores[] = valorArduino.split(",");
-            this.columna = Integer.parseInt(valores[0]);
-            this.fila = Integer.parseInt(valores[1]);
-
-        }
-         if (valorArduino.contentEquals("10")){
-            System.out.println("10");
+                }
+             else{
+                 ultimoBoton = Integer.parseInt(valorArduino);
+                 }
             return;
-            
-        
-        }
-          if (valorArduino.contentEquals("9")){
-            System.out.println("9");
-            return;
-            
-        
-        }
-           if (valorArduino.contentEquals("8")){
-            System.out.println("8");
-            return;
-            
-        
-        }
-        
-        if (valorArduino.contentEquals("7")){
-            System.out.println("7");
-            return;
-            
-        
-        }
-        if (valorArduino.contentEquals("6")){
-            System.out.println("6");
-            return;
-            
-        
-        }
-        if (valorArduino.contentEquals("5")){
-            System.out.println("5");
-            return;
-            
-        
-        }
-           if (valorArduino.contentEquals("4")){
-            System.out.println("4");
-            return;
-            
-        
-        }
-            if (valorArduino.contentEquals("3")){
-            System.out.println("3");
-            return;
-            
-        
-        }
-             if (valorArduino.contentEquals("2")){
-            System.out.println("2");
-            return;
-            
-        
-        }
-              if (valorArduino.contentEquals("1")){
-            System.out.println("1");
-            return;
-            
-        
-        }
-        }
-    
-    
-    
-    
-   } catch (Exception e) {
+        //}
+   } catch (Exception e) {   
     System.err.println(e.toString());
-   //}
-  }
+  //}
   // Ignore all the other eventTypes, but you should consider the other ones.
  }
+ }
     public String getParOrdenado(){
-        //this.initialize();
-     return fila+"."+columna;
+     this.serialEvent();
+     System.out.println(fila);
+     System.out.println(columna);
+     return fila+","+columna;
     }
 
     @Override
     public void serialEvent(SerialPortEvent spe) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    public String getDato(){
+    public int getUltimoBotonP(){
         this.serialEvent();
-        return this.valorArduino;
+        return this.ultimoBoton;
     }
  
 }

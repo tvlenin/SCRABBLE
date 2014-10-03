@@ -166,46 +166,71 @@ public class Lista<E> {
         return tmp2;
     } 
     
-    public void intercambiarNodos(Nodo<E> pNodoA, Nodo<E> pNodoB){
+    public void intercambiarNodos(Nodo<E> node1, Nodo<E> node2){
         
-        if (pNodoA == pNodoB){
+        if (node1 == node2){
         return;
         }
-        if (pNodoA.siguiente == pNodoB) { // contiguos
-            pNodoA.siguiente = pNodoB.siguiente;
-            pNodoB.previo = pNodoA.previo;
-            if (pNodoA.siguiente != null){
-                pNodoA.siguiente.previo = pNodoA;
-            }
-            if (pNodoB.previo != null){
-                pNodoB.previo.siguiente = pNodoB;
-            }
-            pNodoB.siguiente = pNodoA;
-            pNodoA.previo = pNodoB;
+        Nodo temp;
+        temp = node1.siguiente;
+        node1.siguiente = node2.siguiente;
+        node2.siguiente = temp;
+        if (node1.siguiente != null)
+            node1.siguiente.previo = node1;
+        if (node2.siguiente != null)
+            node2.siguiente.previo = node2;
+        temp = node1.previo;
+        node1.previo = node2.previo;
+        node2.previo = temp;
+        if (node1.previo != null)
+            node1.previo.siguiente = node1;
+        if (node2.previo == null)
+            return ;
+        node2.previo.siguiente = node2;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*Nodo<E> p = pNodoB.previo;
+        Nodo<E> n = pNodoB.siguiente;
+        Nodo<E> z = pNodoA.siguiente;
+        Nodo<E> x = pNodoA.previo;
+        pNodoB.previo = pNodoA.previo;
+        pNodoB.siguiente = pNodoA.siguiente;
+        pNodoA.previo = p;
+        pNodoA.siguiente = n;
+        p.siguiente = pNodoB;
+        z.previo = pNodoB;
+        if (pNodoB.siguiente != null){
+            pNodoB.siguiente.previo = pNodoB;
         }
-        else {
-            Nodo p = pNodoB.previo;
-            Nodo n = pNodoB.siguiente;
-            pNodoB.previo = pNodoA.previo;
-            pNodoB.siguiente = pNodoA.siguiente;
-            pNodoA.previo = p;
-            pNodoA.siguiente = n;
-            if (pNodoB.siguiente != null){
-                pNodoB.siguiente.previo = pNodoB;
-            }
-            if (pNodoB.previo != null){
-                pNodoB.previo.siguiente = pNodoB;
-            }
-            if (pNodoA.siguiente != null){
-                pNodoA.siguiente.previo = pNodoA;
-            }
-            if (pNodoA.previo != null){
-                pNodoA.previo.siguiente = pNodoA;
-            }
+        if (pNodoB.previo != null){
+            pNodoB.previo.siguiente = pNodoB;
         }
-    
+        if (pNodoA.siguiente != null){
+            pNodoA.siguiente.previo = pNodoA;
+        }
+        if (pNodoA.previo != null){
+            pNodoA.previo.siguiente = pNodoA;
+        }
+    */
     }     
-    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){//metodo intocable ejemplo de lo que no se deberia hacer no se usa
+    public void intercambiarDataNOUSAR(Nodo<E> pElementoA, Nodo<E> pElementoB){//metodo intocable ejemplo de lo que no se deberia hacer no se usa
         Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
         pElementoA.setData(pElementoB.getDato());
         pElementoB.setData(tmpNodo.getDato());
@@ -223,7 +248,7 @@ public class Lista<E> {
                 cambiandoNodoB = cambiandoNodoB.getSiguiente();
                 posicionAzar--;
             }
-            this.intercambiarData(cambiandoNodoA, cambiandoNodoB);
+            this.intercambiarDataNOUSAR(cambiandoNodoA, cambiandoNodoB);
             cambiandoNodoA = cambiandoNodoA.getSiguiente();
         }
     }

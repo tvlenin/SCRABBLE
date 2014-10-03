@@ -34,7 +34,7 @@ public class Scrabble extends Bolsa {
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
         
-        int nJugadoresCreados = Integer.parseInt(ardu.getDato());
+        int nJugadoresCreados = ardu.getUltimoBotonP();
         //System.out.println(nJugadoresCreados);
         Jugador jugadorNuevo;
         
@@ -54,35 +54,50 @@ public class Scrabble extends Bolsa {
                     iterador = listaJugadores.getHead();
                     
                 }if(iterador.getDato().getNumeroIndicaTurno() < nodoComparar.getDato().getNumeroIndicaTurno()){
-                    listaJugadores.intercambiarData(iterador, nodoComparar);
+                    listaJugadores.intercambiarDataNOUSAR(iterador, nodoComparar);
                 }
                 nodoComparar= nodoComparar.getSiguiente();
             }
             iterador = iterador.getSiguiente();
-        } 
+        }
+//        System.out.println(nodoJugadorConElTurno.getDato().getListaFichas().getHead().getDato().getCharData());
+//        System.out.println(nodoJugadorConElTurno.getDato().getListaFichas().getHead().getSiguiente().getDato().getCharData());
+//        System.out.println(nodoJugadorConElTurno.getDato().getListaFichas().getHead().getSiguiente().getSiguiente().getDato().getCharData());
+//        System.out.println(nodoJugadorConElTurno.getDato().getListaFichas().getHead().getSiguiente().getSiguiente().getSiguiente().getDato().getCharData());
+//        System.out.println(nodoJugadorConElTurno.getDato().getListaFichas().getHead().getSiguiente().getSiguiente().getSiguiente().getSiguiente().getDato().getCharData());
+//        System.out.println(nodoJugadorConElTurno.getDato().getListaFichas().getHead().getSiguiente().getSiguiente().getSiguiente().getSiguiente().getSiguiente().getDato().getCharData());
+//        System.out.println(nodoJugadorConElTurno.getDato().getListaFichas().getHead().getSiguiente().getSiguiente().getSiguiente().getSiguiente().getSiguiente().getSiguiente().getDato().getCharData());
+//        
+//System.out.println("termine de pregunta quenes juegan");
     }
     
     public void primerTurno(){
-        
         boolean flag = true; //mientras no se coloque una palabra en la posicion correcta no se comienza.
         nodoJugadorConElTurno = listaJugadores.getHead();
-        String inputArduino = "";
-        for(int nletras=0; inputArduino != "9" ;nletras++){
-            System.out.println(ardu.getParOrdenado());
+        int inputArduino = 0;
+        Lista<Integer> listaPosiciones = new Lista<>();
+        Lista<String> listaPares = new Lista<>();
+        
+        while(inputArduino != 9){
+            String a = ardu.getParOrdenado();
+            inputArduino = ardu.getUltimoBotonP();
+            System.out.println(a);
+            listaPosiciones.insertarFinal(inputArduino);
+            listaPares.insertar(a);
         }
         
         while(flag){
-            
-            
-            String palabra="";
+            String palabra = "";
             Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
-            //lectura del arduino, POS Mazo y POS tablero
-            Lista<Integer> listaPosiciones = new Lista<>();
-            listaPosiciones.insertar(113);
             
-            for (Nodo<Ficha> iteradorDeLetras= listaFichasColocadas.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
-                palabra = palabra+iteradorDeLetras.getDato().getData();// Conccatena la palabra almacenada en una lista
+            for(Nodo<Integer> iteradorPos= listaPosiciones.getHead(); iteradorPos != null; iteradorPos = iteradorPos.getSiguiente()){
+                Nodo<Ficha> iterador = nodoJugadorConElTurno.getDato().getListaFichas().getDato();
+                for(int a = 0;  a <= iteradorPos.getDato(); a++ ){
+                    iterador = iterador.getSiguiente();
+                }
+                palabra = palabra+ iterador.getDato().getCharData();
             }
+            System.out.println(palabra);
             if (listaDiccionario.buscar(palabra)){
                 for (Nodo<Integer> iteradorDePos = listaPosiciones.getHead(); iteradorDePos != null; iteradorDePos= iteradorDePos.getSiguiente()){
                     if (iteradorDePos.getDato() == 133){
@@ -103,6 +118,7 @@ public class Scrabble extends Bolsa {
     }
     
     public void turno(){
+        System.out.println("llegue a turno");
         boolean flag = true;
         //while(flag){
             String palabra="perro";
