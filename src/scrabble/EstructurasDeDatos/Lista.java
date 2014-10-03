@@ -57,7 +57,14 @@ public class Lista<E> {
     
     
     
-      
+    /**
+     * Metodo que se utiliza para eliminar un dato "x" de una lista,
+     * Si el dato a eliminar se encuentra en la lista este sera eliminado y se retornara true,
+     * De lo contrario se retornara false al no encontrar el dato en la lista.
+     * @param x Dato que sera buscado en la lista y de ser encontrado se procede a eliminar dicho dato.
+     * @return res Si el dato es eliminado satisfactoriamente returna true, si no se encuentra retorna false.
+     * @author abrahamon
+     */  
     public boolean eliminar(E x){
         if(cabeza == null)
             return false;
@@ -186,10 +193,23 @@ public class Lista<E> {
             if (pNodoA.previo != null){
                 pNodoA.previo.siguiente = pNodoA;
             }
-        }*/
-    }     
-       
-    /*public void mezclarTodosLosNodos(){
+        }
+    
+    }
+    
+    
+    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){//metodo intocable ejemplo de lo que no se deberia hacer no se usa
+        Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
+        pElementoA.setData(pElementoB.getDato());
+        pElementoB.setData(tmpNodo.getDato());
+    }
+        
+
+    /**
+     * Metodo por el cual se realiza una mezcla de todos los nodos que se encuentran en una lista
+     * @author abrahamon
+     */
+    public void mezclarTodosLosNodos(){
         Nodo<E> cambiandoNodoA = cabeza;
         Nodo<E> cambiandoNodoB;
         
@@ -205,9 +225,20 @@ public class Lista<E> {
         }
     }*/
     
+    /**
+     * Metodo por medio del cual se puede conocer el valor del dato que se encuentra al final de una lista
+     * @return cola Valor que posee el nodo que se encuentra al final de una lista
+     * @author abrahamon
+     */
     public Nodo<E> getTail(){
         return cola;
     }
+    
+    /**
+     * Metodo para recibir la cantidad total de elementos que se encuentren en una lista
+     * @return talla Cantidad elementos que se encuentren en una lista
+     * @author abrahamon
+     */
     public int getTalla(){
         return this.talla;
     } 

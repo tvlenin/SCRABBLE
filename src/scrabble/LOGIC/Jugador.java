@@ -13,6 +13,11 @@ public class Jugador extends Bolsa {
     //public static Diccionario dic = new Diccionario();
     private Lista<Ficha> _fichas;
     
+    
+    /**
+     * Metodo contructor de la clase Jugador en el que se asignan valores a algunas variables que se utilizaran en otros metodos
+     * @author abrahamon
+     */
     public Jugador(){
         nTurnosSaltados = 0;
         ptSorteoTurnos = 0;
