@@ -10,6 +10,7 @@ public abstract class Bolsa extends LeerTexto implements Observador {
     LeerTexto fichas = new LeerTexto();
     
     Lista <Ficha> listaFichas = new Lista <>();
+    
     public Bolsa(){
         Lista <String> listaLecturaDeFichasTxt = fichas.leer("FICHAS.TXT");
         
@@ -24,13 +25,7 @@ public abstract class Bolsa extends LeerTexto implements Observador {
             tmpDataLista = tmpDataLista.getSiguiente();           
         }
     }
-    /*
-    public int sacarFichaParaSorteo(){
-        char letraObetenida = listaFichas.mostrarElementoAzar().getDato().getCharData();
-        int ptSorteoTurnos =(int)letraObetenida;
-        return ptSorteoTurnos;
-    }*/
-    
+        
     public boolean bolsaVacia(){
         if (listaFichas.getTalla() == 0)
             return true;

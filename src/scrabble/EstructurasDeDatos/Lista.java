@@ -12,14 +12,6 @@ public class Lista<E> {
         talla = 0;
     }
     
-    public void insertarAuto(E pData){ //si la lista esta vacia realiza un insertar, sino inserta al final
-        if (talla == 0){
-            this.insertar(pData);
-        }
-        else{
-            this.insertarFinal(pData);
-        }
-    }
     public void insertar(E pData){
         Nodo<E> nuevo = new Nodo<>(pData);        
         if (talla == 0 ){
@@ -116,7 +108,6 @@ public class Lista<E> {
         }
         nodoTmp=datoEscogido;
         this.eliminar(datoEscogido.getDato());
-        talla--;
         return nodoTmp;
     }
     
@@ -140,10 +131,9 @@ public class Lista<E> {
     } 
     
     public void intercambiarNodos(Nodo<E> pNodoA, Nodo<E> pNodoB){
-        
-        if (pNodoA == pNodoB){
-        return;
-        }
+        if ( pNodoA == pNodoB )
+            return;
+        Nodo<E> tmpNodo = pNodoA;
         if (pNodoA.siguiente == pNodoB) { // contiguos
             pNodoA.siguiente = pNodoB.siguiente;
             pNodoB.previo = pNodoA.previo;
@@ -176,16 +166,9 @@ public class Lista<E> {
                 pNodoA.previo.siguiente = pNodoA;
             }
         }
-    
     }     
-    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){//metodo intocable ejemplo de lo que no se deberia hacer no se usa
-        Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
-        pElementoA.setData(pElementoB.getDato());
-        pElementoB.setData(tmpNodo.getDato());
-    }
-        
-
-    public void mezclarTodosLosNodos(){
+       
+    /*public void mezclarTodosLosNodos(){
         Nodo<E> cambiandoNodoA = cabeza;
         Nodo<E> cambiandoNodoB;
         
@@ -196,10 +179,10 @@ public class Lista<E> {
                 cambiandoNodoB = cambiandoNodoB.getSiguiente();
                 posicionAzar--;
             }
-            this.intercambiarData(cambiandoNodoA, cambiandoNodoB);
+            this.intercambiarNodos(cambiandoNodoA, cambiandoNodoB);
             cambiandoNodoA = cambiandoNodoA.getSiguiente();
         }
-    }
+    }*/
     
     public Nodo<E> getTail(){
         return cola;

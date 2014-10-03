@@ -26,9 +26,7 @@ public class LeerTexto  {
                         String [] pala = strLinea.split("/");
                         strLinea = pala[0];
                     }
-                    palabras.insertar(strLinea);
-                    //System.out.println(strLinea);
-
+                    palabras.insertarFinal(strLinea);
                 }
             //fileDir.close();
         }catch (IOException e){ //Catch de excepciones
