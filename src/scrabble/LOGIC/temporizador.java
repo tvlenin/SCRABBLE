@@ -4,8 +4,9 @@ package scrabble.LOGIC;
  *
  * @author Abrahamon
  */
-public class temporizador extends Thread{
-    
-    public void run(){}
+public class temporizador {
+
+    public temporizador(){}
+    public void contar(){}
     
 }
