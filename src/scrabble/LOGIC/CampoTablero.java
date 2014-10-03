@@ -10,7 +10,7 @@ public class CampoTablero {
     private int valorFicha;     //valor que tenga la letra que se coloco en este campo
     private String descripcion;
     private int pos;            //posicion respecto al tablero
-    
+     
     /**
      * Metodo constructor de la clase CampoTablero, en el cual se evaluan los aspecto relacionados con los espacios del tablero,
      * Ya sea si el espacio se encuentra disponible, si el espacio cuenta con alguna bonificacion
