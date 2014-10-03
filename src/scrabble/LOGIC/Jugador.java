@@ -21,10 +21,11 @@ public class Jugador extends Bolsa {
         for (int i = 0; i < 7; i++){
             Nodo<Ficha> fichasJugador = super.listaFichas.getAndQuitarElementoAzar();
             _fichas.insertarFinal(fichasJugador.getDato());
+            //System.out.println(_fichas.getTail().getDato().getData());
             
             
         }
-        //System.out.println(super.listaFichas.getTalla());
+        
         
         
         
@@ -55,7 +56,7 @@ public class Jugador extends Bolsa {
     }
    
     public Lista<Ficha> getListaFichas(){
-        return listaFichas;
+        return _fichas;
     }
     
     public void sumarPuntaje(int pData){

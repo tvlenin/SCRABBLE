@@ -1,6 +1,5 @@
-
 package Patrones;
 
-public interface Observador {
-    public void actualizar();
+public interface Observer {
+	public void update(Subject s);
 }

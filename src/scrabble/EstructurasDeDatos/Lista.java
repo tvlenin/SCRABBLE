@@ -53,7 +53,27 @@ public class Lista<E> {
     }
     
     public void insertarFinal(E x) {
+        
+        
         Nodo<E> nuevo = new Nodo<>(x);
+        if( talla == 0){
+            cabeza = nuevo;
+        }
+        else{
+            cola.siguiente = nuevo;
+        }
+        nuevo.previo = cola;
+        nuevo.siguiente = null;
+        cola = nuevo;
+        talla ++;
+        
+        
+        
+        
+        
+        
+        
+        /*Nodo<E> nuevo = new Nodo<>(x);
         Nodo<E> tmpNodo = cabeza;
         if (tmpNodo == null){
             cabeza = nuevo;
@@ -65,7 +85,7 @@ public class Lista<E> {
             }
             tmpNodo.siguiente = nuevo;
         }
-        this.talla++;
+        this.talla++;*/
     }
     
       
@@ -123,7 +143,7 @@ public class Lista<E> {
         }
         nodoTmp=datoEscogido;
         this.eliminar(datoEscogido.getDato());
-        talla--;
+        
         return datoEscogido;
     }
     

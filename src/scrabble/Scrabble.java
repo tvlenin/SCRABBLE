@@ -10,32 +10,40 @@ import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
 public class Scrabble extends Bolsa {
     
-    private int cantidadJugadores = 2;
+    private int cantidadJugadores = 0;
     private Lista <Jugador> listaJugadores = new Lista<>();
     private LeerTexto leer = new LeerTexto();
     private Tablero tablero = new Tablero();
     private Nodo<Jugador> nodoJugadorConElTurno;
     Lista<String> listaDiccionario = leer("es_CR.dic");
     private int TurnosSaltadosSeguidos;
+    private IOArduino ardu = new IOArduino();
+    Thread hilo;
+    String arduinoooo;
     
     public Scrabble(){
+        ardu.initialize();
         this.TurnosSaltadosSeguidos = 0;
         this.preguntarQuienesJuegan();
-        //this.primerTurno();
+        this.primerTurno();
+        
         }
     
     
     public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
-        int nJugadores = 1;
+        
+        int nJugadoresCreados = Integer.parseInt(ardu.getDato());
+        //System.out.println(nJugadoresCreados);
         Jugador jugadorNuevo;
         
-        while(nJugadores > 0){ //crear la cantidad de jugadores deseados y sacar una ficha
+        while(nJugadoresCreados >= 1 && nJugadoresCreados < 5){ //crear la cantidad de jugadores deseados y sacar una ficha
             jugadorNuevo = new Jugador();
             jugadorNuevo.sacarFichaParaSorteo();
             listaJugadores.insertar(jugadorNuevo);
-            nJugadores--;
+            nJugadoresCreados--;
+            this.cantidadJugadores++;
         }
         Nodo<Jugador> iterador = listaJugadores.getHead();
         while (iterador != null) {
@@ -55,9 +63,16 @@ public class Scrabble extends Bolsa {
     }
     
     public void primerTurno(){
+        
         boolean flag = true; //mientras no se coloque una palabra en la posicion correcta no se comienza.
-        nodoJugadorConElTurno = listaJugadores.getHead();   
+        nodoJugadorConElTurno = listaJugadores.getHead();
+        String inputArduino = "";
+        for(int nletras=0; inputArduino != "9" ;nletras++){
+            System.out.println(ardu.getParOrdenado());
+        }
+        
         while(flag){
+            
             
             String palabra="";
             Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
