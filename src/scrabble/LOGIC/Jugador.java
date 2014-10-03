@@ -21,7 +21,7 @@ public class Jugador extends Bolsa {
     
     
     /**
-     * Meotod contructor de la clase Jugador en el que se asignan valores a algunas variables que se utilizaran en otros metodos
+     * Metodo contructor de la clase Jugador en el que se asignan valores a algunas variables que se utilizaran en otros metodos
      * @author abrahamon
      */
     public Jugador(){

@@ -23,7 +23,7 @@ public class Ficha{
    }
    
    /**
-    * Metodo para obtener el valor de una ficha
+    * Metodo para obtener el valor asignado de una ficha
     * @return valor Retorna un String con el valor que posee una ficha
     * @author abrahamon
     */
@@ -32,7 +32,7 @@ public class Ficha{
    }
    
    /**
-    * Metodo para obtener el valor de una ficha
+    * Metodo para obtener el valor asignado de una ficha
     * @return valor Retorna un char con el valor que posee una ficha
     * @author abrahamon
     */

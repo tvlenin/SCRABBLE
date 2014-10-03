@@ -87,7 +87,7 @@ public class Lista<E> {
     
     /**
      * Metodo que se utiliza para eliminar un dato "x" de una lista,
-     * Si el dato a eliminar se encuantra en la lista este sera eliminado y se retornara true,
+     * Si el dato a eliminar se encuentra en la lista este sera eliminado y se retornara true,
      * De lo contrario se retornara false al no encontrar el dato en la lista.
      * @param x Dato que sera buscado en la lista y de ser encontrado se procede a eliminar dicho dato.
      * @return res Si el dato es eliminado satisfactoriamente returna true, si no se encuentra retorna false.
@@ -244,7 +244,7 @@ public class Lista<E> {
         
 
     /**
-     * Metodo por el cual se realiza una mezcla de todos los nodos que se encuntran en una lista
+     * Metodo por el cual se realiza una mezcla de todos los nodos que se encuentran en una lista
      * @author abrahamon
      */
     public void mezclarTodosLosNodos(){
@@ -264,7 +264,7 @@ public class Lista<E> {
     }
     
     /**
-     * Metodo por medio del cual se puede conocer el valor del dato que se encuantra al final de una lista
+     * Metodo por medio del cual se puede conocer el valor del dato que se encuentra al final de una lista
      * @return cola Valor que posee el nodo que se encuentra al final de una lista
      * @author abrahamon
      */
@@ -273,7 +273,7 @@ public class Lista<E> {
     }
     
     /**
-     * Metodo para recibir la cantida total de elementos que se encuentren en una lista
+     * Metodo para recibir la cantidad total de elementos que se encuentren en una lista
      * @return talla Cantidad elementos que se encuentren en una lista
      * @author abrahamon
      */
