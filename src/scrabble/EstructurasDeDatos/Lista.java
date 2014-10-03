@@ -1,33 +1,27 @@
 package scrabble.EstructurasDeDatos;
 
-/**
- * Clase que se utiliza para crear listas genericas para almacenar distintos tipos de elementos en el programa.
- * @author fabricio
- * @param <E> Contiene el tipo de lista que se desea crear para almacenar datos del mismo tipo.
- */
 public class Lista<E> {
 
     protected Nodo<E> cabeza;
     protected Nodo<E> cola;
     protected int talla; //Almacena la cantidad de elementos que se encuentren en una lista
     
-    /**
-     * Metodo constructor de la clase Lista, que se utiliza para inicializar la lista de elementos.
-     * @author abrahamon
-     */
     public Lista(){
         cabeza = null;
         cola = null;
         talla = 0;
     }
     
-    /**
-     * Metodo para introducir un elemento "x" al inicio de una lista.
-     * @param x Elemento que se desea introducir en una lista.
-     * @author abrahamon
-     */
-    public void insertar(E x){
-        Nodo<E> nuevo = new Nodo<>(x);        
+    public void insertarAuto(E pData){ //si la lista esta vacia realiza un insertar, sino inserta al final
+        if (talla == 0){
+            this.insertar(pData);
+        }
+        else{
+            this.insertarFinal(pData);
+        }
+    }
+    public void insertar(E pData){
+        Nodo<E> nuevo = new Nodo<>(pData);        
         if (talla == 0 ){
             cola = nuevo;
         }
@@ -41,14 +35,25 @@ public class Lista<E> {
         this.talla++;
     }
     
-    /**
-     * Metodo que se utiliza para introducir un elemento "x" al final de una lista.
-     * @param x Elemento que se desea introducir en una lista
-     * @author abrahamon
-     */
+    public void insertarEnMedio( E pData, Nodo<E> pNodoPrevio){
+        if (pNodoPrevio == cabeza){
+            System.out.println("En vez de 'insertarEnMedio' utilice (insertar || insertarAuto) ");
+            return;
+        }
+        Nodo<E> nuevoNodo = new Nodo<>(pData);
+        Nodo<E> nodoTmp = pNodoPrevio.getSiguiente();
+        
+        pNodoPrevio.siguiente = nuevoNodo;
+        nuevoNodo.previo = pNodoPrevio;
+        nuevoNodo.siguiente = nodoTmp;
+        nodoTmp.previo = nuevoNodo;
+        
+        this.talla++;
+        
+    }
+    
     public void insertarFinal(E x) {
         Nodo<E> nuevo = new Nodo<>(x);
-        this.talla++;
         Nodo<E> tmpNodo = cabeza;
         if (tmpNodo == null){
             cabeza = nuevo;
@@ -60,17 +65,18 @@ public class Lista<E> {
             }
             tmpNodo.siguiente = nuevo;
         }
+        this.talla++;
     }
     
-    /**
-     * Metodo que se utiliza para eliminar un dato "x" de una lista, 
-     * Si el dato a eliminar se encuantra en la lista este sera eliminado y se retornara true, 
-     * De lo contrario se retornara false al no encontrar el dato en la lista.
-     * @param x Dato que sera buscado en la lista y de ser encontrado se procede a eliminar dicho dato.
-     * @return res Si el dato es eliminado satisfactoriamente returna true, si no se encuentra retorna false.
-     * @author abrahamon
-     */  
-    public boolean eliminar(E x){              //tested
+      
+    public boolean eliminar(E x){
+        if(cabeza == null)
+            return false;
+        if (talla == 1){ //no se puede eliminar una lista con un nodo
+            cabeza = null;
+            cola= null;
+            talla = 0;
+        }
         Nodo<E> tmp = cabeza, anterior = null;
         boolean res = false;
         while ( tmp != null && !tmp.dato.equals( x ) ){
@@ -90,23 +96,12 @@ public class Lista<E> {
         return res;
     }
     
-    /**
-     * Metodo que se utiliza para conocer el valor de un elemento de la lista en cierta posicion.
-     * @return nodoResp Retornael valor del dato que se encuentra en la posicion dada.
-     * @author abrahamon
-     */
     public Nodo<E> getDato(){
         Nodo<E> nodoResp = null;
         nodoResp = nodoResp.siguiente;
         return nodoResp;
     }
     
-    /**
-     * Metodo en el que se verifica si un elemento se encuentra en una lista.
-     * @param x Elemento que se desea buscar en la lista.
-     * @return resp Retorna un valor booleano dependiendo de si encuntra el dato en la lista o no.
-     * @author abrahamon
-     */
     public boolean buscar(E x){
         boolean resp = false;
         for ( Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente ) {
@@ -118,12 +113,6 @@ public class Lista<E> {
         return resp;
     }
     
-    /**
-     * Metodo en el cual se accede al valor de un dato en una posicion aleatoria, 
-     * Y ademas elimina el dato de la lista que lo contiene.
-     * @return datoEscogido Retorna el valor del dato que fue accedido de manera aleatoria en la lista.
-     * @author tvlenin
-     */
     public Nodo<E> getAndQuitarElementoAzar(){
         Nodo<E> nodoTmp;
         int posicionAzar = (int )(Math.random() * talla);
@@ -133,25 +122,17 @@ public class Lista<E> {
             datoEscogido = datoEscogido.siguiente;
         }
         nodoTmp=datoEscogido;
-        //this.eliminar();
+        this.eliminar(datoEscogido.getDato());
+        talla--;
         return datoEscogido;
     }
     
-
-    /**
-     * Metodo que analiza una lista y muestra el valor del elemento que se encuentre en la primera posicion.
-     * @return cabeza Retorna el valor del primer elemento de una lista
-     * @author abrahamon
-     */
+    
     public Nodo<E> getHead(){
         return cabeza;
     }
         
-    /**
-     * Metodo para obtener un elemento de una lista al azar y mostrarlo
-     * @return tmp2 Valor del elemento que se toma de la lista
-     * @author abrahamon
-     */
+    //metodo para obtener elemento al azar solamente
     public Nodo<E> mostrarElementoAzar(){ //muestra solamente 
     
         int posicionAzar = (int )(Math.random() * talla);
@@ -165,22 +146,52 @@ public class Lista<E> {
         return tmp2;
     } 
     
-    /**
-     * Metodo para intercambiar los datos de dos nodos dados que se encuntren en una lista.
-     * @param pElementoA Primer elemento que se desea cambiar de posicion
-     * @param pElementoB Segundo elemento que se desea cambiar de posicion
-     * @author abrahamon
-     */     
-    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){
+    public void intercambiarNodos(Nodo<E> pNodoA, Nodo<E> pNodoB){
+        
+        if (pNodoA == pNodoB){
+        return;
+        }
+        if (pNodoA.siguiente == pNodoB) { // contiguos
+            pNodoA.siguiente = pNodoB.siguiente;
+            pNodoB.previo = pNodoA.previo;
+            if (pNodoA.siguiente != null){
+                pNodoA.siguiente.previo = pNodoA;
+            }
+            if (pNodoB.previo != null){
+                pNodoB.previo.siguiente = pNodoB;
+            }
+            pNodoB.siguiente = pNodoA;
+            pNodoA.previo = pNodoB;
+        }
+        else {
+            Nodo p = pNodoB.previo;
+            Nodo n = pNodoB.siguiente;
+            pNodoB.previo = pNodoA.previo;
+            pNodoB.siguiente = pNodoA.siguiente;
+            pNodoA.previo = p;
+            pNodoA.siguiente = n;
+            if (pNodoB.siguiente != null){
+                pNodoB.siguiente.previo = pNodoB;
+            }
+            if (pNodoB.previo != null){
+                pNodoB.previo.siguiente = pNodoB;
+            }
+            if (pNodoA.siguiente != null){
+                pNodoA.siguiente.previo = pNodoA;
+            }
+            if (pNodoA.previo != null){
+                pNodoA.previo.siguiente = pNodoA;
+            }
+        }
+    
+    }     
+    public void intercambiarData(Nodo<E> pElementoA, Nodo<E> pElementoB){//metodo intocable ejemplo de lo que no se deberia hacer no se usa
         Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
         pElementoA.setData(pElementoB.getDato());
         pElementoB.setData(tmpNodo.getDato());
     }
         
-    /**
-     * Metodo para realizar una mezcla de todos los elementos que se encuentren en una lista
-     * @author abrahamon
-     */
+
     public void mezclarTodosLosNodos(){
         Nodo<E> cambiandoNodoA = cabeza;
         Nodo<E> cambiandoNodoB;
@@ -197,11 +208,9 @@ public class Lista<E> {
         }
     }
     
-    /**
-     * Metodo para recibir la cantida total de elementos que se encuentren en una lista
-     * @return talla Cantidad elementos que se encuentren en una lista.
-     * @author abrahamon
-     */
+    public Nodo<E> getTail(){
+        return cola;
+    }
     public int getTalla(){
         return this.talla;
     } 

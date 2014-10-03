@@ -1,99 +1,144 @@
 package scrabble;
+import GUI.PantallaPrincipal;
 import scrabble.DATAIO.*;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
+
+import scrabble.LOGIC.Ficha;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
-import scrabble.LOGIC.TurnoSalida;
-
-/**
- * Clase en la que se manejara las acciones que involucran el funcionamiento general del programa.
- * @author abrahamon
- */
-public class Scrabble {
+public class Scrabble extends Bolsa {
     
-    private int cantidadJugadores = 4; //Cantidad de jugadores que participaran en la partida
-    private Lista <Jugador> listaJugadores = new Lista<>(); //Lista en la que se almacenaran los jugadores que participen de la partida
-    private LeerTexto leer; 
-    private Tablero tablero;
-    private int numJugador = 1; // Inidica cual de los jugadores es el que esta en su turno
+    private int cantidadJugadores = 2;
+    private Lista <Jugador> listaJugadores = new Lista<>();
+    private LeerTexto leer = new LeerTexto();
+    private Tablero tablero = new Tablero();
+    private Nodo<Jugador> nodoJugadorConElTurno;
+    Lista<String> listaDiccionario = leer("es_CR.dic");
+    private int TurnosSaltadosSeguidos;
     
-    /**
-     * Metodo constructor de la clase Scrabble, en donde se pregunta la cantidad de jugadores que participaran, 
-     * Se inicia el primer turno del juego y tambien se inician los turnos siguientes.
-     * @author abrahamon
-     */
     public Scrabble(){
-        
-        
+        this.TurnosSaltadosSeguidos = 0;
         this.preguntarQuienesJuegan();
-       // this.sorteo();
-        //sortear las 7 fichas para cada jugador
-        
-        this.primerTurno();/*
-            verificar que coloque una palabra en la ficha central
-        */
-        
-        //while(true){
-        this.turno();
-        //}
-        /*
-            turno commun (2mins)
-            jugada      ~        cambiar juego          ~   pasar turno
-            verificar           y mezclar bolsa
-            asignar puntaje                                 
-                
-        fin del juego 
-            no hay que poner    ~turno sin jugador TODOSx2  ~ 6 pases e impugnaciones de todos  ~la bolsa vacia
-                    
-            -(fichas en el mazo)                            ~sumar al ganador todas las fichas
-        */
+        //this.primerTurno();
         }
     
-    /**
-     * Metodo en el que se establece la cantidad de jugadores que participaran en la partida del juego.
-     * @author abrahamon
-     */
-    public void preguntarQuienesJuegan(){
+    
+    public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
         // se toca el boton del centro
+        int nJugadores = 1;
+        Jugador jugadorNuevo;
         
-        while (numJugador <= 4){
-            Jugador jugadorTmp = new Jugador(this.numJugador);
-            listaJugadores.insertar(jugadorTmp);
-            numJugador ++;
-            System.out.println(listaJugadores.getHead().getDato().numeroJugador());
-    
+        while(nJugadores > 0){ //crear la cantidad de jugadores deseados y sacar una ficha
+            jugadorNuevo = new Jugador();
+            jugadorNuevo.sacarFichaParaSorteo();
+            listaJugadores.insertar(jugadorNuevo);
+            nJugadores--;
         }
+        Nodo<Jugador> iterador = listaJugadores.getHead();
+        while (iterador != null) {
+            Nodo<Jugador> nodoComparar = iterador.getSiguiente();
+            while(nodoComparar!= null){
+                if (iterador.getDato().getNumeroIndicaTurno() == nodoComparar.getDato().getNumeroIndicaTurno()){
+                    iterador.getDato().sacarFichaParaSorteo();
+                    iterador = listaJugadores.getHead();
+                    
+                }if(iterador.getDato().getNumeroIndicaTurno() < nodoComparar.getDato().getNumeroIndicaTurno()){
+                    listaJugadores.intercambiarData(iterador, nodoComparar);
+                }
+                nodoComparar= nodoComparar.getSiguiente();
+            }
+            iterador = iterador.getSiguiente();
+        } 
     }
     
-    /**
-     * Metodo en el cual se realiza un sorteo de las siete fichas que tendran los jugadores al iniciar la partida.
-     * @author abrahamon
-     */
-    public void sorteo(){
-        Nodo<Jugador> tmpNodo = listaJugadores.getHead();
-        while(tmpNodo != null){
-            tmpNodo.getDato().sacarFichaParaSorteo();
-            tmpNodo = tmpNodo.getSiguiente();
-        }
-    }
-    
-    /**
-     * Metodo en el que se gestionara las acciones referentes al primer turno del juego,
-     * El cual posee algunas caracteristicas distintas a los demas turnos del juego.
-     * @author abrahamon
-     */
     public void primerTurno(){
-        
+        boolean flag = true; //mientras no se coloque una palabra en la posicion correcta no se comienza.
+        nodoJugadorConElTurno = listaJugadores.getHead();   
+        while(flag){
+            
+            String palabra="";
+            Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
+            //lectura del arduino, POS Mazo y POS tablero
+            Lista<Integer> listaPosiciones = new Lista<>();
+            listaPosiciones.insertar(113);
+            
+            for (Nodo<Ficha> iteradorDeLetras= listaFichasColocadas.getHead(); iteradorDeLetras != null; iteradorDeLetras = iteradorDeLetras.getSiguiente()){
+                palabra = palabra+iteradorDeLetras.getDato().getData();// Conccatena la palabra almacenada en una lista
+            }
+            if (listaDiccionario.buscar(palabra)){
+                for (Nodo<Integer> iteradorDePos = listaPosiciones.getHead(); iteradorDePos != null; iteradorDePos= iteradorDePos.getSiguiente()){
+                    if (iteradorDePos.getDato() == 133){
+                        asignarPtjJugador( listaFichasColocadas.getHead(), listaPosiciones.getHead());
+                        
+                        this.asignarPtjJugador(listaFichasColocadas.getHead(), listaPosiciones.getHead());
+                        
+                        //quitar las fichas que coloco el jugador y colocar en el tablero
+                        nodoJugadorConElTurno = nodoJugadorConElTurno.getSiguiente();
+                        this.turno();
+                        flag = false;
+                    }
+                }
+            }  
+        }
+        System.out.println("Mal colocada la primera ficha, voler colocar");
+        this.primerTurno();   
     }
     
-    /**
-     * Metodo en el que se gestinaran las tareas que son necesarias para el analisis, 
-     * Y el desarrollo de los turnos del juego durante la partida, 
-     * A excepcion del primer turno que posee caracteristicas distintas y debe analizarce por separado.
-     * @author abrahamon
-     */
-    public void turno(){}
+    public void turno(){
+        boolean flag = true;
+        //while(flag){
+            String palabra="perro";
+            Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
+            Lista<Integer> listaPosiciones = new Lista<>();//lista con todas las posiciones donde se coloco una ficha
+            listaPosiciones.insertar(113);
+            
+            
+        //}
+        if(this.terminoElJuego()){
+            this.finJuego();
+        }
+        if (nodoJugadorConElTurno == listaJugadores.getTail())
+            nodoJugadorConElTurno = listaJugadores.getHead();
+        else
+            nodoJugadorConElTurno = nodoJugadorConElTurno.getSiguiente();
+    }
+    
+    public void finJuego(){}
+    
+    public boolean terminoElJuego(){
+        if(TurnosSaltadosSeguidos >= cantidadJugadores*2)
+            return true;
+        for (Nodo<Jugador> iterador = listaJugadores.getHead(); iterador != null; iterador = iterador.getSiguiente()){
+            if(iterador.getDato().getTurnosPasados() < 6)
+                return false;
+        }
+        if (nodoJugadorConElTurno.getDato().revisarBolsaVacia())
+            return true;
+        return false;
+    }
+    
+    //solo en caso de que se coloque una palabra correctamente se llama a este metodo
+    public void asignarPtjJugador(Nodo<Ficha> iteradorFichas,Nodo<Integer> iteradorPos)
+    {//sus argumentos: 2 listas simetricas, primera con letra colocada y segunda con posicion colocada
+        int bonusPorPalabra =1;
+        int bonusPorLetra=1;
+        int puntajePalabra= 0;
+        while(iteradorFichas != null && iteradorPos != null){
+            bonusPorLetra = 1;
+            if( tablero.getDescripcionPosX(iteradorPos.getDato()) == "l" ){
+                bonusPorLetra = tablero.getBonusPosX(iteradorPos.getDato());
+            }
+            if( tablero.getDescripcionPosX(iteradorPos.getDato()) == "p" ){
+                bonusPorPalabra= bonusPorPalabra*tablero.getBonusPosX(iteradorPos.getDato());
+            }
+            puntajePalabra = puntajePalabra + bonusPorLetra;
+            iteradorFichas = iteradorFichas.getSiguiente(); 
+            iteradorPos = iteradorPos.getSiguiente();
+        }
+        puntajePalabra = puntajePalabra*bonusPorPalabra;
+        nodoJugadorConElTurno.getDato().sumarPuntaje(puntajePalabra); 
+    }
 }
