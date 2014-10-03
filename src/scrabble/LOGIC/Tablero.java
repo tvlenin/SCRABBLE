@@ -48,14 +48,6 @@ public class Tablero {
         }
         //System.out.println(tablero.getHead().getDato().getPosicion());*/
     }
-       
-    public boolean verificaPosEnCentro(int pos){
-        boolean resp = false;
-        if(pos == 113)
-            resp = true;
-        return resp;
-    }
-    
     
     public int getBonusPosX(int pPosicion){//necesaria para mostrar el bonus en x posicion
         int moverseFilas = pPosicion / 15;

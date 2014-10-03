@@ -1,9 +1,9 @@
 package scrabble.EstructurasDeDatos;
 
 public class Nodo<E>{
-    E dato;
-    Nodo<E> siguiente;
-    Nodo<E> previo;
+    protected E dato;
+    protected Nodo<E> siguiente;
+    protected Nodo<E> previo;
     
     
     public Nodo(E dato){

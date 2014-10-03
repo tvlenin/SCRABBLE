@@ -25,11 +25,6 @@ public class CampoTablero {
     public String getDescripcion(){
         return this.descripcion;
     }
-    public boolean tieneFichaAlready(){
-        if(descripcion == null )
-            return false;
-        return true;
-    }
     public int getMultiplicador(){
         return this.multiple;
     }

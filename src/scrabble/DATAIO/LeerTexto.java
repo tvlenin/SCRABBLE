@@ -4,9 +4,6 @@ import java.io.*;
 
 import scrabble.EstructurasDeDatos.Lista;
 
-//import scrabble.LOGIC.Subject;
-
-
 public class LeerTexto  {
     
     private Lista <String> palabras = new Lista <>();

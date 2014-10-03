@@ -2,8 +2,8 @@ package scrabble.EstructurasDeDatos;
 
 public class Lista<E> {
 
-    protected Nodo<E> cabeza;
-    protected Nodo<E> cola;
+    public  Nodo<E> cabeza;
+    public Nodo<E> cola;
     protected int talla;
     
     public Lista(){
@@ -41,7 +41,7 @@ public class Lista<E> {
     }
     public void insertarEnMedio( E pData, Nodo<E> pNodoPrevio){
         if (pNodoPrevio == cabeza){
-            System.out.println("En vez de 'insertarEnMedio' utilice (insertar || insertarAuto) ");
+            this.insertar(pData);
             return;
         }
         Nodo<E> nuevoNodo = new Nodo<>(pData);
@@ -131,7 +131,25 @@ public class Lista<E> {
     } 
     
     public void intercambiarNodos(Nodo<E> pNodoA, Nodo<E> pNodoB){
-        if ( pNodoA == pNodoB )
+        Nodo<E> tmpReferenciaNodeA = pNodoA.previo;
+        Nodo<E> tmpReferenciaNodeB = pNodoB.previo;
+        Nodo<E> tmpNodeA = pNodoA;
+        Nodo<E> tmpNodeB = pNodoB;
+        if (pNodoA == pNodoB)
+            return;
+        
+        else if(pNodoA.getSiguiente() == pNodoB || pNodoB.getSiguiente() == pNodoA || cabeza == pNodoA || cabeza==pNodoB){ //son contiguos
+            E tmp = pNodoB.getDato();
+            pNodoB.dato = pNodoA.getDato();
+            pNodoA.dato = tmp;
+        }        
+        else{
+        this.eliminar(pNodoA.getDato());
+        this.insertarEnMedio(tmpNodeA.getDato(), tmpReferenciaNodeB);
+        this.eliminar(pNodoB.dato);
+        this.insertarEnMedio(tmpNodeB.getDato(), tmpReferenciaNodeA);
+        }
+        /*if ( pNodoA == pNodoB )
             return;
         Nodo<E> tmpNodo = pNodoA;
         if (pNodoA.siguiente == pNodoB) { // contiguos
@@ -165,7 +183,7 @@ public class Lista<E> {
             if (pNodoA.previo != null){
                 pNodoA.previo.siguiente = pNodoA;
             }
-        }
+        }*/
     }     
        
     /*public void mezclarTodosLosNodos(){
