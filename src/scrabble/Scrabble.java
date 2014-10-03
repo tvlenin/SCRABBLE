@@ -4,7 +4,6 @@ import scrabble.DATAIO.*;
 import scrabble.EstructurasDeDatos.Lista;
 import scrabble.EstructurasDeDatos.Nodo;
 import scrabble.LOGIC.Bolsa;
-
 import scrabble.LOGIC.Ficha;
 import scrabble.LOGIC.Jugador;
 import scrabble.LOGIC.Tablero;
@@ -15,7 +14,7 @@ public class Scrabble extends Bolsa {
     private LeerTexto leer = new LeerTexto();
     private Tablero tablero = new Tablero();
     private Nodo<Jugador> nodoJugadorConElTurno;
-    Lista<String> listaDiccionario = leer("es_CR.dic");
+    private Lista<String> listaDiccionario = leer("es_CR.dic");
     private int TurnosSaltadosSeguidos;
     private IOArduino ardu = new IOArduino();
     Thread hilo;
@@ -25,10 +24,8 @@ public class Scrabble extends Bolsa {
         ardu.initialize();
         this.TurnosSaltadosSeguidos = 0;
         this.preguntarQuienesJuegan();
-        this.primerTurno();
-        
+        //this.primerTurno();
         }
-    
     
     public void preguntarQuienesJuegan(){//caso en que a ==b
         // se lee del arduino cuantos botones entran
@@ -54,7 +51,7 @@ public class Scrabble extends Bolsa {
                     iterador = listaJugadores.getHead();
                     
                 }if(iterador.getDato().getNumeroIndicaTurno() < nodoComparar.getDato().getNumeroIndicaTurno()){
-                    listaJugadores.intercambiarDataNOUSAR(iterador, nodoComparar);
+                    listaJugadores.intercambiarNodos(iterador, nodoComparar);
                 }
                 nodoComparar= nodoComparar.getSiguiente();
             }
@@ -87,7 +84,7 @@ public class Scrabble extends Bolsa {
         }
         
         while(flag){
-            String palabra = "";
+            String palabra="perro";
             Lista <Ficha> listaFichasColocadas = nodoJugadorConElTurno.getDato().getListaFichas();
             
             for(Nodo<Integer> iteradorPos= listaPosiciones.getHead(); iteradorPos != null; iteradorPos = iteradorPos.getSiguiente()){
@@ -140,13 +137,21 @@ public class Scrabble extends Bolsa {
     public void finJuego(){}
     
     public boolean terminoElJuego(){
-        if(TurnosSaltadosSeguidos >= cantidadJugadores*2)
+        // es nececesario verificar 3 condiciones:
+        if(TurnosSaltadosSeguidos >= cantidadJugadores*2)//todos los jugadores pasan 2 veces su turno de manera consecutiva
             return true;
-        for (Nodo<Jugador> iterador = listaJugadores.getHead(); iterador != null; iterador = iterador.getSiguiente()){
-            if(iterador.getDato().getTurnosPasados() < 6)
-                return false;
+        
+        int turnospasados=0;    // cada jugador tiene como 6 turnos invalidos
+        for (Nodo<Jugador> iterador = listaJugadores.getHead(); iterador != null; iterador = iterador.getSiguiente()){ //algun 
+            if(iterador.getDato().getTurnosPasados() <= 6)
+                turnospasados = turnospasados + iterador.getDato().getTurnosPasados();
+            else
+                turnospasados = turnospasados + iterador.getDato().getTurnosPasados();
         }
-        if (nodoJugadorConElTurno.getDato().revisarBolsaVacia())
+        if( turnospasados >= cantidadJugadores*2 )
+            return true;
+        
+        if (nodoJugadorConElTurno.getDato().revisarBolsaVacia()) //la bolsa se encuentra vacia 
             return true;
         return false;
     }

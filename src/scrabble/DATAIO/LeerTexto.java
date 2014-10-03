@@ -17,16 +17,16 @@ public class LeerTexto  {
             
             File fileDir = new File("src/scrabble/Ficheros/"+PtxtData);
             Reader inpu = new InputStreamReader(new FileInputStream(fileDir), "ISO-8859-15");//"ISO-8859-15"
-            BufferedReader buffer = new BufferedReader(inpu);
+            BufferedReader buffer = new BufferedReader(inpu );
             
             String strLinea;
                 // Leer el archivo linea por linea
                 while ((strLinea = buffer.readLine()) != null)   {
-                   if (strLinea.contains("/")){
+                    if (strLinea.contains("/")){
                         String [] pala = strLinea.split("/");
                         strLinea = pala[0];
                     }
-                    palabras.insertarFinal(strLinea);
+                    palabras.insertar(strLinea);
                     //System.out.println(strLinea);
 
                 }

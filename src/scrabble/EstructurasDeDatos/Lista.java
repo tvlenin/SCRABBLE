@@ -2,8 +2,8 @@ package scrabble.EstructurasDeDatos;
 
 public class Lista<E> {
 
-    protected Nodo<E> cabeza;
-    protected Nodo<E> cola;
+    public  Nodo<E> cabeza;
+    public Nodo<E> cola;
     protected int talla;
     
     public Lista(){
@@ -12,14 +12,6 @@ public class Lista<E> {
         talla = 0;
     }
     
-    public void insertarAuto(E pData){ //si la lista esta vacia realiza un insertar, sino inserta al final
-        if (talla == 0){
-            this.insertar(pData);
-        }
-        else{
-            this.insertarFinal(pData);
-        }
-    }
     public void insertar(E pData){
         Nodo<E> nuevo = new Nodo<>(pData);        
         if (talla == 0 ){
@@ -28,16 +20,28 @@ public class Lista<E> {
         else{
             cabeza.previo = nuevo;
         }
-        
         nuevo.siguiente = cabeza;
         nuevo.previo = null;
         cabeza = nuevo;
         this.talla++;
     }
     
+    public void insertarFinal(E pData) {
+        Nodo<E> nuevo = new Nodo<>(pData);
+        if( talla == 0){
+            cabeza = nuevo;
+        }
+        else{
+            cola.siguiente = nuevo;
+        }
+        nuevo.previo = cola;
+        nuevo.siguiente = null;
+        cola = nuevo;
+        talla++;
+    }
     public void insertarEnMedio( E pData, Nodo<E> pNodoPrevio){
         if (pNodoPrevio == cabeza){
-            System.out.println("En vez de 'insertarEnMedio' utilice (insertar || insertarAuto) ");
+            this.insertar(pData);
             return;
         }
         Nodo<E> nuevoNodo = new Nodo<>(pData);
@@ -49,44 +53,9 @@ public class Lista<E> {
         nodoTmp.previo = nuevoNodo;
         
         this.talla++;
-        
     }
     
-    public void insertarFinal(E x) {
-        
-        
-        Nodo<E> nuevo = new Nodo<>(x);
-        if( talla == 0){
-            cabeza = nuevo;
-        }
-        else{
-            cola.siguiente = nuevo;
-        }
-        nuevo.previo = cola;
-        nuevo.siguiente = null;
-        cola = nuevo;
-        talla ++;
-        
-        
-        
-        
-        
-        
-        
-        /*Nodo<E> nuevo = new Nodo<>(x);
-        Nodo<E> tmpNodo = cabeza;
-        if (tmpNodo == null){
-            cabeza = nuevo;
-        }
-        else {
-            
-            while ( tmpNodo.siguiente != null ) {
-            tmpNodo = tmpNodo.siguiente;
-            }
-            tmpNodo.siguiente = nuevo;
-        }
-        this.talla++;*/
-    }
+    
     
       
     public boolean eliminar(E x){
@@ -127,7 +96,6 @@ public class Lista<E> {
         for ( Nodo<E> tmp = cabeza; tmp != null; tmp = tmp.siguiente ) {
             if ( x.equals(tmp.dato) ) {
             resp = true;
-            
             }
         }    
         return resp;
@@ -143,8 +111,7 @@ public class Lista<E> {
         }
         nodoTmp=datoEscogido;
         this.eliminar(datoEscogido.getDato());
-        
-        return datoEscogido;
+        return nodoTmp;
     }
     
     
@@ -166,78 +133,63 @@ public class Lista<E> {
         return tmp2;
     } 
     
-    public void intercambiarNodos(Nodo<E> node1, Nodo<E> node2){
+    public void intercambiarNodos(Nodo<E> pNodoA, Nodo<E> pNodoB){
+        Nodo<E> tmpReferenciaNodeA = pNodoA.previo;
+        Nodo<E> tmpReferenciaNodeB = pNodoB.previo;
+        Nodo<E> tmpNodeA = pNodoA;
+        Nodo<E> tmpNodeB = pNodoB;
+        if (pNodoA == pNodoB)
+            return;
         
-        if (node1 == node2){
-        return;
+        else if(pNodoA.getSiguiente() == pNodoB || pNodoB.getSiguiente() == pNodoA || cabeza == pNodoA || cabeza==pNodoB){ //son contiguos
+            E tmp = pNodoB.getDato();
+            pNodoB.dato = pNodoA.getDato();
+            pNodoA.dato = tmp;
+        }        
+        else{
+        this.eliminar(pNodoA.getDato());
+        this.insertarEnMedio(tmpNodeA.getDato(), tmpReferenciaNodeB);
+        this.eliminar(pNodoB.dato);
+        this.insertarEnMedio(tmpNodeB.getDato(), tmpReferenciaNodeA);
         }
-        Nodo temp;
-        temp = node1.siguiente;
-        node1.siguiente = node2.siguiente;
-        node2.siguiente = temp;
-        if (node1.siguiente != null)
-            node1.siguiente.previo = node1;
-        if (node2.siguiente != null)
-            node2.siguiente.previo = node2;
-        temp = node1.previo;
-        node1.previo = node2.previo;
-        node2.previo = temp;
-        if (node1.previo != null)
-            node1.previo.siguiente = node1;
-        if (node2.previo == null)
-            return ;
-        node2.previo.siguiente = node2;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /*Nodo<E> p = pNodoB.previo;
-        Nodo<E> n = pNodoB.siguiente;
-        Nodo<E> z = pNodoA.siguiente;
-        Nodo<E> x = pNodoA.previo;
-        pNodoB.previo = pNodoA.previo;
-        pNodoB.siguiente = pNodoA.siguiente;
-        pNodoA.previo = p;
-        pNodoA.siguiente = n;
-        p.siguiente = pNodoB;
-        z.previo = pNodoB;
-        if (pNodoB.siguiente != null){
-            pNodoB.siguiente.previo = pNodoB;
+        /*if ( pNodoA == pNodoB )
+            return;
+        Nodo<E> tmpNodo = pNodoA;
+        if (pNodoA.siguiente == pNodoB) { // contiguos
+            pNodoA.siguiente = pNodoB.siguiente;
+            pNodoB.previo = pNodoA.previo;
+            if (pNodoA.siguiente != null){
+                pNodoA.siguiente.previo = pNodoA;
+            }
+            if (pNodoB.previo != null){
+                pNodoB.previo.siguiente = pNodoB;
+            }
+            pNodoB.siguiente = pNodoA;
+            pNodoA.previo = pNodoB;
         }
-        if (pNodoB.previo != null){
-            pNodoB.previo.siguiente = pNodoB;
-        }
-        if (pNodoA.siguiente != null){
-            pNodoA.siguiente.previo = pNodoA;
-        }
-        if (pNodoA.previo != null){
-            pNodoA.previo.siguiente = pNodoA;
-        }
-    */
+        else {
+            Nodo p = pNodoB.previo;
+            Nodo n = pNodoB.siguiente;
+            pNodoB.previo = pNodoA.previo;
+            pNodoB.siguiente = pNodoA.siguiente;
+            pNodoA.previo = p;
+            pNodoA.siguiente = n;
+            if (pNodoB.siguiente != null){
+                pNodoB.siguiente.previo = pNodoB;
+            }
+            if (pNodoB.previo != null){
+                pNodoB.previo.siguiente = pNodoB;
+            }
+            if (pNodoA.siguiente != null){
+                pNodoA.siguiente.previo = pNodoA;
+            }
+            if (pNodoA.previo != null){
+                pNodoA.previo.siguiente = pNodoA;
+            }
+        }*/
     }     
-    public void intercambiarDataNOUSAR(Nodo<E> pElementoA, Nodo<E> pElementoB){//metodo intocable ejemplo de lo que no se deberia hacer no se usa
-        Nodo <E> tmpNodo = new Nodo(pElementoA.getDato());
-        pElementoA.setData(pElementoB.getDato());
-        pElementoB.setData(tmpNodo.getDato());
-    }
-        
-
-    public void mezclarTodosLosNodos(){
+       
+    /*public void mezclarTodosLosNodos(){
         Nodo<E> cambiandoNodoA = cabeza;
         Nodo<E> cambiandoNodoB;
         
@@ -248,10 +200,10 @@ public class Lista<E> {
                 cambiandoNodoB = cambiandoNodoB.getSiguiente();
                 posicionAzar--;
             }
-            this.intercambiarDataNOUSAR(cambiandoNodoA, cambiandoNodoB);
+            this.intercambiarNodos(cambiandoNodoA, cambiandoNodoB);
             cambiandoNodoA = cambiandoNodoA.getSiguiente();
         }
-    }
+    }*/
     
     public Nodo<E> getTail(){
         return cola;
